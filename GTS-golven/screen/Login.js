@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
-import Buttons from '../components/Buttons';
 
 const Dashboard = props => {
     return (
@@ -18,8 +17,15 @@ const Dashboard = props => {
                         <TextInput style={styles.textinpput} />
                     </View>
                 </View>
-                <Buttons button1={'Log in'} button2={'Wachtwoord vergeten?'}/>
-            </View>  
+                <View>
+                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
+                        <Text style={styles.textButton}>Log in</Text>
+                    </Pressable>
+                    <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
+                        <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
+                    </Pressable>
+                </View>
+            </View>
         </View>
     )
 };
@@ -60,6 +66,26 @@ const styles = StyleSheet.create({
 
     infoContainer: {
         width: '100%',
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 20,
+    },
+
+    button1: {
+        marginBottom: 10,
+        backgroundColor: Colors.button1,
+    },
+    button2: {
+        backgroundColor: Colors.button2,
+    },
+
+    textButton: {
+        fontSize: 15,
+        fontWeight: 'bold'
     }
 });
 

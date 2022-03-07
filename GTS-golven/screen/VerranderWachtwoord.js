@@ -17,7 +17,7 @@ const Dashboard = props => {
                         <TextInput style={styles.textinpput} />
                     </View>
                 </View>
-                <Pressable style={[styles.button, styles.button]}>
+                <Pressable style={[styles.button, styles.button]} onPress={props.toLogin}>
                     <Text style={styles.textButton}>Reset wachtwoord</Text>
                 </Pressable>
             </View>  
