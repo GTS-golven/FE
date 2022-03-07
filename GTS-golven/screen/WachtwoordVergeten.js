@@ -11,7 +11,7 @@ const Dashboard = props => {
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Voer jouw email in</Text>
-                        <TextInput style={styles.textinpput} />
+                        <TextInput textContentType='emailAddress' style={styles.textinpput} />
                     </View>
                 </View>                    
             </View>

@@ -10,17 +10,17 @@ const Dashboard = props => {
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Nieuw wachtwoord</Text>
-                        <TextInput style={styles.textinpput} />
+                        <TextInput textContentType='newPassword' style={styles.textinpput} />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Herhaal je wachtwoord</Text>
-                        <TextInput style={styles.textinpput} />
+                        <TextInput textContentType='newPassword' secureTextEntry style={styles.textinpput} />
                     </View>
                 </View>
                 <Pressable style={[styles.button, styles.button]} onPress={props.toLogin}>
                     <Text style={styles.textButton}>Reset wachtwoord</Text>
                 </Pressable>
-            </View>  
+            </View>
         </View>
     )
 };

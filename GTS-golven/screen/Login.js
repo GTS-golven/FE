@@ -10,11 +10,11 @@ const Dashboard = props => {
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Email:</Text>
-                        <TextInput style={styles.textinpput} />
+                        <TextInput textContentType='emailAddress' style={styles.textinpput} />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput style={styles.textinpput} />
+                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} />
                     </View>
                 </View>
                 <View>
