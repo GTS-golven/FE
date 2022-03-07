@@ -5,13 +5,20 @@ import Colors from './components/Colors';
 
 import Dashboard from './screen/Dashboard'
 import Gallery from './screen/Gallery'
+
 import Login from './screen/Login'
+import WachtwoordVergeten from './screen/WachtwoordVergeten'
+import VerranderWachtwoord from './screen/VerranderWachtwoord'
 
 
 export default function App() {
+
+
   return (
     <View style={styles.screen}>
-      <Login />
+      <Login style={styles.show} onPress={() => {}}/>
+      <WachtwoordVergeten style={styles.hide} />
+      <VerranderWachtwoord style={styles.hide} />
     </View>
   );
 }

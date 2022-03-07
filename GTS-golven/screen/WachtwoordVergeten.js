@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
 import Buttons from '../components/Buttons';
@@ -10,16 +10,14 @@ const Dashboard = props => {
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Email:</Text>
+                        <Text style={styles.text}>Voer jouw email in</Text>
                         <TextInput style={styles.textinpput} />
                     </View>
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput style={styles.textinpput} />
-                    </View>
-                </View>
-                <Buttons button1={'Log in'} button2={'Wachtwoord vergeten?'}/>
-            </View>  
+                </View>                    
+            </View>
+            <Pressable style={[styles.button, styles.button]}>
+                <Text style={styles.textButton}>Reset wachtwoord</Text>
+            </Pressable>
         </View>
     )
 };
@@ -27,14 +25,13 @@ const Dashboard = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
-        alignItems: 'center'
     },
 
     card: {
         width: '100%',
-        height: 300,
-        justifyContent: 'space-evenly',
+        height: 90,
         alignItems: 'center',
     },
 
@@ -60,7 +57,20 @@ const styles = StyleSheet.create({
 
     infoContainer: {
         width: '100%',
-    }
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+        borderRadius: 20,        
+        backgroundColor: Colors.button1,
+    },
+
+    textButton: {
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
 });
 
 export default Dashboard;
