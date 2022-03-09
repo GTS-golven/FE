@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Pressable, Image, StyleSheet } from 'react-nati
 
 import Colors from '../components/Colors';
 import Card from '../components/Card'
+import Popup from '../components/Popup';
 
 import * as ImagePicker from 'expo-image-picker';
 
@@ -81,6 +82,7 @@ const Dashboard = props => {
                     />
                 }
             </View>
+            <Popup />
         </View>
     )
 };
