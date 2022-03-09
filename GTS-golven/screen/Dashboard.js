@@ -10,6 +10,15 @@ import * as ImagePicker from 'expo-image-picker';
 const Dashboard = props => {
 
     const [pickedImagePath, setPickedImagePath] = useState('');
+    const [popup, setpopup] = useState(0)
+
+    const showPopUp = () => {
+        setpopup(1)
+    }
+
+    const hidePopup = () => {
+        setpopup(0)
+    }
 
     const showImagePicker = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -47,6 +56,12 @@ const Dashboard = props => {
         }
     }
 
+    let content = <Popup pressedCamera={openCamera} pressedCameraRoll={showImagePicker} close={hidePopup}/>
+
+    if (popup === 0) {
+        content = <Text></Text>
+    }
+
     return (
         <View style={styles.screen}>
             <View style={styles.cards}>
@@ -60,7 +75,7 @@ const Dashboard = props => {
                     snapToAlignment={'center'}
                     style={styles.ScrollView}
                 >
-                    <Pressable style={styles.container} onPress={showImagePicker}>
+                    <Pressable style={styles.container} onPress={showPopUp}>
                         <View style={styles.roundConatiner}>
                             <View style={styles.conatinerPlus}>
                                 <Text style={styles.plus}>+</Text>

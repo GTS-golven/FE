@@ -6,18 +6,18 @@ const Popup = props => {
     return (
         <View style={styles.screen}>
             <View style={[styles.buttonContainer, styles.openCamera]}>
-                <Pressable>
+                <Pressable onPress={props.pressedCamera}>
                     <Text style={styles.text}>Open camera</Text>
                 </Pressable>
             </View>
             <View style={[styles.buttonContainer, styles.openGallery]}>
-                <Pressable>
+                <Pressable onPress={props.pressedCameraRoll}>
                     <Text style={styles.text}>Open gallery</Text>
                 </Pressable>
             </View>
             <View style={[styles.buttonContainer, styles.close]}>
                 <Pressable>
-                    <Text style={styles.textX}>X</Text>
+                    <Text onPress={props.close} style={styles.textX}>X</Text>
                 </Pressable>
             </View>
         </View>
