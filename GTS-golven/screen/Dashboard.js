@@ -15,7 +15,7 @@ const Dashboard = props => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
         if (permissionResult.granted === false) {
-            alert("You've refused to allow this appp to access your photos!");
+            alert("Je hebt toegang tot de cameraroll geweirgerd");
             return;
         }
 
@@ -33,7 +33,7 @@ const Dashboard = props => {
         const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
         if (permissionResult.granted === false) {
-            alert("You've refused to allow this appp to access your camera!");
+            alert("Je hebt toegang tot de camera geweigerd!");
             return;
         }
 
@@ -58,16 +58,15 @@ const Dashboard = props => {
                     decelerationRate={'fast'}
                     snapToInterval={200}
                     snapToAlignment={'center'}
+                    style={styles.ScrollView}
                 >
-                    <Pressable onPress={showImagePicker}>
-                        <View style={styles.container}>
-                            <View style={styles.roundConatiner}>
-                                <View style={styles.conatinerPlus}>
-                                    <Text style={styles.plus}>+</Text>
-                                </View>
+                    <Pressable style={styles.container} onPress={showImagePicker}>
+                        <View style={styles.roundConatiner}>
+                            <View style={styles.conatinerPlus}>
+                                <Text style={styles.plus}>+</Text>
                             </View>
-                            <Text style={styles.text}>Upload jouw video</Text>
                         </View>
+                        <Text style={styles.text}>Upload jouw video</Text>
                     </Pressable>
                     <Card title='Stroke 1 - i5' date='09-08-2022' />
                     <Card title='Stroke 2 - i5' date='09-08-2022' />
@@ -82,7 +81,7 @@ const Dashboard = props => {
                     />
                 }
             </View>
-            <Popup />
+            {content}
         </View>
     )
 };
@@ -91,6 +90,11 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         marginTop: 50,
+    },
+
+    ScrollView: {
+        width: '100%',
+        height: 300,
     },
 
     container: {

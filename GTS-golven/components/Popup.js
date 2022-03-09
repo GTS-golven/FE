@@ -5,19 +5,19 @@ import Colors from "./Colors";
 const Popup = props => {
     return (
         <View style={styles.screen}>
-            <View style={styles.openCamera}>
+            <View style={[styles.buttonContainer, styles.openCamera]}>
                 <Pressable>
-                    <Text>Open camera</Text>
+                    <Text style={styles.text}>Open camera</Text>
                 </Pressable>
             </View>
-            <View style={styles.openGallery}>
+            <View style={[styles.buttonContainer, styles.openGallery]}>
                 <Pressable>
-                    <Text>Open gallery</Text>
+                    <Text style={styles.text}>Open gallery</Text>
                 </Pressable>
             </View>
-            <View style={styles.close}>
+            <View style={[styles.buttonContainer, styles.close]}>
                 <Pressable>
-                    <Text>Close</Text>
+                    <Text style={styles.textX}>X</Text>
                 </Pressable>
             </View>
         </View>
@@ -27,15 +27,18 @@ const Popup = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-    
+        justifyContent: "flex-end"
+    },
+
+    buttonContainer: {
+        backgroundColor: Colors.primary,
+        width: '100%',
+        height: 70,
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     openCamera: {
-        backgroundColor: Colors.primary,
-        width: '100%',
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
         borderColor: Colors.black,
         borderWidth: 1,
         borderTopLeftRadius: 30,
@@ -43,24 +46,24 @@ const styles = StyleSheet.create({
     },
 
     openGallery: {
-        backgroundColor: Colors.primary,
-        width: '100%',
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
         borderColor: Colors.black,
         borderWidth: 1,
     },
 
     close: {
-        backgroundColor: Colors.primary,
-        width: '100%',
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
+        height: 90,
         borderColor: Colors.black,
         borderWidth: 1,
     },
+
+    text: {
+        fontSize: 17,
+        fontWeight: "bold"
+    },
+
+    textX: {
+        fontSize: 30,
+    }
 });
 
 export default Popup;
