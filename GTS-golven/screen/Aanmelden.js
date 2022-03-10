@@ -22,7 +22,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={props.onMeldaan}>
                         <Text style={styles.textButton}>Meld aan</Text>
                     </Pressable>
                 </View>

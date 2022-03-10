@@ -10,6 +10,7 @@ import WachtwoordVergeten from './screen/WachtwoordVergeten'
 import VerranderWachtwoord from './screen/VerranderWachtwoord'
 
 import Aanmelden from './screen/Aanmelden'
+import ConfirmMail from './screen/ConfirmMail'
 
 import Dashboard from './screen/Dashboard'
 import Gallery from './screen/Gallery'
@@ -37,6 +38,10 @@ export default function App() {
     setlogIn(4)
   }
 
+  const confirmMail = () => {
+    setlogIn(5)
+  }
+
   const dashboard = () => {
     setlogIn(6)
   }
@@ -48,11 +53,11 @@ export default function App() {
   } if (logIn === 2) {
     content = <WachtwoordVergeten toVerranderWachtwoord={verranderWachtwoord} />
   } if (logIn === 3) {
-    content = <VerranderWachtwoord toLogin={restart} />
+    content = <VerranderWachtwoord toLogin={inlog} />
   } if (logIn === 4) {
-    content = <Aanmelden />
+    content = <Aanmelden onMeldaan={confirmMail}/>
   } if (logIn === 5) {
-    content = ''
+    content = <ConfirmMail toStart={inlog}/>
   } if (logIn === 6) {
     content = <Dashboard />
   }
