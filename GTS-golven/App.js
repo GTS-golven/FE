@@ -6,6 +6,8 @@ import Colors from './components/Colors';
 import Dashboard from './screen/Dashboard'
 import Gallery from './screen/Gallery'
 
+
+import Start from './screen/Start'
 import Login from './screen/Login'
 import WachtwoordVergeten from './screen/WachtwoordVergeten'
 import VerranderWachtwoord from './screen/VerranderWachtwoord'
@@ -18,25 +20,31 @@ export default function App() {
     setlogIn(0)
   }
 
-  const wachtwoordVergeten = () => {
+  const inlog = () => {
     setlogIn(1)
   }
 
-  const verranderWachtwoord = () => {
+  const wachtwoordVergeten = () => {
     setlogIn(2)
   }
 
-  const dashboard = () => {
+  const verranderWachtwoord = () => {
     setlogIn(3)
   }
 
-  let content = <Login toWachtwoordVergeten={wachtwoordVergeten} toDashboard={dashboard}/>
+  const dashboard = () => {
+    setlogIn(4)
+  }
+
+  let content = <Start onInlog={inlog} />
 
   if (logIn === 1) {
-    content = <WachtwoordVergeten toVerranderWachtwoord={verranderWachtwoord}/>
+    content = <Login toWachtwoordVergeten={wachtwoordVergeten} toDashboard={dashboard} />
   } if (logIn === 2) {
-    content = <VerranderWachtwoord toLogin={restart}/>
+    content = <WachtwoordVergeten toVerranderWachtwoord={verranderWachtwoord} />
   } if (logIn === 3) {
+    content = <VerranderWachtwoord toLogin={restart} />
+  } if (logIn === 4) {
     content = <Dashboard />
   }
 
