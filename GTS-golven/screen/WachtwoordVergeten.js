@@ -15,9 +15,11 @@ const Dashboard = props => {
                     </View>
                 </View>                    
             </View>
-            <Pressable style={[styles.button, styles.button]} onPress={props.toVerranderWachtwoord}>
-                <Text style={styles.textButton}>Reset wachtwoord</Text>
-            </Pressable>
+            <View style={styles.buttonContainer}>
+                <Pressable style={[styles.button, styles.button]} onPress={props.toVerranderWachtwoord}>
+                    <Text style={styles.textButton}>Reset wachtwoord</Text>
+                </Pressable>
+            </View>
         </View>
     )
 };
@@ -59,11 +61,17 @@ const styles = StyleSheet.create({
         width: '100%',
     },
 
+    buttonContainer: {
+        width: '100%',
+        alignItems: 'center',
+    },  
+
     button: {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        borderRadius: 20,        
+        borderRadius: 20,
+        width: '50%',
         backgroundColor: Colors.button1,
     },
 

@@ -3,15 +3,16 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Colors from './components/Colors';
 
-import Dashboard from './screen/Dashboard'
-import Gallery from './screen/Gallery'
-
-
 import Start from './screen/Start'
+
 import Login from './screen/Login'
 import WachtwoordVergeten from './screen/WachtwoordVergeten'
 import VerranderWachtwoord from './screen/VerranderWachtwoord'
 
+import Aanmelden from './screen/Aanmelden'
+
+import Dashboard from './screen/Dashboard'
+import Gallery from './screen/Gallery'
 
 export default function App() {
   const [logIn, setlogIn] = useState(0);
@@ -32,11 +33,15 @@ export default function App() {
     setlogIn(3)
   }
 
-  const dashboard = () => {
+  const aanmelden = () => {
     setlogIn(4)
   }
 
-  let content = <Start onInlog={inlog} />
+  const dashboard = () => {
+    setlogIn(6)
+  }
+
+  let content = <Start onInlog={inlog} onAanmelden={aanmelden} />
 
   if (logIn === 1) {
     content = <Login toWachtwoordVergeten={wachtwoordVergeten} toDashboard={dashboard} />
@@ -45,6 +50,10 @@ export default function App() {
   } if (logIn === 3) {
     content = <VerranderWachtwoord toLogin={restart} />
   } if (logIn === 4) {
+    content = <Aanmelden />
+  } if (logIn === 5) {
+    content = ''
+  } if (logIn === 6) {
     content = <Dashboard />
   }
 
