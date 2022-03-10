@@ -53,7 +53,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.bottomPic}>
-                    <Image style={styles.imageBottom} source={require('../assets/trajectories-of-the-ball-solid-line-and-the-paddle-dashed-line-obtained-with-the.png')}/>
+                    <Image style={styles.imageBottom} source={require('../assets/balbaan.PNG')}/>
                 </View>
                 
             </View>
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
 
     text2: {
         fontSize: 20,
-        fontWeight: 'bold',
         position: 'absolute',
         top: 0,
     },
     text3: {
         fontSize: 30,
+        fontWeight: 'bold',
     },
     text4: {
         fontSize: 15,
