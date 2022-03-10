@@ -56,7 +56,7 @@ const Dashboard = props => {
         }
     }
 
-    let content = <Popup pressedCamera={openCamera} pressedCameraRoll={showImagePicker} close={hidePopup}/>
+    let content = <Popup pressedCamera={openCamera} pressedCameraRoll={showImagePicker} close={hidePopup} />
 
     if (popup === 0) {
         content = <Text></Text>
@@ -64,7 +64,7 @@ const Dashboard = props => {
 
     return (
         <View style={styles.screen}>
-            <View style={styles.cards}>
+            <View>
                 <ScrollView
                     horizontal={true}
                     alwaysBounceHorizontal={true}
@@ -75,26 +75,21 @@ const Dashboard = props => {
                     snapToAlignment={'center'}
                     style={styles.ScrollView}
                 >
-                    <Pressable style={styles.container} onPress={showPopUp}>
-                        <View style={styles.roundConatiner}>
-                            <View style={styles.conatinerPlus}>
-                                <Text style={styles.plus}>+</Text>
+                    <View style={styles.card}>
+                        <Pressable style={styles.container} onPress={showPopUp}>
+                            <View style={styles.roundConatiner}>
+                                <View style={styles.conatinerPlus}>
+                                    <Text style={styles.plus}>+</Text>
+                                </View>
                             </View>
-                        </View>
-                        <Text style={styles.text}>Upload jouw video</Text>
-                    </Pressable>
-                    <Card title='Stroke 1 - i5' date='09-08-2022' />
-                    <Card title='Stroke 2 - i5' date='09-08-2022' />
-                    <Card title='Stroke 3 - i5' date='09-08-2022' />
+                            <Text style={styles.text}>Upload jouw video</Text>
+                        </Pressable>
+
+                        <Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
+                        <Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
+                        <Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
+                    </View>
                 </ScrollView>
-            </View>
-            <View>
-                {
-                    pickedImagePath !== '' && <Image
-                        source={{ uri: pickedImagePath }}
-                        style={styles.image}
-                    />
-                }
             </View>
             {content}
         </View>
@@ -109,7 +104,6 @@ const styles = StyleSheet.create({
 
     ScrollView: {
         width: '100%',
-        height: 300,
     },
 
     container: {
@@ -142,10 +136,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 
-    image: {
-        width: 400,
-        height: 300,
-        resizeMode: 'cover',
+    card: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        height: '100%'
     }
 });
 
