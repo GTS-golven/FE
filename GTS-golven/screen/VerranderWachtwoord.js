@@ -9,20 +9,17 @@ const Dashboard = props => {
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Email:</Text>
-                        <TextInput textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address'/>
+                        <Text style={styles.text}>Nieuw wachtwoord</Text>
+                        <TextInput textContentType='newPassword' style={styles.textinpput} />
                     </View>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
+                        <Text style={styles.text}>Herhaal je wachtwoord</Text>
+                        <TextInput textContentType='newPassword' secureTextEntry style={styles.textinpput} />
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
-                        <Text style={styles.textButton}>Log in</Text>
-                    </Pressable>
-                    <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
-                        <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
+                    <Pressable style={[styles.button, styles.button]} onPress={props.toLogin}>
+                        <Text style={styles.textButton}>Reset wachtwoord</Text>
                     </Pressable>
                 </View>
             </View>
@@ -44,15 +41,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    text: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+
     inputContainer: {
         alignItems: 'center',
         width: '100%',
         marginBottom: 10,
-    },
-
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
     },
 
     textinpput: {
@@ -78,21 +75,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
         borderRadius: 20,
-        width: '50%'
-    },
-
-    button1: {
-        marginBottom: 10,
+        width: '50%',
         backgroundColor: Colors.button1,
-    },
-    button2: {
-        backgroundColor: Colors.button2,
     },
 
     textButton: {
         fontSize: 15,
         fontWeight: 'bold'
-    }
+    },
 });
 
 export default Dashboard;

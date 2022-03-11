@@ -139,7 +139,9 @@ const styles = StyleSheet.create({
     card: {
         flexDirection: 'row',
         justifyContent: 'center',
-        height: '100%'
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 });
 

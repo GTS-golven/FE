@@ -16,13 +16,14 @@ const Dashboard = props => {
                         <Text style={styles.text}>Wachtwoord:</Text>
                         <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
                     </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.text}>Herhaal wachtwoord:</Text>
+                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
+                    </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
-                        <Text style={styles.textButton}>Log in</Text>
-                    </Pressable>
-                    <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
-                        <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
+                    <Pressable style={[styles.button, styles.button1]} onPress={props.onMeldaan}>
+                        <Text style={styles.textButton}>Meld aan</Text>
                     </Pressable>
                 </View>
             </View>

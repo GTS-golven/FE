@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
+import Buttons from '../components/Buttons';
 
 const Dashboard = props => {
     return (
@@ -9,22 +10,15 @@ const Dashboard = props => {
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Email:</Text>
-                        <TextInput textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address'/>
+                        <Text style={styles.text}>Voer jouw email in</Text>
+                        <TextInput textContentType='emailAddress' style={styles.textinpput} />
                     </View>
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
-                    </View>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
-                        <Text style={styles.textButton}>Log in</Text>
-                    </Pressable>
-                    <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
-                        <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
-                    </Pressable>
-                </View>
+                </View>                    
+            </View>
+            <View style={styles.buttonContainer}>
+                <Pressable style={[styles.button, styles.button]} onPress={props.toVerranderWachtwoord}>
+                    <Text style={styles.textButton}>Reset wachtwoord</Text>
+                </Pressable>
             </View>
         </View>
     )
@@ -33,14 +27,13 @@ const Dashboard = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
-        alignItems: 'center'
     },
 
     card: {
         width: '100%',
-        height: 300,
-        justifyContent: 'space-evenly',
+        height: 90,
         alignItems: 'center',
     },
 
@@ -78,21 +71,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
         borderRadius: 20,
-        width: '50%'
-    },
-
-    button1: {
-        marginBottom: 10,
+        width: '50%',
         backgroundColor: Colors.button1,
-    },
-    button2: {
-        backgroundColor: Colors.button2,
     },
 
     textButton: {
         fontSize: 15,
         fontWeight: 'bold'
-    }
+    },
 });
 
 export default Dashboard;
