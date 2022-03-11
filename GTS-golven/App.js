@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from './components/Colors';
 
-import Gallery from './screen/Gallery'
-
-import Colors from './components/Colors';
-
 import Start from './screen/Start'
 
 import Login from './screen/Login'
@@ -49,6 +45,10 @@ export default function App() {
     setlogIn(6)
   }
 
+  const gallery = () => {
+    setlogIn(7)
+  }
+
   let content = <Start onInlog={inlog} onAanmelden={aanmelden} />
 
   if (logIn === 1) {
@@ -62,7 +62,9 @@ export default function App() {
   } if (logIn === 5) {
     content = <ConfirmMail toStart={inlog}/>
   } if (logIn === 6) {
-    content = <Dashboard />
+    content = <Dashboard toGallery={gallery} />
+  } if (logIn === 7) {
+    content = <Gallery />
   }
 
   return (

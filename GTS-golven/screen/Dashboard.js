@@ -85,9 +85,9 @@ const Dashboard = props => {
                             <Text style={styles.text}>Upload jouw video</Text>
                         </Pressable>
 
-                        <Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
-                        <Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
-                        <Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }}/>
+                        <Pressable onPress={props.toGallery}><Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></Pressable>
+                        <Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
+                        <Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
                     </View>
                 </ScrollView>
             </View>
