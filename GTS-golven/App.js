@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Colors from './components/Colors';
 
 import Start from './screen/Start'
+import NavBar from './components/NavBar'
 
 import Login from './screen/Login'
 import WachtwoordVergeten from './screen/WachtwoordVergeten'
@@ -69,7 +70,8 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      {content}
+      {/* {content} */}
+      <NavBar />
     </View>
   );
 }
