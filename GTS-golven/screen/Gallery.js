@@ -53,7 +53,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.bottomPic}>
-                    <Image style={styles.imageBottom} source={require('../assets/balbaan.PNG')}/>
+                    <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')}/>
                 </View>
                 
             </View>
