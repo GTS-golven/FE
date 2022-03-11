@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, } from 'react'
 import { View, Text, ScrollView, Pressable, Image, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
 import Card from '../components/Card'
 import Popup from '../components/Popup';
+import NavBar from '../components/NavBar'
 
 import * as ImagePicker from 'expo-image-picker';
 
 const Dashboard = props => {
-
     const [pickedImagePath, setPickedImagePath] = useState('');
     const [popup, setpopup] = useState(0)
-
+        
     const showPopUp = () => {
         setpopup(1)
     }
@@ -34,7 +34,6 @@ const Dashboard = props => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
-            console.log(result.uri);
         }
     }
 
@@ -52,7 +51,6 @@ const Dashboard = props => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
-            console.log(result.uri);
         }
     }
 
@@ -92,6 +90,7 @@ const Dashboard = props => {
                 </ScrollView>
             </View>
             {content}
+            <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel}/>
         </View>
     )
 };

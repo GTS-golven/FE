@@ -63,15 +63,14 @@ export default function App() {
   } if (logIn === 5) {
     content = <ConfirmMail toStart={inlog}/>
   } if (logIn === 6) {
-    content = <Dashboard toGallery={gallery} />
+    content = <Dashboard toGallery={gallery}/>
   } if (logIn === 7) {
-    content = <Gallery />
+    content = <Gallery toHome={dashboard} />
   }
 
   return (
     <View style={styles.screen}>
-      {/* {content} */}
-      <NavBar />
+      {content}
     </View>
   );
 }
