@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import Colors from './Colors';
-
-import Dashboard from '../screen/Dashboard';
 
 const NavBar = props => {
     const [Home, setHome] = useState(0)

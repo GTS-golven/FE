@@ -59,11 +59,11 @@ export default function App() {
   } if (logIn === 3) {
     content = <VerranderWachtwoord toLogin={inlog} />
   } if (logIn === 4) {
-    content = <Aanmelden onMeldaan={confirmMail}/>
+    content = <Aanmelden onMeldaan={confirmMail} />
   } if (logIn === 5) {
-    content = <ConfirmMail toStart={inlog}/>
+    content = <ConfirmMail toStart={inlog} />
   } if (logIn === 6) {
-    content = <Dashboard toGallery={gallery}/>
+    content = <Dashboard toGallery={gallery} />
   } if (logIn === 7) {
     content = <Gallery toHome={dashboard} />
   }
