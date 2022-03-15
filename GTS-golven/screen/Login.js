@@ -4,21 +4,47 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 import Colors from '../components/Colors';
 
 const Dashboard = props => {
+    const [email, onChangeEmail] = React.useState("");
+    const [password, onChangePassword] = React.useState("");
+
+    const [token, onChangeToken] = React.useState("Token");
+    const [refreshToken, onChangeRefreshToken] = React.useState("RefreshToken");
+
+    async function postLogin() {
+        const response = await fetch('http://127.0.0.1:8000/api/auth/token', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: email,
+                password: password
+            })
+        });
+
+        const json = await response.json();
+        token = json.token;
+        refreshToken = json.refreshToken;
+
+        props.toDashboard
+    }
+
     return (
         <View style={styles.screen}>
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Email:</Text>
-                        <TextInput textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address'/>
+                        <TextInput onChangeText={onChangeEmail} value={email} textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address' />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
+                        <TextInput onChangeText={onChangePassword} value={password} textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password' />
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={postLogin()}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
@@ -29,6 +55,8 @@ const Dashboard = props => {
         </View>
     )
 };
+
+
 
 const styles = StyleSheet.create({
     screen: {
@@ -71,7 +99,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '100%',
         alignItems: 'center',
-    },  
+    },
 
     button: {
         alignItems: 'center',
