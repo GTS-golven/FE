@@ -4,21 +4,30 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 import Colors from '../components/Colors';
 
 const Dashboard = props => {
+    const [email, onChangeEmail] = React.useState("");
+    const [password, onChangePassword] = React.useState("");
+
+
+    var token = null
+    var refreshToken = null
+
+    
+
     return (
         <View style={styles.screen}>
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Email:</Text>
-                        <TextInput textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address'/>
+                        <TextInput onChangeText={onChangeEmail} value={email} textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address' />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password'/>
+                        <TextInput onChangeText={onChangePassword} value={password} textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password' />
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={props.toDashboard}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={() => {postLogin(email, password)}}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
@@ -29,6 +38,33 @@ const Dashboard = props => {
         </View>
     )
 };
+
+async function postLogin(email, password) {
+
+    console.log(email, password)
+    if(email === ""){
+        return
+    }
+    else{
+        const response = await fetch('http://localhost:1290/api/auth/token/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: `{"username": "${email}", "password": "${password}"}`
+        });
+
+        const json = await response.json();
+
+        // TODO: Save the tokens into cookies for later authorized api calls
+        const accessToken = json.access;
+        const refreshToken = json.refresh;
+
+        console.log(accessToken, refreshToken)
+    }
+}
+
 
 const styles = StyleSheet.create({
     screen: {
@@ -71,7 +107,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '100%',
         alignItems: 'center',
-    },  
+    },
 
     button: {
         alignItems: 'center',
