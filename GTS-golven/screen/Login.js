@@ -7,28 +7,11 @@ const Dashboard = props => {
     const [email, onChangeEmail] = React.useState("");
     const [password, onChangePassword] = React.useState("");
 
-    const [token, onChangeToken] = React.useState("Token");
-    const [refreshToken, onChangeRefreshToken] = React.useState("RefreshToken");
 
-    async function postLogin() {
-        const response = await fetch('http://127.0.0.1:8000/api/auth/token', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: email,
-                password: password
-            })
-        });
+    var token = null
+    var refreshToken = null
 
-        const json = await response.json();
-        token = json.token;
-        refreshToken = json.refreshToken;
-
-        props.toDashboard
-    }
+    
 
     return (
         <View style={styles.screen}>
@@ -44,7 +27,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={postLogin()}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={() => {postLogin(email, password)}}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
@@ -56,6 +39,31 @@ const Dashboard = props => {
     )
 };
 
+async function postLogin(email, password) {
+
+    console.log(email, password)
+    if(email === ""){
+        return
+    }
+    else{
+        const response = await fetch('http://localhost:1290/api/auth/token/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: `{"username": "${email}", "password": "${password}"}`
+        });
+
+        const json = await response.json();
+
+        // TODO: Save the tokens into cookies for later authorized api calls
+        const accessToken = json.access;
+        const refreshToken = json.refresh;
+
+        console.log(accessToken, refreshToken)
+    }
+}
 
 
 const styles = StyleSheet.create({
