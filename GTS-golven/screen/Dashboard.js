@@ -11,12 +11,13 @@ import * as ImagePicker from 'expo-image-picker';
 const Dashboard = props => {
     const [pickedImagePath, setPickedImagePath] = useState('');
     const [popup, setpopup] = useState(0)
-        
+
+
     const showPopUp = () => {
         setpopup(1)
     }
 
-    const hidePopup = () => {
+    const closePopUp = () => {
         setpopup(0)
     }
 
@@ -54,10 +55,11 @@ const Dashboard = props => {
         }
     }
 
-    let content = <Popup pressedCamera={openCamera} pressedCameraRoll={showImagePicker} close={hidePopup} />
-
-    if (popup === 0) {
-        content = <Text></Text>
+    let content = <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel} />
+    if (popup === 1) {
+        content = <Popup close={closePopUp} pressedCameraRoll={showImagePicker} pressedCamera={openCamera} />
+    } else {
+        content = <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel} />
     }
 
     return (
@@ -90,7 +92,6 @@ const Dashboard = props => {
                 </ScrollView>
             </View>
             {content}
-            <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel}/>
         </View>
     )
 };

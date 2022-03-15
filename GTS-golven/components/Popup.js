@@ -16,8 +16,8 @@ const Popup = props => {
                 </Pressable>
             </View>
             <View style={[styles.buttonContainer, styles.close]}>
-                <Pressable>
-                    <Text onPress={props.close} style={styles.textX}>X</Text>
+                <Pressable onPress={props.close}>
+                    <Text style={styles.textX}>❌</Text>
                 </Pressable>
             </View>
         </View>
