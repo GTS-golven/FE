@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Colors from './components/Colors';
 
 import Start from './screen/Start'
+import NavBar from './components/NavBar'
 
 import Login from './screen/Login'
 import WachtwoordVergeten from './screen/WachtwoordVergeten'
@@ -58,13 +59,13 @@ export default function App() {
   } if (logIn === 3) {
     content = <VerranderWachtwoord toLogin={inlog} />
   } if (logIn === 4) {
-    content = <Aanmelden onMeldaan={confirmMail}/>
+    content = <Aanmelden onMeldaan={confirmMail} />
   } if (logIn === 5) {
-    content = <ConfirmMail toStart={inlog}/>
+    content = <ConfirmMail toStart={inlog} />
   } if (logIn === 6) {
     content = <Dashboard toGallery={gallery} />
   } if (logIn === 7) {
-    content = <Gallery />
+    content = <Gallery toHome={dashboard} />
   }
 
   return (

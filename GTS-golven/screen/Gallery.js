@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 import Colors from '../components/Colors';
+import NavBar from '../components/NavBar'
 
 const Dashboard = props => {
     return (
@@ -55,8 +56,8 @@ const Dashboard = props => {
                 <View style={styles.bottomPic}>
                     <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')}/>
                 </View>
-                
             </View>
+            <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel}/>
         </View>
     )
 };
