@@ -49,15 +49,15 @@ const NavBar = props => {
         <View style={styles.screen}>
             <View style={styles.navContainer}>
                 <Pressable style={styles.buttonContainer} onPress={props.toSettings}>
-                    <Image style={styles.image} source={require('../assets/adaptive-icon.png')} />
+                    <Image style={styles.image} source={require('../assets/setting.png')} />
                     {settings}
                 </Pressable>
                 <Pressable style={styles.buttonContainer} onPress={props.toHome}>
-                    <Image style={styles.image} source={require('../assets/adaptive-icon.png')} />
+                    <Image style={styles.image} source={require('../assets/huisje.png')} />
                     {home}
                 </Pressable>
                 <Pressable style={styles.buttonContainer} onPress={props.toProfiel}>
-                    <Image style={styles.image} source={require('../assets/adaptive-icon.png')} />
+                    <Image style={[styles.image, styles.profile]} source={require('../assets/profile.jpg')} />
                     {profiel}
                 </Pressable>
             </View>
@@ -98,6 +98,10 @@ const styles = StyleSheet.create({
     image: {
         width: 50,
         height: 50,
+    },
+
+    profile: {
+        borderRadius: 50,
     },
 
     text: {
