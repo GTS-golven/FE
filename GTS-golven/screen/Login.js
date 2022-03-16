@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
 import AuthService from '../services/AuthService'
@@ -9,11 +9,16 @@ const Dashboard = props => {
     const [email, onChangeEmail] = React.useState("");
     const [password, onChangePassword] = React.useState("");
 
-
     var token = null
     var refreshToken = null
 
-
+    const toDashboard = async () => {
+        var res = await postLogin(email, password)
+        if (res === 'ok') {
+            props.toDashboard
+            console.log(props)
+        }
+    }
 
     return (
         <View style={styles.screen}>
@@ -29,7 +34,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={() => { postLogin(email, password) }}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={() => { toDashboard() }}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
@@ -43,12 +48,25 @@ const Dashboard = props => {
 
 async function postLogin(email, password) {
 
-    console.log(email, password)
-    if (email === "" || password === "") {
-        return
+    if (email === "" && password === "") {
+        Alert.alert("Voer een geldig email adress en wachtwoord in", [{ style: 'cancel' }])
+        console.warn("Voer een geldig email adress en wachtwoord in")
+    } else if (password === "") {
+        Alert.alert("Voer een geldig wachtwoord in", [{ style: 'cancel' }])
+        console.warn("Voer een geldig wachtwoord in")
+    } else if (email === "") {
+        Alert.alert("Voer een geldig email in", [{ style: 'cancel' }])
+        console.warn("Voer een geldig email in")
     }
     else {
-        await AuthService.Login(email, password)
+        const res = await AuthService.Login(email, password)
+        if (res === 200) {
+            console.log('pressed')
+            return 'ok'
+        } else {
+            Alert.alert("Het wachtwoord of email is fout", [{ style: 'cancel' }])
+            console.warn("Het wachtwoord of email is fout")
+        }
     }
 }
 

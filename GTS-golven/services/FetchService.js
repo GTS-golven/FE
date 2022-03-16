@@ -23,7 +23,7 @@ const FetchService = {
             body: data
         });
 
-        return response.json();
+        return response;
     },
 
     Put: async function(url, data){
