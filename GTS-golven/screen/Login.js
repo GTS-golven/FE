@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
+import AuthService from '../services/AuthService'
+import FetchService from '../services/FetchService';
 
 const Dashboard = props => {
     const [email, onChangeEmail] = React.useState("");
@@ -11,7 +13,7 @@ const Dashboard = props => {
     var token = null
     var refreshToken = null
 
-    
+
 
     return (
         <View style={styles.screen}>
@@ -27,7 +29,7 @@ const Dashboard = props => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={() => {postLogin(email, password)}}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={() => { postLogin(email, password) }}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
@@ -42,26 +44,11 @@ const Dashboard = props => {
 async function postLogin(email, password) {
 
     console.log(email, password)
-    if(email === ""){
+    if (email === "" || password === "") {
         return
     }
-    else{
-        const response = await fetch('http://localhost:1290/api/auth/token/', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: `{"username": "${email}", "password": "${password}"}`
-        });
-
-        const json = await response.json();
-
-        // TODO: Save the tokens into cookies for later authorized api calls
-        const accessToken = json.access;
-        const refreshToken = json.refresh;
-
-        console.log(accessToken, refreshToken)
+    else {
+        await AuthService.Login(email, password)
     }
 }
 
