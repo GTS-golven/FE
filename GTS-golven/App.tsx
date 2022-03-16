@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from './components/Colors';
 
-import Start from './screen/Start'
+import Start from './screens/Start'
 import NavBar from './components/NavBar'
 
-import Login from './screen/Login'
-import WachtwoordVergeten from './screen/WachtwoordVergeten'
-import VerranderWachtwoord from './screen/VerranderWachtwoord'
+import Login from './screens/Login'
+import WachtwoordVergeten from './screens/WachtwoordVergeten'
+import VerranderWachtwoord from './screens/VerranderWachtwoord'
 
-import Aanmelden from './screen/Aanmelden'
-import ConfirmMail from './screen/ConfirmMail'
+import Aanmelden from './screens/Aanmelden'
+import ConfirmMail from './screens/ConfirmMail'
 
-import Dashboard from './screen/Dashboard'
-import Gallery from './screen/Gallery'
+import Dashboard from './screens/Dashboard'
+import Gallery from './screens/Gallery'
 
 export default function App() {
   const [logIn, setlogIn] = useState(0);
