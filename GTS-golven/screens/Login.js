@@ -5,7 +5,7 @@ import Colors from '../components/Colors';
 import AuthService from '../services/AuthService'
 import FetchService from '../services/FetchService';
 
-const Dashboard = props => {
+const Dashboard = ({ navigation }) => {
     const [email, onChangeEmail] = React.useState("");
     const [password, onChangePassword] = React.useState("");
 
@@ -15,8 +15,7 @@ const Dashboard = props => {
     const toDashboard = async () => {
         var res = await postLogin(email, password)
         if (res === 'ok') {
-            props.toDashboard
-            console.log(props)
+            navigation.push('Dashboard')
         }
     }
 
@@ -37,7 +36,7 @@ const Dashboard = props => {
                     <Pressable style={[styles.button, styles.button1]} onPress={() => { toDashboard() }}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
-                    <Pressable style={[styles.button, styles.button2]} onPress={props.toWachtwoordVergeten}>
+                    <Pressable style={[styles.button, styles.button2]} onPress={() => navigation.push('WachtwoordVergeten')}>
                         <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
                     </Pressable>
                 </View>
