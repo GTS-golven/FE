@@ -16,7 +16,6 @@ const Dashboard = props => {
         var res = await postLogin(email, password)
         if (res === 'ok') {
             props.toDashboard
-            console.log(props)
         }
     }
 

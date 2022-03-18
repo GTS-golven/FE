@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, createContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from './components/Colors';
 
@@ -14,6 +14,7 @@ import ConfirmMail from './screens/ConfirmMail'
 
 import Dashboard from './screens/Dashboard'
 import Gallery from './screens/Gallery'
+import Profiel from './screens/Profiel';
 
 export default function App() {
   const [logIn, setlogIn] = useState(0);
