@@ -4,7 +4,7 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 import Colors from '../components/Colors';
 import Buttons from '../components/Buttons';
 
-const Dashboard = props => {
+const Dashboard = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.card}>
@@ -16,7 +16,7 @@ const Dashboard = props => {
                 </View>                    
             </View>
             <View style={styles.buttonContainer}>
-                <Pressable style={[styles.button, styles.button]} onPress={props.toStart}>
+                <Pressable style={[styles.button, styles.button]} onPress={() => navigation.push('Login')}>
                     <Text style={styles.textButton}>Cofirm</Text>
                 </Pressable>
             </View>

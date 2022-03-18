@@ -2,15 +2,15 @@ import React from 'react'
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import Colors from '../components/Colors';
 
-const Dashboard = props => {
+const Dashboard = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.mainPic}>
                 <Image style={styles.image} source={require('../assets/startgolfer.jpg')}/>
             </View>  
             <View style={styles.buttonContainer}>
-                <Pressable style={styles.aanmelden} onPress={props.onAanmelden}><Text style={styles.text}>Aanmelden</Text></Pressable>
-                <Pressable style={styles.inlog} onPress={props.onInlog}><Text style={styles.text}>Inloggen</Text></Pressable>
+                <Pressable style={styles.aanmelden} onPress={() => navigation.push('Aanmelden')}><Text style={styles.text}>Aanmelden</Text></Pressable>
+                <Pressable style={styles.inlog} onPress={() => navigation.push('Login')}><Text style={styles.text}>Inloggen</Text></Pressable>
             </View>
         </View>
     )

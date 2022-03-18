@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet, TextInput } from 'react-native'
 import NavBar from "../components/NavBar";
 
-const Profiel = props => {
+const Profiel = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.container}>

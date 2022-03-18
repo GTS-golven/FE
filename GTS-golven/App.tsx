@@ -1,9 +1,10 @@
-import React, { useState, useContext, createContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Colors from './components/Colors';
 
 import Start from './screens/Start'
-import NavBar from './components/NavBar'
 
 import Login from './screens/Login'
 import WachtwoordVergeten from './screens/WachtwoordVergeten'
@@ -14,65 +15,27 @@ import ConfirmMail from './screens/ConfirmMail'
 
 import Dashboard from './screens/Dashboard'
 import Gallery from './screens/Gallery'
-import Profiel from './screens/Profiel';
+import Profiel from './screens/Profiel'
+import Settings from './screens/Settings'
 
-export default function App() {
-  const [logIn, setlogIn] = useState(0);
+const AuthStack = createNativeStackNavigator();
 
-  const restart = () => {
-    setlogIn(0)
-  }
-
-  const inlog = () => {
-    setlogIn(1)
-  }
-
-  const wachtwoordVergeten = () => {
-    setlogIn(2)
-  }
-
-  const verranderWachtwoord = () => {
-    setlogIn(3)
-  }
-
-  const aanmelden = () => {
-    setlogIn(4)
-  }
-
-  const confirmMail = () => {
-    setlogIn(5)
-  }
-
-  const dashboard = () => {
-    setlogIn(6)
-  }
-
-  const gallery = () => {
-    setlogIn(7)
-  }
-
-  let content = <Start onInlog={inlog} onAanmelden={aanmelden} />
-
-  if (logIn === 1) {
-    content = <Login toWachtwoordVergeten={wachtwoordVergeten} toDashboard={dashboard} />
-  } if (logIn === 2) {
-    content = <WachtwoordVergeten toVerranderWachtwoord={verranderWachtwoord} />
-  } if (logIn === 3) {
-    content = <VerranderWachtwoord toLogin={inlog} />
-  } if (logIn === 4) {
-    content = <Aanmelden onMeldaan={confirmMail} />
-  } if (logIn === 5) {
-    content = <ConfirmMail toStart={inlog} />
-  } if (logIn === 6) {
-    content = <Dashboard toGallery={gallery} />
-  } if (logIn === 7) {
-    content = <Gallery toHome={dashboard} />
-  }
-
+function App() {
   return (
-    <View style={styles.screen}>
-      {content}
-    </View>
+    <NavigationContainer>
+      <AuthStack.Navigator>
+        <AuthStack.Screen options={{ headerShown: false }} name="Start" component={Start} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+        <AuthStack.Screen options={{ headerShown: false }} name="WachtwoordVergeten" component={WachtwoordVergeten} />
+        <AuthStack.Screen options={{ headerShown: false }} name="VerranderWachtwoord" component={VerranderWachtwoord} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Aanmelden" component={Aanmelden} />
+        <AuthStack.Screen options={{ headerShown: false }} name="ConfirmMail" component={ConfirmMail} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Dashboard" component={Dashboard} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Gallery" component={Gallery} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Profiel" component={Profiel} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+      </AuthStack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -82,3 +45,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgournd,
   },
 });
+
+export default App;

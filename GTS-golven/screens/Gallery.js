@@ -1,64 +1,66 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import Colors from '../components/Colors';
 import NavBar from '../components/NavBar'
 
-const Dashboard = props => {
+const Dashboard = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
-            <View style={styles.topPic}>
-                <Image style={styles.imageTop} source={require('../assets/oudere-mannen-golf.jpg')} />
-                <Text style={styles.text}>Stroke 1 -i5</Text>
+        <ScrollView>
+            <View style={styles.screen}>
+                <View style={styles.topPic}>
+                    <Image style={styles.imageTop} source={require('../assets/oudere-mannen-golf.jpg')} />
+                    <Text style={styles.text}>Stroke 1 -i5</Text>
+                </View>
+                <View style={styles.infoConainer}>
+                    <View style={styles.row}>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>RPM</Text>
+                            <Text style={styles.text3}>6000</Text>
+                            <Text style={styles.text4}>rpm</Text>
+                        </View>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>Height</Text>
+                            <Text style={styles.text3}>60</Text>
+                            <Text style={styles.text4}>meter</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>Travel</Text>
+                            <Text style={styles.text3}>170</Text>
+                            <Text style={styles.text4}>meter</Text>
+                        </View>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>Angle</Text>
+                            <Text style={styles.text3}>13</Text>
+                            <Text style={styles.text4}>graden</Text>
+                        </View>
+                    </View>
+                    <View style={styles.row}>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>x-as</Text>
+                            <Text style={styles.text3}>2</Text>
+                            <Text style={styles.text4}>graden</Text>
+                        </View>
+                        <View style={styles.container}>
+                            <Image />
+                            <Text style={styles.text2}>Air time</Text>
+                            <Text style={styles.text3}>9</Text>
+                            <Text style={styles.text4}>seconden</Text>
+                        </View>
+                    </View>
+                    <View style={styles.bottomPic}>
+                        <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')} />
+                    </View>
+                </View>
+                <NavBar />
             </View>
-            <View style={styles.infoConainer}>
-                <View style={styles.row}>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>RPM</Text>
-                        <Text style={styles.text3}>6000</Text>
-                        <Text style={styles.text4}>rpm</Text>
-                    </View>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>Height</Text>
-                        <Text style={styles.text3}>60</Text>
-                        <Text style={styles.text4}>meter</Text>
-                    </View>
-                </View>
-                <View style={styles.row}>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>Travel</Text>
-                        <Text style={styles.text3}>170</Text>
-                        <Text style={styles.text4}>meter</Text>
-                    </View>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>Angle</Text>
-                        <Text style={styles.text3}>13</Text>
-                        <Text style={styles.text4}>graden</Text>
-                    </View>
-                </View>
-                <View style={styles.row}>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>x-as</Text>
-                        <Text style={styles.text3}>2</Text>
-                        <Text style={styles.text4}>graden</Text>
-                    </View>
-                    <View style={styles.container}>
-                        <Image />
-                        <Text style={styles.text2}>Air time</Text>
-                        <Text style={styles.text3}>9</Text>
-                        <Text style={styles.text4}>seconden</Text>
-                    </View>
-                </View>
-                <View style={styles.bottomPic}>
-                    <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')}/>
-                </View>
-            </View>
-            <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel}/>
-        </View>
+        </ScrollView>
     )
 };
 

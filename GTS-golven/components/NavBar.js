@@ -1,64 +1,24 @@
 import React, { useState } from 'react'
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import Colors from './Colors';
+import { useNavigation } from "@react-navigation/native";
 
 const NavBar = props => {
-    const [Home, setHome] = useState(0)
-    const [Settings, setSettings] = useState(0)
-    const [Profiel, setProfiel] = useState(0)
-
-    const selected = () => {
-        if (selected === 1) {
-            setHome(1)
-            setSettings(0)
-            setProfiel(0)
-        } if (selected === 2) {
-            setSettings(1)
-            setHome(0)
-            setProfiel(0)
-        } if (selected == 3) {
-            setProfiel(1)
-            setHome(0)
-            setSettings(0)
-        } else {
-            setHome(0)
-            setSettings(0)
-            setProfiel(0)
-        }
-    }
-
-    let home = <Text style={styles.text}>Home</Text>
-
-    if (Home === 1) {
-        home = <View style={styles.selected} />
-    }
-
-    let settings = <Text style={styles.text}>Settings</Text>
-
-    if (Settings === 1) {
-        settings = <View style={styles.selected} />
-    }
-
-    let profiel = <Text style={styles.text}>Profiel</Text>
-
-    if (Profiel === 1) {
-        profiel = <View style={styles.selected} />
-    }
-
+    const navigation = useNavigation();
     return (
         <View style={styles.screen}>
             <View style={styles.navContainer}>
-                <Pressable style={styles.buttonContainer} onPress={props.toSettings}>
+                <Pressable style={styles.buttonContainer} onPress={() => navigation.navigate('Settings')}>
                     <Image style={styles.image} source={require('../assets/setting.png')} />
-                    {settings}
+                    <Text style={styles.text}>Settings</Text>
                 </Pressable>
-                <Pressable style={styles.buttonContainer} onPress={props.toHome}>
+                <Pressable style={styles.buttonContainer} onPress={() => navigation.navigate('Dashboard')}>
                     <Image style={styles.image} source={require('../assets/huisje.png')} />
-                    {home}
+                    <Text style={styles.text}>Home</Text>
                 </Pressable>
-                <Pressable style={styles.buttonContainer} onPress={props.toProfiel}>
+                <Pressable style={styles.buttonContainer} onPress={() => navigation.navigate('Profiel')}>
                     <Image style={[styles.image, styles.profile]} source={require('../assets/profile.jpg')} />
-                    {profiel}
+                    <Text style={styles.text}>Profiel</Text>
                 </Pressable>
             </View>
         </View>

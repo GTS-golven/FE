@@ -8,7 +8,7 @@ import NavBar from '../components/NavBar'
 
 import * as ImagePicker from 'expo-image-picker';
 
-const Dashboard = props => {
+const Dashboard = ({ navigation }) => {
     const [pickedImagePath, setPickedImagePath] = useState('');
     const [popup, setpopup] = useState(0)
 
@@ -55,11 +55,11 @@ const Dashboard = props => {
         }
     }
 
-    let content = <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel} />
+    let content = <NavBar />
     if (popup === 1) {
         content = <Popup close={closePopUp} pressedCameraRoll={showImagePicker} pressedCamera={openCamera} />
     } else {
-        content = <NavBar toHome={props.toHome} toSettings={props.toSettings} toProfiel={props.toProfiel} />
+        content = <NavBar />
     }
 
     return (
@@ -85,7 +85,7 @@ const Dashboard = props => {
                             <Text style={styles.text}>Upload jouw video</Text>
                         </Pressable>
 
-                        <Pressable onPress={props.toGallery}><Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></Pressable>
+                        <Pressable onPress={() => navigation.push('Gallery')}><Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></Pressable>
                         <Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
                         <Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
                     </View>
