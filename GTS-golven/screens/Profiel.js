@@ -10,11 +10,11 @@ const Profiel = ({ navigation }) => {
                     <Image style={styles.image} source={require('../assets/profile.jpg')} />
                 </View>
                 <View style={styles.infoContainer}>
-                    <View style={styles.name}>
-                        <TextInput style={styles.nameInput} placeholder="Bert de Jong" />
+                    <View>
+                        <TextInput style={styles.Input} value="Bert de Jong" />
                     </View>
-                    <View style={styles.mail}>
-                        <TextInput style={styles.mailInput} placeholder="bertdejong@gmail.com" />
+                    <View>
+                        <TextInput style={styles.Input} value="bertdejong@gmail.com" />
                     </View>
                 </View>
             </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: "space-evenly",
         alignItems: "center",
-        height: '70%'
+        height: '70%',
     },
 
     image: {
@@ -41,26 +41,17 @@ const styles = StyleSheet.create({
     },
 
     infoContainer: {
-        height: 100,
-        width: '100%',
+        height: 150,
         justifyContent: "space-evenly",
         alignItems: "center"
     },
 
-    name: {
-
-    },
-
-    nameInput: {
-
-    },
-
-    mail: {
-
-    },
-
-    mailInput: {
-
+    Input: {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        padding: 5,
+        width: 200,
+        textAlign: "center"
     },
 });
 
