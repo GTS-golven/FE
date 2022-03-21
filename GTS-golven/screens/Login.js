@@ -60,7 +60,6 @@ async function postLogin(email, password) {
     else {
         const res = await AuthService.Login(email, password)
         if (res === 200) {
-            console.log('pressed')
             return 'ok'
         } else {
             Alert.alert("Het wachtwoord of email is fout", [{ style: 'cancel' }])

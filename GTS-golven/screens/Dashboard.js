@@ -31,7 +31,7 @@ const Dashboard = ({ navigation }) => {
 
         const result = await ImagePicker.launchImageLibraryAsync();
 
-        console.log(result);
+        // console.log(result);
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
@@ -48,7 +48,7 @@ const Dashboard = ({ navigation }) => {
 
         const result = await ImagePicker.launchCameraAsync();
 
-        console.log(result);
+        // console.log(result);
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);

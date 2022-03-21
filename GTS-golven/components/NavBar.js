@@ -28,7 +28,7 @@ const NavBar = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         backgroundColor: Colors.backgournd
     },
