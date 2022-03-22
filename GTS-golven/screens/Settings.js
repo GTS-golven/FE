@@ -1,11 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import NavBar from "../components/NavBar";
 
 const Settings = ({ navigation }) => {
     return (
-        <View styles={styles.screen}>
-            <Text>Settings</Text>
+        <View style={styles.screen}>
+            <View style={styles.container}>
+                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                    <Image style={styles.image} source={require('../assets/huisje.png')} />
+                    <Text style={styles.text}>Veel gestelde vragen</Text>
+                </Pressable>
+                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                    <Image style={styles.image} source={require('../assets/huisje.png')} />
+                    <Text style={styles.text}>Verrander wachtwoord</Text>
+                </Pressable>
+                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                    <Image style={styles.image} source={require('../assets/huisje.png')} />
+                    <Text style={styles.text}>Contact ons</Text>
+                </Pressable>
+            </View>
             <NavBar />
         </View>
     )
@@ -13,9 +26,27 @@ const Settings = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
-        justifyContent: "center",
+        flex: 1
+    },
+    
+    container: {
+        height: '30%',
+        justifyContent: "space-evenly",
+    },
+
+    row: {
+        flexDirection: "row",
         alignItems: "center",
+        gap: 10,
+    },
+
+    image: {
+        height: 40,
+        width: 40,
+    },
+
+    text: {
+        fontSize: 17,
     }
 });
 
