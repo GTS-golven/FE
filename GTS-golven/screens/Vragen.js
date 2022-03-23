@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         alignItems: "center",
-        // gap: 10,
         width: '80%',
     },
 
     image: {
         height: 20,
         width: 20,
+        marginLeft: 20,
     },
 
     text: {

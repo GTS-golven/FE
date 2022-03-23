@@ -26,7 +26,7 @@ const Settings = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1
+        flex: 1,
     },
     
     container: {
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         alignItems: "center",
-        // gap: 10,
         width: '80%',
     },
 
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         resizeMode: "contain",
+        marginRight: 20,
     },
 
     text: {
