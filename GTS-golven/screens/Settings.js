@@ -6,7 +6,7 @@ const Settings = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.container}>
-                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                <Pressable style={styles.row} onPress={() => navigation.push('Vragen')}>
                     <Image style={styles.image} source={require('../assets/huisje.png')} />
                     <Text style={styles.text}>Veel gestelde vragen</Text>
                 </Pressable>
@@ -14,7 +14,7 @@ const Settings = ({ navigation }) => {
                     <Image style={styles.image} source={require('../assets/huisje.png')} />
                     <Text style={styles.text}>Verrander wachtwoord</Text>
                 </Pressable>
-                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                <Pressable style={styles.row} onPress={() => navigation.push('Contact')}>
                     <Image style={styles.image} source={require('../assets/huisje.png')} />
                     <Text style={styles.text}>Contact ons</Text>
                 </Pressable>
@@ -32,12 +32,14 @@ const styles = StyleSheet.create({
     container: {
         height: '30%',
         justifyContent: "space-evenly",
+        alignItems: "center",
     },
 
     row: {
         flexDirection: "row",
         alignItems: "center",
         gap: 10,
+        width: '80%',
     },
 
     image: {

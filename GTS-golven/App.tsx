@@ -17,6 +17,8 @@ import Dashboard from './screens/Dashboard'
 import Gallery from './screens/Gallery'
 import Profiel from './screens/Profiel'
 import Settings from './screens/Settings'
+import Vragen from './screens/Vragen';
+import Contact from './screens/Contact';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -24,16 +26,25 @@ function App() {
   return (
     <NavigationContainer>
       <AuthStack.Navigator>
+        <AuthStack.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Vragen" component={Vragen} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Contact" component={Contact} />
+
         <AuthStack.Screen options={{ headerShown: false }} name="Start" component={Start} />
+
         <AuthStack.Screen options={{ headerShown: false }} name="Login" component={Login} />
         <AuthStack.Screen options={{ headerShown: false }} name="WachtwoordVergeten" component={WachtwoordVergeten} />
         <AuthStack.Screen options={{ headerShown: false }} name="VerranderWachtwoord" component={VerranderWachtwoord} />
+
         <AuthStack.Screen options={{ headerShown: false }} name="Aanmelden" component={Aanmelden} />
         <AuthStack.Screen options={{ headerShown: false }} name="ConfirmMail" component={ConfirmMail} />
+
         <AuthStack.Screen options={{ headerShown: false }} name="Dashboard" component={Dashboard} />
         <AuthStack.Screen options={{ headerShown: false }} name="Gallery" component={Gallery} />
+
         <AuthStack.Screen options={{ headerShown: false }} name="Profiel" component={Profiel} />
-        <AuthStack.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+
+
       </AuthStack.Navigator>
     </NavigationContainer>
   );
