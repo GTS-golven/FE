@@ -25,11 +25,11 @@ const Dashboard = ({ navigation }) => {
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Email:</Text>
-                        <TextInput onChangeText={onChangeEmail} value={email} textContentType='emailAddress' style={styles.textinpput} autoComplete='email' keyboardAppearance='email-address' />
+                        <TextInput onChangeText={onChangeEmail} value={email} textContentType='emailAddress' style={styles.textinpput} autoComplete='email' />
                     </View>
                     <View style={styles.inputContainer}>
                         <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput onChangeText={onChangePassword} value={password} textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' keyboardAppearance='visible-password' />
+                        <TextInput onChangeText={onChangePassword} value={password} textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' />
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>

@@ -9,7 +9,7 @@ import NavBar from '../components/NavBar'
 import * as ImagePicker from 'expo-image-picker';
 
 const Dashboard = ({ navigation }) => {
-    const [pickedImagePath, setPickedImagePath] = useState('');
+    const [pickedImagePath, setPickedImagePath] = useState('../assets.VideoExample.png');
     const [popup, setpopup] = useState(0)
 
 
@@ -22,6 +22,7 @@ const Dashboard = ({ navigation }) => {
     }
 
     const showImagePicker = async () => {
+        setpopup(0)
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
         if (permissionResult.granted === false) {
@@ -39,6 +40,7 @@ const Dashboard = ({ navigation }) => {
     }
 
     const openCamera = async () => {
+        setpopup(0)
         const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
         if (permissionResult.granted === false) {
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
 
     ScrollView: {
         width: '100%',
+        height: '30%'
     },
 
     container: {

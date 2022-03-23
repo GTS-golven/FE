@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
 import Colors from './Colors';
 import { useNavigation } from "@react-navigation/native";
@@ -28,7 +28,7 @@ const NavBar = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        position: 'fixed',
+        position: 'absolute',
         bottom: 0,
         backgroundColor: Colors.backgournd
     },
