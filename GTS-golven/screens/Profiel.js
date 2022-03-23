@@ -8,7 +8,7 @@ const Profiel = ({ navigation }) => {
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={require('../assets/profile.jpg')} />
-                    <Image style={styles.edit} source={require('../assets/edit.svg')} />
+                    <Image style={styles.edit} source={require('../assets/edit.png')} />
                 </View>
                 <View style={styles.infoContainer}>
                     <View>
