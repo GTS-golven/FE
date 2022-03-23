@@ -8,6 +8,7 @@ const Profiel = ({ navigation }) => {
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={require('../assets/profile.jpg')} />
+                    <Image style={styles.edit} source={require('../assets/edit.svg')} />
                 </View>
                 <View style={styles.infoContainer}>
                     <View>
@@ -53,6 +54,16 @@ const styles = StyleSheet.create({
         width: 200,
         textAlign: "center"
     },
+
+    edit: {
+        width: 60,
+        height: 60,
+        position: "absolute",
+        bottom: 15,
+        right: 15,
+        resizeMode: "contain",
+        transform: [{ scaleX: -1 }]
+    }
 });
 
 export default Profiel;
