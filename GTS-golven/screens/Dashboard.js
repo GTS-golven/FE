@@ -22,6 +22,7 @@ const Dashboard = ({ navigation }) => {
     }
 
     const showImagePicker = async () => {
+        setpopup(0)
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
         if (permissionResult.granted === false) {
@@ -35,11 +36,11 @@ const Dashboard = ({ navigation }) => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
-            setpopup(0)
         }
     }
 
     const openCamera = async () => {
+        setpopup(0)
         const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
         if (permissionResult.granted === false) {
@@ -53,7 +54,6 @@ const Dashboard = ({ navigation }) => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
-            setpopup(0)
         }
     }
 
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
 
     ScrollView: {
         width: '100%',
+        height: '30%'
     },
 
     container: {
