@@ -9,7 +9,7 @@ import NavBar from '../components/NavBar'
 import * as ImagePicker from 'expo-image-picker';
 
 const Dashboard = ({ navigation }) => {
-    const [pickedImagePath, setPickedImagePath] = useState('');
+    const [pickedImagePath, setPickedImagePath] = useState('../assets.VideoExample.png');
     const [popup, setpopup] = useState(0)
 
 
@@ -35,6 +35,7 @@ const Dashboard = ({ navigation }) => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
+            setpopup(0)
         }
     }
 
@@ -52,6 +53,7 @@ const Dashboard = ({ navigation }) => {
 
         if (!result.cancelled) {
             setPickedImagePath(result.uri);
+            setpopup(0)
         }
     }
 
