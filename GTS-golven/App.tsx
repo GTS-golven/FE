@@ -23,6 +23,7 @@ import Contact from './screens/Contact';
 import WatIsData from './screens/WatIsData';
 import MaakVideo from './screens/MaakVideo';
 import AccuraatData from './screens/AccuraatData';
+import NewPassword from './screens/NewPassword';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -30,22 +31,10 @@ function App() {
   return (
     <NavigationContainer>
       <AuthStack.Navigator>
-        <AuthStack.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
-
-        <AuthStack.Screen options={{ headerShown: false }} name="Vragen" component={Vragen} />
-
-        <AuthStack.Screen options={{ headerShown: false }} name="MaakVideo" component={MaakVideo} />
-        <AuthStack.Screen options={{ headerShown: false }} name="WatIsData" component={WatIsData} />
-        <AuthStack.Screen options={{ headerShown: false }} name="AccuraatData" component={AccuraatData} />
-
-        <AuthStack.Screen options={{ headerShown: false }} name="Contact" component={Contact} />
-
         <AuthStack.Screen options={{ headerShown: false }} name="Start" component={Start} />
-
         <AuthStack.Screen options={{ headerShown: false }} name="Login" component={Login} />
         <AuthStack.Screen options={{ headerShown: false }} name="WachtwoordVergeten" component={WachtwoordVergeten} />
         <AuthStack.Screen options={{ headerShown: false }} name="VerranderWachtwoord" component={VerranderWachtwoord} />
-
         <AuthStack.Screen options={{ headerShown: false }} name="Aanmelden" component={Aanmelden} />
         <AuthStack.Screen options={{ headerShown: false }} name="ConfirmMail" component={ConfirmMail} />
 
@@ -54,14 +43,18 @@ function App() {
 
         <AuthStack.Screen options={{ headerShown: false }} name="Profiel" component={Profiel} />
 
-
+        <AuthStack.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Vragen" component={Vragen} />
+        <AuthStack.Screen options={{ headerShown: false }} name="MaakVideo" component={MaakVideo} />
+        <AuthStack.Screen options={{ headerShown: false }} name="WatIsData" component={WatIsData} />
+        <AuthStack.Screen options={{ headerShown: false }} name="AccuraatData" component={AccuraatData} />
+        <AuthStack.Screen options={{ headerShown: false }} name="Contact" component={Contact} />
+        <AuthStack.Screen options={{ headerShown: false }} name="NewPassword" component={NewPassword} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default App;
