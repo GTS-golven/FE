@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center',
-        marginTop: 50,
     },
 
     image: {
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
     },
 
     card: {
-        alignItems: 'center',
         justifyContent: 'space-evenly',
         backgroundColor: Colors.primary,
         padding: 10,

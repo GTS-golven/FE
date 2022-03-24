@@ -5,68 +5,71 @@ import NavBar from '../components/NavBar'
 
 const Dashboard = ({ navigation }) => {
     return (
-        <ScrollView>
-            <View style={styles.screen}>
-                <View style={styles.topPic}>
-                    <Image style={styles.imageTop} source={require('../assets/oudere-mannen-golf.jpg')} />
-                    <Text style={styles.text}>Stroke 1 -i5</Text>
+        <View>
+            <ScrollView>
+                <View style={styles.screen}>
+                    <View style={styles.topPic}>
+                        <Image style={styles.imageTop} source={require('../assets/oudere-mannen-golf.jpg')} />
+                        <Text style={styles.text}>Stroke 1 -i5</Text>
+                    </View>
+                    <View style={styles.infoConainer}>
+                        <View style={styles.row}>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>RPM</Text>
+                                <Text style={styles.text3}>6000</Text>
+                                <Text style={styles.text4}>rpm</Text>
+                            </View>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>Height</Text>
+                                <Text style={styles.text3}>60</Text>
+                                <Text style={styles.text4}>meter</Text>
+                            </View>
+                        </View>
+                        <View style={styles.row}>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>Travel</Text>
+                                <Text style={styles.text3}>170</Text>
+                                <Text style={styles.text4}>meter</Text>
+                            </View>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>Angle</Text>
+                                <Text style={styles.text3}>13</Text>
+                                <Text style={styles.text4}>graden</Text>
+                            </View>
+                        </View>
+                        <View style={styles.row}>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>x-as</Text>
+                                <Text style={styles.text3}>2</Text>
+                                <Text style={styles.text4}>graden</Text>
+                            </View>
+                            <View style={styles.container}>
+                                <Image />
+                                <Text style={styles.text2}>Air time</Text>
+                                <Text style={styles.text3}>9</Text>
+                                <Text style={styles.text4}>seconden</Text>
+                            </View>
+                        </View>
+                        <View style={styles.bottomPic}>
+                            <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')} />
+                        </View>
+                    </View>
                 </View>
-                <View style={styles.infoConainer}>
-                    <View style={styles.row}>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>RPM</Text>
-                            <Text style={styles.text3}>6000</Text>
-                            <Text style={styles.text4}>rpm</Text>
-                        </View>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>Height</Text>
-                            <Text style={styles.text3}>60</Text>
-                            <Text style={styles.text4}>meter</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>Travel</Text>
-                            <Text style={styles.text3}>170</Text>
-                            <Text style={styles.text4}>meter</Text>
-                        </View>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>Angle</Text>
-                            <Text style={styles.text3}>13</Text>
-                            <Text style={styles.text4}>graden</Text>
-                        </View>
-                    </View>
-                    <View style={styles.row}>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>x-as</Text>
-                            <Text style={styles.text3}>2</Text>
-                            <Text style={styles.text4}>graden</Text>
-                        </View>
-                        <View style={styles.container}>
-                            <Image />
-                            <Text style={styles.text2}>Air time</Text>
-                            <Text style={styles.text3}>9</Text>
-                            <Text style={styles.text4}>seconden</Text>
-                        </View>
-                    </View>
-                    <View style={styles.bottomPic}>
-                        <Image style={styles.imageBottom} source={require('../assets/balbaan.jpg')} />
-                    </View>
-                </View>
-                <NavBar />
-            </View>
-        </ScrollView>
+            </ScrollView>
+            <NavBar />
+        </View>
     )
 };
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        marginBottom: 70,
     },
 
     topPic: {
@@ -130,7 +133,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         right: 20,
-    }
+    },
 });
 
 export default Dashboard;

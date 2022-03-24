@@ -27,6 +27,7 @@ const Vragen = ({ navigation }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        marginTop: 60,
     },
 
     container: {

@@ -8,15 +8,15 @@ const NewPassword = ({ navigation }) => {
         <View style={styles.screen}>
             <View style={styles.mainContainer}></View>
                 <View style={styles.container}>
-                    <Text style={styles.title}>Oud Wachtwoord</Text>
+                    <Text style={styles.title}>Oud Wachtwoord:</Text>
                     <TextInput style={styles.input} placeholder="Oud wachtwoord"/>
                 </View>
                 <View style={styles.container}>
-                    <Text style={styles.title}>Nieuw Wachtwoord</Text>
+                    <Text style={styles.title}>Nieuw Wachtwoord:</Text>
                     <TextInput style={styles.input} placeholder="Nieuw wachtwoord"/>
                 </View>
                 <View style={styles.container}>
-                    <Text style={styles.title}>Herhaal nieuw Wachtwoord</Text>
+                    <Text style={styles.title}>Herhaal nieuw Wachtwoord:</Text>
                     <TextInput style={styles.input} placeholder="Herhaal nieuw wachtwoord"/>
                 </View>
                 <Pressable style={styles.button}><Text style={styles.buttonText}>Verrander</Text></Pressable>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        height: '11%',
+        height: '10%',
         width: '80%',
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -60,13 +60,12 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        height: '5%',
         width: '50%',
-        borderRadius: 10,
-        marginTop: 10,
+        height: '4%',
         padding: 10,
+        borderRadius: 10,
+        alignItems: "center",
         backgroundColor: Colors.button1,
-        textAlign: "center",
     },
 
     buttonText: {

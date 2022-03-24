@@ -66,7 +66,7 @@ const Dashboard = ({ navigation }) => {
 
     return (
         <View style={styles.screen}>
-            <View>
+            <View style={styles.centerScroll}>
                 <ScrollView
                     horizontal={true}
                     alwaysBounceHorizontal={true}
@@ -78,17 +78,22 @@ const Dashboard = ({ navigation }) => {
                     style={styles.ScrollView}
                 >
                     <View style={styles.card}>
-                        <Pressable style={styles.container} onPress={showPopUp}>
-                            <View style={styles.roundConatiner}>
-                                <View style={styles.conatinerPlus}>
-                                    <Text style={styles.plus}>+</Text>
+                        <View style={styles.empty}>
+
+                        </View>
+                        <View>
+                            <Pressable style={styles.container} onPress={showPopUp}>
+                                <View style={styles.roundConatiner}>
+                                    <View style={styles.conatinerPlus}>
+                                        <Text style={styles.plus}>+</Text>
+                                    </View>
                                 </View>
-                            </View>
-                            <Text style={styles.text}>Upload jouw video</Text>
-                        </Pressable>
-                        <Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
-                        <Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
-                        <Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} />
+                                <Text style={styles.text}>Upload jouw video</Text>
+                            </Pressable>
+                        </View>
+                        <View style={styles.center}><Card title='Stroke 1 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></View>
+                        <View style={styles.center}><Card title='Stroke 2 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></View>
+                        <View style={styles.center}><Card title='Stroke 3 - i5' date='09-08-2022' source={{ uri: pickedImagePath }} /></View>
                     </View>
                 </ScrollView>
             </View>
@@ -100,18 +105,21 @@ const Dashboard = ({ navigation }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        marginTop: 50,
+    },
+
+    centerScroll: {
+        justifyContent: 'center',
+        height: '70%'
     },
 
     ScrollView: {
         width: '100%',
-        height: '30%'
+        height: '100%',
     },
 
     container: {
         width: 200,
-        height: '100%',
-        justifyContent: 'center',
+        height: '5%',
         alignItems: 'center',
     },
 
@@ -140,10 +148,16 @@ const styles = StyleSheet.create({
 
     card: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        height: '100%',
-        justifyContent: 'center',
         alignItems: 'center',
+        height: '100%+'
+    },
+
+    center: {
+        justifyContent: 'center'
+    },
+    
+    empty: {
+        width: 100,
     }
 });
 

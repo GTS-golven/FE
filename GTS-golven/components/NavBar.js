@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flex: 1,
         position: 'absolute',
         bottom: 0,
-        backgroundColor: Colors.backgournd
+        backgroundColor: Colors.backgournd,
     },
 
     navContainer: {

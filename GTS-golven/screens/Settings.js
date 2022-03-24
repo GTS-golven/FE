@@ -10,7 +10,7 @@ const Settings = ({ navigation }) => {
                     <Image style={styles.image} source={require('../assets/question.png')} />
                     <Text style={styles.text}>Veel gestelde vragen</Text>
                 </Pressable>
-                <Pressable style={styles.row} onPress={() => navigation.push('WachtwoordVergeten')}>
+                <Pressable style={styles.row} onPress={() => navigation.push('NewPassword')}>
                     <Image style={styles.image} source={require('../assets/key.png')} />
                     <Text style={styles.text}>Verrander wachtwoord</Text>
                 </Pressable>
@@ -27,6 +27,7 @@ const Settings = ({ navigation }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+        marginTop: 60,
     },
     
     container: {
