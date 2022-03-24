@@ -12,10 +12,13 @@ const Dashboard = ({ navigation }) => {
     var token = null
     var refreshToken = null
 
-    const toDashboard = async () => {
-        var res = await postLogin(email, password)
-        if (res === 'ok') {
+    async function postLogin(email, password) {
+        const res = await AuthService.Login(email, password)
+        if (res === 200) {
             navigation.push('Dashboard')
+            return
+        } else {
+            console.warn("Het wachtwoord of email is fout")
         }
     }
 
@@ -33,7 +36,7 @@ const Dashboard = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={() => { toDashboard() }}>
+                    <Pressable style={[styles.button, styles.button1]} onPress={() => { postLogin(email, password) }}>
                         <Text style={styles.textButton}>Log in</Text>
                     </Pressable>
                     <Pressable style={[styles.button, styles.button2]} onPress={() => navigation.push('WachtwoordVergeten')}>
@@ -44,30 +47,6 @@ const Dashboard = ({ navigation }) => {
         </View>
     )
 };
-
-async function postLogin(email, password) {
-
-    if (email === "" && password === "") {
-        Alert.alert("Voer een geldig email adress en wachtwoord in", [{ style: 'cancel' }])
-        console.warn("Voer een geldig email adress en wachtwoord in")
-    } else if (password === "") {
-        Alert.alert("Voer een geldig wachtwoord in", [{ style: 'cancel' }])
-        console.warn("Voer een geldig wachtwoord in")
-    } else if (email === "") {
-        Alert.alert("Voer een geldig email in", [{ style: 'cancel' }])
-        console.warn("Voer een geldig email in")
-    }
-    else {
-        const res = await AuthService.Login(email, password)
-        if (res === 200) {
-            return 'ok'
-        } else {
-            Alert.alert("Het wachtwoord of email is fout", [{ style: 'cancel' }])
-            console.warn("Het wachtwoord of email is fout")
-        }
-    }
-}
-
 
 const styles = StyleSheet.create({
     screen: {
