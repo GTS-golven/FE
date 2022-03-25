@@ -25,6 +25,7 @@ import MaakVideo from './screens/MaakVideo';
 import AccuraatData from './screens/AccuraatData';
 import NewPassword from './screens/NewPassword';
 import Load from './screens/Load';
+import AdInfo from './screens/AdInfo';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ function App() {
 
         <AuthStack.Screen options={{ headerShown: false }} name="Dashboard" component={Dashboard} />
         <AuthStack.Screen options={{ headerShown: false }} name="Load" component={Load} />
+        <AuthStack.Screen options={{ headerShown: false }} name="AdInfo" component={AdInfo} />
         <AuthStack.Screen options={{ headerShown: false }} name="Gallery" component={Gallery} />
 
         <AuthStack.Screen options={{ headerShown: false }} name="Profiel" component={Profiel} />

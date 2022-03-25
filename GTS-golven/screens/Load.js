@@ -5,7 +5,7 @@ import Colors from "../components/Colors";
 const Load = ({ navigation }) => {
     return (
         <View style={styles.screen}>
-            <Pressable onPress={() => { navigation.push('Dashboard') }}>
+            <Pressable onPress={() => { navigation.push('AdInfo') }}>
                 <View style={styles.mainContainer}>
                     <View style={styles.loadBar}>
                         <Image style={styles.image} source={require('../assets/VideoExample.png')} />
