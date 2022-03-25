@@ -6,18 +6,30 @@ const Settings = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.container}>
-                <Pressable style={styles.row} onPress={() => navigation.push('Vragen')}>
-                    <Image style={styles.image} source={require('../assets/question.png')} />
-                    <Text style={styles.text}>Veel gestelde vragen</Text>
-                </Pressable>
-                <Pressable style={styles.row} onPress={() => navigation.push('NewPassword')}>
-                    <Image style={styles.image} source={require('../assets/key.png')} />
-                    <Text style={styles.text}>Verrander wachtwoord</Text>
-                </Pressable>
-                <Pressable style={styles.row} onPress={() => navigation.push('Contact')}>
-                    <Image style={styles.image} source={require('../assets/contact.png')} />
-                    <Text style={styles.text}>Contact ons</Text>
-                </Pressable>
+                <View style={styles.topContainer}>
+                    <Pressable style={styles.row} onPress={() => navigation.push('Vragen')}>
+                        <Image style={styles.image} source={require('../assets/question.png')} />
+                        <Text style={styles.text}>Veel gestelde vragen</Text>
+                    </Pressable>
+                    <Pressable style={styles.row} onPress={() => navigation.push('NewPassword')}>
+                        <Image style={styles.image} source={require('../assets/key.png')} />
+                        <Text style={styles.text}>Verrander wachtwoord</Text>
+                    </Pressable>
+                    <Pressable style={styles.row} onPress={() => navigation.push('Contact')}>
+                        <Image style={styles.image} source={require('../assets/contact.png')} />
+                        <Text style={styles.text}>Contact ons</Text>
+                    </Pressable>
+                </View>
+                <View style={styles.bottomConainer}>
+                    <Pressable style={styles.row} onPress={() => navigation.push('Login')}>
+                        <Image style={styles.image} source={require('../assets/loguit.png')} />
+                        <Text style={styles.text}>Log uit</Text>
+                    </Pressable>
+                    <Pressable style={styles.row} onPress={() => navigation.push('Start')}>
+                        <Image style={styles.image} source={require('../assets/delete.png')} />
+                        <Text style={styles.text}>Verwijder account</Text>
+                    </Pressable>
+                </View>
             </View>
             <NavBar />
         </View>
@@ -29,17 +41,28 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 60,
     },
-    
+
     container: {
-        height: '30%',
-        justifyContent: "space-evenly",
+        height: '70%',
+        justifyContent: "space-between",
         alignItems: "center",
+    },
+
+    topContainer: {
+        height: '100%',
+        width: '80%',
+    },
+
+    bottomConainer: {
+        height: '100%',
+        width: '80%',
     },
 
     row: {
         flexDirection: "row",
         alignItems: "center",
         width: '80%',
+        marginBottom: 30,
     },
 
     image: {
