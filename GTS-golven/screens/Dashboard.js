@@ -35,6 +35,7 @@ const Dashboard = ({ navigation }) => {
         // console.log(result);
 
         if (!result.cancelled) {
+            navigation.push('Load')
             setPickedImagePath(result.uri);
         }
     }
