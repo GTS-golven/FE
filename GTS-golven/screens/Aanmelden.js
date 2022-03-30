@@ -5,7 +5,7 @@ import Colors from '../components/Colors';
 
 const Dashboard = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
@@ -27,7 +27,7 @@ const Dashboard = ({ navigation }) => {
                     </Pressable>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 };
 

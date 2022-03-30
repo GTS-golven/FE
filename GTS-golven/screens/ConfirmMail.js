@@ -6,7 +6,7 @@ import Buttons from '../components/Buttons';
 
 const Dashboard = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
@@ -20,7 +20,7 @@ const Dashboard = ({ navigation }) => {
                     <Text style={styles.textButton}>Cofirm</Text>
                 </Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     )
 };
 

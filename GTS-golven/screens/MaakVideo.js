@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const MaakVideo = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <View style={styles.begin}>
                     <Text style={styles.title}>Hoe begin ik</Text>
@@ -16,7 +16,7 @@ const MaakVideo = ({ navigation }) => {
                 </View>
             </View>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

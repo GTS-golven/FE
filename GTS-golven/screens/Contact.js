@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 
 const Contact = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>Neem contact op met ons</Text>
@@ -19,7 +19,7 @@ const Contact = ({ navigation }) => {
                 </View>
             </View>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const Profiel = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={require('../assets/profile.jpg')} />
@@ -20,7 +20,7 @@ const Profiel = ({ navigation }) => {
                 </View>
             </View>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

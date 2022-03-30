@@ -4,7 +4,7 @@ import Colors from "../components/Colors";
 
 const AdInfo = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.topPic}>
                 <Image style={styles.imageTop} source={require('../assets/oudere-mannen-golf.jpg')} />
             </View>
@@ -39,7 +39,7 @@ const AdInfo = ({ navigation }) => {
             <View style={styles.center}>
                 <Pressable style={styles.button} onPress={() => { navigation.push('Dashboard') }}><Text style={styles.buttonText}>Bewaar</Text></Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

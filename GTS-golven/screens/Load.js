@@ -4,7 +4,7 @@ import Colors from "../components/Colors";
 
 const Load = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <Pressable onPress={() => { navigation.push('AdInfo') }}>
                 <View style={styles.mainContainer}>
                     <View style={styles.loadBar}>
@@ -18,7 +18,7 @@ const Load = ({ navigation }) => {
                     <Text style={styles.text}>Jouw slagen zijn echt helemaal ruk!!</Text>
                 </View>
             </Pressable>
-        </View>
+        </SafeAreaView>
     )
 }
 

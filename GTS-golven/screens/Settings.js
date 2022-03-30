@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const Settings = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <View style={styles.topContainer}>
                     <Pressable style={styles.row} onPress={() => navigation.push('Vragen')}>
@@ -32,7 +32,7 @@ const Settings = ({ navigation }) => {
                 </View>
             </View>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 
 const NewPassword = ({ navigation }) => {
     return(
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.mainContainer}></View>
                 <View style={styles.container}>
                     <Text style={styles.title}>Oud Wachtwoord:</Text>
@@ -21,7 +21,7 @@ const NewPassword = ({ navigation }) => {
                 </View>
                 <Pressable style={styles.button}><Text style={styles.buttonText}>Verrander</Text></Pressable>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

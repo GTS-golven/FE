@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar'
 
 const Dashboard = ({ navigation }) => {
     return (
-        <View>
+        <SafeAreaView>
             <ScrollView>
                 <View style={styles.screen}>
                     <View style={styles.topPic}>
@@ -62,7 +62,7 @@ const Dashboard = ({ navigation }) => {
                 </View>
             </ScrollView>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 };
 

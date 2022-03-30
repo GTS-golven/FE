@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const Vragen = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <Pressable style={styles.row} onPress={() => navigation.push('MaakVideo')}>
                     <Text style={styles.text}>Hoe maak je jouw een video</Text>
@@ -20,7 +20,7 @@ const Vragen = ({ navigation }) => {
                 </Pressable>
             </View>
             <NavBar />
-        </View>
+        </SafeAreaView>
     )
 }
 

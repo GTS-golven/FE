@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Colors from '../components/Colors';
 import AuthService from '../services/AuthService'
@@ -23,7 +24,7 @@ const Dashboard = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.card}>
                 <View style={styles.infoContainer}>
                     <View style={styles.inputContainer}>
@@ -44,7 +45,7 @@ const Dashboard = ({ navigation }) => {
                     </Pressable>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 };
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../components/Colors';
 
 const Dashboard = ({ navigation }) => {
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.mainPic}>
                 <Image style={styles.image} source={require('../assets/startgolfer.jpg')}/>
             </View>  
@@ -12,7 +13,7 @@ const Dashboard = ({ navigation }) => {
                 <Pressable style={styles.aanmelden} onPress={() => navigation.push('Aanmelden')}><Text style={styles.text}>Aanmelden</Text></Pressable>
                 <Pressable style={styles.inlog} onPress={() => navigation.push('Login')}><Text style={styles.text}>Inloggen</Text></Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     )
 };
 
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
 
     image: {
         width: '100%',
-        height: 800,
+        height: "100%",
     },
 
     buttonContainer: {

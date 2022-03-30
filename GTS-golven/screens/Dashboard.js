@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react'
-import { View, Text, ScrollView, Pressable, Image, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Pressable, Image, StyleSheet, SafeAreaView } from 'react-native'
 
 import Colors from '../components/Colors';
 import Card from '../components/Card'
@@ -66,7 +66,7 @@ const Dashboard = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.screen}>
+        <SafeAreaView style={styles.screen}>
             <View style={styles.centerScroll}>
                 <ScrollView
                     horizontal={true}
@@ -99,7 +99,7 @@ const Dashboard = ({ navigation }) => {
                 </ScrollView>
             </View>
             {content}
-        </View>
+        </SafeAreaView>
     )
 };
 
