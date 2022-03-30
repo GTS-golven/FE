@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, SafeAreaView } from 'react-native';
 import Colors from "../components/Colors";
 
 const Load = ({ navigation }) => {

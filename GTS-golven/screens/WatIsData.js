@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, SafeAreaView } from 'react-native'
 import NavBar from "../components/NavBar";
 
 const WatIsData = ({ navigation }) => {

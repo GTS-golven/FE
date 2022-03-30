@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Pressable, Alert, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, TextInput, Pressable, SafeAreaView, StyleSheet } from 'react-native'
 
 import Colors from '../components/Colors';
 import AuthService from '../services/AuthService'

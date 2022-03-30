@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TextInput, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, Pressable, SafeAreaView } from 'react-native';
 import Colors from "../components/Colors";
 
 const AdInfo = ({ navigation }) => {

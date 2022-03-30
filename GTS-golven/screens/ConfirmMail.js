@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView } from 'react-native'
 
 import Colors from '../components/Colors';
 import Buttons from '../components/Buttons';

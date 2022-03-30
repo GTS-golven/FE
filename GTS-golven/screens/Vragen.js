@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Image, Pressable, StyleSheet, SafeAreaView } from 'react-native';
 import NavBar from "../components/NavBar";
 
 const Vragen = ({ navigation }) => {

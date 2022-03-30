@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Pressable, SafeAreaView } from 'react-native';
 import Colors from "../components/Colors";
 import NavBar from "../components/NavBar";
 

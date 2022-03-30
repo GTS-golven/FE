@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet, TextInput } from 'react-native'
+import { View, Image, StyleSheet, TextInput, SafeAreaView } from 'react-native'
 import NavBar from "../components/NavBar";
 
 const Profiel = ({ navigation }) => {

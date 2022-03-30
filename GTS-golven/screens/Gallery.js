@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import Colors from '../components/Colors';
 import NavBar from '../components/NavBar'
 

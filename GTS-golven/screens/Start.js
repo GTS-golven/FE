@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text, ImageBackground, Pressable, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, ImageBackground, Pressable, StyleSheet, SafeAreaView } from 'react-native'
 import Colors from '../components/Colors';
 
 const Dashboard = ({ navigation }) => {
