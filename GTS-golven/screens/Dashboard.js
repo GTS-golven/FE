@@ -1,5 +1,5 @@
-import React, { useState, useEffect, } from 'react'
-import { View, Text, ScrollView, Pressable, Image, StyleSheet, SafeAreaView } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, ScrollView, Pressable, StyleSheet, SafeAreaView } from 'react-native'
 
 import Colors from '../components/Colors';
 import Card from '../components/Card'
@@ -109,8 +109,9 @@ const styles = StyleSheet.create({
     },
 
     centerScroll: {
+        height: '60%',
+        alignItems: 'center',
         justifyContent: 'center',
-        height: '70%'
     },
 
     ScrollView: {
@@ -119,15 +120,15 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        width: 200,
-        height: '5%',
+        width: '100%',
+        height: '35%',
         alignItems: 'center',
     },
 
     roundConatiner: {
         backgroundColor: Colors.primary,
-        width: 130,
-        height: 130,
+        width: '100%',
+        height: '100%',
         borderRadius: 100,
     },
 
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     },
     
     empty: {
-        width: 100,
+        width: '10%',
     }
 });
 
