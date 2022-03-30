@@ -36,12 +36,12 @@ function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <AuthStack.Navigator>
-          <AuthStack.Screen options={{ headerShown: false }} name="Start" component={Start} />
+          {/* <AuthStack.Screen options={{ headerShown: false }} name="Start" component={Start} />
           <AuthStack.Screen options={{ headerShown: false }} name="Login" component={Login} />
           <AuthStack.Screen options={{ headerShown: false }} name="WachtwoordVergeten" component={WachtwoordVergeten} />
           <AuthStack.Screen options={{ headerShown: false }} name="VerranderWachtwoord" component={VerranderWachtwoord} />
           <AuthStack.Screen options={{ headerShown: false }} name="Aanmelden" component={Aanmelden} />
-          <AuthStack.Screen options={{ headerShown: false }} name="ConfirmMail" component={ConfirmMail} />
+          <AuthStack.Screen options={{ headerShown: false }} name="ConfirmMail" component={ConfirmMail} /> */}
 
           <AuthStack.Screen options={{ headerShown: false }} name="Dashboard" component={Dashboard} />
           <AuthStack.Screen options={{ headerShown: false }} name="Load" component={Load} />
