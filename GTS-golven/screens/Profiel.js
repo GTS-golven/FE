@@ -1,14 +1,72 @@
-import React from "react";
-import { View, Image, StyleSheet, TextInput, SafeAreaView } from 'react-native'
+import React, { useState } from "react";
+import { View, Image, StyleSheet, TextInput, SafeAreaView, Pressable } from 'react-native'
+
+import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
 
+import * as ImagePicker from 'expo-image-picker';
+
 const Profiel = ({ navigation }) => {
+    const [pickedImagePath, setPickedImagePath] = useState('../assets/profile.jpg');
+    const [popup, setpopup] = useState(0)
+
+    const showPopUp = () => {
+        setpopup(1)
+    }
+
+    const closePopUp = () => {
+        setpopup(0)
+    }
+
+    const showImagePicker = async () => {
+        setpopup(0)
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("Je hebt toegang tot de cameraroll geweirgerd");
+            return;
+        }
+
+        const result = await ImagePicker.launchImageLibraryAsync();
+
+        // console.log(result);
+
+        if (!result.cancelled) {
+            navigation.push('Load')
+            setPickedImagePath(result.uri);
+        }
+    }
+
+    const openCamera = async () => {
+        setpopup(0)
+        const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("Je hebt toegang tot de camera geweigerd!");
+            return;
+        }
+
+        const result = await ImagePicker.launchCameraAsync();
+
+        // console.log(result);
+
+        if (!result.cancelled) {
+            setPickedImagePath(result.uri);
+        }
+    }
+
+    let content = <NavBar />
+    if (popup === 1) {
+        content = <Popup close={closePopUp} pressedCameraRoll={showImagePicker} pressedCamera={openCamera} />
+    } else {
+        content = <NavBar />
+    }
     return (
         <SafeAreaView style={styles.screen}>
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={require('../assets/profile.jpg')} />
-                    <Image style={styles.edit} source={require('../assets/edit.png')} />
+                    <Image style={styles.image} source={{ uri: pickedImagePath }} />
+                    <Pressable onPress={showPopUp}><Image style={styles.edit} source={require('../assets/edit.png')} /></Pressable>
                 </View>
                 <View style={styles.infoContainer}>
                     <View>
@@ -19,7 +77,7 @@ const Profiel = ({ navigation }) => {
                     </View>
                 </View>
             </View>
-            <NavBar />
+            {content}
         </SafeAreaView>
     )
 }
