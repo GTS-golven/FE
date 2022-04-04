@@ -1,42 +1,45 @@
-import FetchService from './FetchService'
+import FetchService from "./FetchService";
 import React, { useState } from "react";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 const AuthService = {
-    Login: async function(email, password) {
-        const data = `{"username": "${email}", "password": "${password}"}`
-        const response = await FetchService.Post('auth/token/', data)
-        
-        const status = response.status
-        const json = response.json();
-        const accessToken = json.access;
-        const refreshToken = json.refresh;
+  Login: async function (email, password) {
+    const data = `{"username": "${email}", "password": "${password}"}`;
+    const response = await FetchService.Post("auth/token/", data);
 
-        const cookies = new Cookies();
+    const status = response.status;
+    const json = response.json();
+    const accessToken = json.access;
+    const refreshToken = json.refresh;
 
-        cookies.remove('access_token')
-        cookies.remove('refresh_token')
+    const cookies = new Cookies();
 
-        cookies.set('access_token', accessToken, '/');
-        cookies.set('refresh_token', refreshToken, '/');
+    cookies.remove("access_token");
+    cookies.remove("refresh_token");
 
-        return status
-    },
+    cookies.set("access_token", accessToken, "/");
+    cookies.set("refresh_token", refreshToken, "/");
 
-    RefreshAuthToken: async function() {
-        const cookies = new Cookies();
+    return status;
+  },
 
-        const refreshToken = cookies.get('refresh_token');
+  RefreshAuthToken: async function () {
+    const cookies = new Cookies();
 
-        const response = await FetchService.Post('auth/token/refresh/', `{"refresh": "${refreshToken}"}`)
-        cookies.set('access_token', response.access, '/');
-    },
+    const refreshToken = cookies.get("refresh_token");
 
-    GetToken: function() {
-        const cookies = new Cookies();
+    const response = await FetchService.Post(
+      "auth/token/refresh/",
+      `{"refresh": "${refreshToken}"}`
+    );
+    cookies.set("access_token", response.access, "/");
+  },
 
-        return cookies.get('access_token')
-    }
-}
+  GetToken: function () {
+    const cookies = new Cookies();
+
+    return cookies.get("access_token");
+  },
+};
 
 export default AuthService;
