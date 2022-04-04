@@ -12,7 +12,6 @@ const Dashboard = ({ navigation }) => {
     const [pickedImagePath, setPickedImagePath] = useState('../assets.VideoExample.png');
     const [popup, setpopup] = useState(0)
 
-
     const showPopUp = () => {
         setpopup(1)
     }
