@@ -55,6 +55,13 @@ const Dashboard = ({ navigation }) => {
       alert("Je hebt toegang tot de camera geweigerd!");
       return;
     }
+
+    const result = await ImagePicker.launchCameraAsync();
+
+    if (!result.cancelled) {
+      navigation.push("Load");
+      setPickedImagePath(result.uri);
+    }
   };
 
   let content = <NavBar />;
