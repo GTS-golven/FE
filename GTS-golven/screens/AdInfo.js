@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,9 +8,49 @@ import {
   Pressable,
   SafeAreaView,
 } from "react-native";
+import axios from "axios";
 import Colors from "../components/Colors";
 
 const AdInfo = ({ navigation }) => {
+  const [title, settitle] = useState("");
+  const [golfclub, setgolfclub] = useState("");
+  const [golfcourse, setgolfcourse] = useState("");
+  const [datum, setdatum] = useState("");
+  const [extra, setextra] = useState("");
+
+  const submit = () => {
+    if (
+      title === "" ||
+      golfclub === "" ||
+      golfcourse === "" ||
+      datum === "" ||
+      extra === ""
+    ) {
+      console.log("Vul alle velden in");
+      return;
+    } else {
+      console.log(
+        "Title:",
+        title,
+        "Golfclub:",
+        golfclub,
+        "golfcourse",
+        golfcourse,
+        "Datum",
+        datum,
+        "Extra:",
+        extra
+      );
+      axios.post("https://api.mywebtuts.com/api/users", {
+        title: title,
+        golfclub: golfclub,
+        golfcourse: golfcourse,
+        datum: datum,
+        extra: extra,
+      });
+      navigation.push("Dashboard");
+    }
+  };
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.topPic}>
@@ -23,11 +63,19 @@ const AdInfo = ({ navigation }) => {
         <View style={styles.row}>
           <View>
             <Text style={styles.text}>Title:</Text>
-            <TextInput style={styles.input} placeholder="Slag 1" />
+            <TextInput
+              style={styles.input}
+              placeholder="Slag 1"
+              onChangeText={settitle}
+            />
           </View>
           <View>
             <Text style={styles.text}>Golf club:</Text>
-            <TextInput style={styles.input} placeholder="5i" />
+            <TextInput
+              style={styles.input}
+              placeholder="5i"
+              onChangeText={setgolfclub}
+            />
           </View>
         </View>
         <View style={styles.row}>
@@ -36,27 +84,31 @@ const AdInfo = ({ navigation }) => {
             <TextInput
               style={styles.input}
               placeholder="Heidelberglaan 15, utrecht"
+              onChangeText={setgolfcourse}
             />
           </View>
           <View>
             <Text style={styles.text}>Datum:</Text>
-            <TextInput style={styles.input} placeholder="15 maart 2021" />
+            <TextInput
+              style={styles.input}
+              placeholder="15 maart 2021"
+              onChangeText={setdatum}
+            />
           </View>
         </View>
       </View>
       <View style={styles.bottomInfo}>
         <View>
           <Text style={styles.text}>Extra toevoeging:</Text>
-          <TextInput style={styles.extraInput} placeholder="Bericht" />
+          <TextInput
+            style={styles.extraInput}
+            placeholder="Bericht"
+            onChangeText={setextra}
+          />
         </View>
       </View>
       <View style={styles.center}>
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            navigation.push("Dashboard");
-          }}
-        >
+        <Pressable style={styles.button} onPress={submit}>
           <Text style={styles.buttonText}>Bewaar</Text>
         </Pressable>
       </View>
