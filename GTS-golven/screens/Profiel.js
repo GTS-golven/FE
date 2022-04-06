@@ -3,21 +3,39 @@ import {
   View,
   Image,
   StyleSheet,
+  Text,
   TextInput,
   SafeAreaView,
   Pressable,
 } from "react-native";
+import axios from "axios";
 
 import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
 
 import * as ImagePicker from "expo-image-picker";
+import Colors from "../components/Colors";
 
 const Profiel = ({ navigation }) => {
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets/profile.jpg"
   );
   const [popup, setpopup] = useState(0);
+  const [name, setName] = useState("yuri klasnikof");
+  const [mail, setMail] = useState("yuriklasnikof@gmail.com");
+
+  const save = () => {
+    if (name === "" || mail === "" || pickedImagePath === "") {
+      console.log("Niet alle velden zijn ingevuld");
+    } else {
+      axios.post("https://api.mywebtuts.com/api/users", {
+        name: name,
+        mail: mail,
+        profile: pickedImagePath,
+      });
+      console.log("naam:", name, "mail:", mail);
+    }
+  };
 
   const showPopUp = () => {
     setpopup(1);
@@ -39,10 +57,7 @@ const Profiel = ({ navigation }) => {
 
     const result = await ImagePicker.launchImageLibraryAsync();
 
-    // console.log(result);
-
     if (!result.cancelled) {
-      navigation.push("Load");
       setPickedImagePath(result.uri);
     }
   };
@@ -57,8 +72,6 @@ const Profiel = ({ navigation }) => {
     }
 
     const result = await ImagePicker.launchCameraAsync();
-
-    // console.log(result);
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
@@ -88,12 +101,23 @@ const Profiel = ({ navigation }) => {
         </View>
         <View style={styles.infoContainer}>
           <View>
-            <TextInput style={styles.Input} value="Bert de Jong" />
+            <TextInput
+              style={styles.Input}
+              onChangeText={setName}
+              value={name}
+            />
           </View>
           <View>
-            <TextInput style={styles.Input} value="bertdejong@gmail.com" />
+            <TextInput
+              style={styles.Input}
+              onChangeText={setMail}
+              value={mail}
+            />
           </View>
         </View>
+        <Pressable style={styles.button} onPress={save}>
+          <Text style={styles.buttonText}>Bewaar</Text>
+        </Pressable>
       </View>
       {content}
     </SafeAreaView>
@@ -139,6 +163,21 @@ const styles = StyleSheet.create({
     right: 15,
     resizeMode: "contain",
     transform: [{ scaleX: -1 }],
+  },
+
+  button: {
+    width: "40%",
+    height: "5,5%",
+    backgroundColor: Colors.button1,
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    borderRadius: 20,
+  },
+
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 
