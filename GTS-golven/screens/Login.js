@@ -1,16 +1,23 @@
-import React from 'react'
-import { View, Text, TextInput, Pressable, SafeAreaView, StyleSheet } from 'react-native'
+import React from "react";
+import {
+    View,
+    Text,
+    TextInput,
+    Pressable,
+    SafeAreaView,
+    StyleSheet,
+} from "react-native";
 
-import Colors from '../components/Colors';
-import AuthService from '../services/AuthService'
-import FetchService from '../services/FetchService';
+import Colors from "../components/Colors";
+import AuthService from "../services/AuthService";
+import FetchService from "../services/FetchService";
 
 const Dashboard = ({ navigation }) => {
     const [email, onChangeEmail] = React.useState("");
     const [password, onChangePassword] = React.useState("");
 
-    var token = null
-    var refreshToken = null
+    var token = null;
+    var refreshToken = null;
 
     async function postLogin(email, password) {
         const res = await AuthService.Login(email, password)
@@ -23,61 +30,83 @@ const Dashboard = ({ navigation }) => {
             })
             .catch(error => console.log('Er is iets mis probeer later opnieuw'))
     }
+}
 
-    return (
-        <SafeAreaView style={styles.screen}>
-            <View style={styles.card}>
-                <View style={styles.infoContainer}>
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Email:</Text>
-                        <TextInput onChangeText={onChangeEmail} value={email} textContentType='emailAddress' style={styles.textinpput} autoComplete='email' />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.text}>Wachtwoord:</Text>
-                        <TextInput onChangeText={onChangePassword} value={password} textContentType='password' secureTextEntry style={styles.textinpput} autoComplete='password' />
-                    </View>
+return (
+    <SafeAreaView style={styles.screen}>
+        <View style={styles.card}>
+            <View style={styles.infoContainer}>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.text}>Email:</Text>
+                    <TextInput
+                        onChangeText={onChangeEmail}
+                        value={email}
+                        textContentType="emailAddress"
+                        style={styles.textinpput}
+                        autoComplete="email"
+                    />
                 </View>
-                <View style={styles.buttonContainer}>
-                    <Pressable style={[styles.button, styles.button1]} onPress={() => { postLogin(email, password) }}>
-                        <Text style={styles.textButton}>Log in</Text>
-                    </Pressable>
-                    <Pressable style={[styles.button, styles.button2]} onPress={() => navigation.push('WachtwoordVergeten')}>
-                        <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
-                    </Pressable>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.text}>Wachtwoord:</Text>
+                    <TextInput
+                        onChangeText={onChangePassword}
+                        value={password}
+                        textContentType="password"
+                        secureTextEntry
+                        style={styles.textinpput}
+                        autoComplete="password"
+                    />
                 </View>
             </View>
-        </SafeAreaView>
-    )
+            <View style={styles.buttonContainer}>
+                <Pressable
+                    style={[styles.button, styles.button1]}
+                    onPress={() => {
+                        postLogin(email, password);
+                    }}
+                >
+                    <Text style={styles.textButton}>Log in</Text>
+                </Pressable>
+                <Pressable
+                    style={[styles.button, styles.button2]}
+                    onPress={() => navigation.push("WachtwoordVergeten")}
+                >
+                    <Text style={styles.textButton}>Wachtwoord vergeten?</Text>
+                </Pressable>
+            </View>
+        </View>
+    </SafeAreaView>
+);
 };
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center",
     },
 
     card: {
-        width: '100%',
+        width: "100%",
         height: 300,
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
+        justifyContent: "space-evenly",
+        alignItems: "center",
     },
 
     inputContainer: {
-        alignItems: 'center',
-        width: '100%',
+        alignItems: "center",
+        width: "100%",
         marginBottom: 10,
     },
 
     text: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
 
     textinpput: {
         height: 30,
-        width: '60%',
+        width: "60%",
         borderColor: Colors.text,
         borderWidth: 2,
         borderRadius: 10,
@@ -85,20 +114,20 @@ const styles = StyleSheet.create({
     },
 
     infoContainer: {
-        width: '100%',
+        width: "100%",
     },
 
     buttonContainer: {
-        width: '100%',
-        alignItems: 'center',
+        width: "100%",
+        alignItems: "center",
     },
 
     button: {
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         padding: 10,
         borderRadius: 20,
-        width: '50%'
+        width: "50%",
     },
 
     button1: {
@@ -111,8 +140,8 @@ const styles = StyleSheet.create({
 
     textButton: {
         fontSize: 15,
-        fontWeight: 'bold'
-    }
+        fontWeight: "bold",
+    },
 });
 
 export default Dashboard;
