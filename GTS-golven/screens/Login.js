@@ -14,12 +14,14 @@ const Dashboard = ({ navigation }) => {
 
     async function postLogin(email, password) {
         const res = await AuthService.Login(email, password)
-        if (res === 200) {
-            navigation.push('Dashboard')
-            return
-        } else {
-            console.warn("Het wachtwoord of email is fout")
-        }
+            .then(res => {
+                if (res === 200) {
+                    navigation.push('Dashboard')
+                } else {
+                    console.warn('Wachtwoord of email is fout')
+                }
+            })
+            .catch(error => console.log('Er is iets mis probeer later opnieuw'))
     }
 
     return (
