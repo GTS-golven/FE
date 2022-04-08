@@ -5,13 +5,12 @@ import {
   ImageBackground,
   Pressable,
   StyleSheet,
-  SafeAreaView,
 } from "react-native";
 import Colors from "../components/Colors";
 
 const Dashboard = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <ImageBackground
         style={styles.image}
         source={require("../assets/startgolfer.jpg")}
@@ -33,7 +32,7 @@ const Dashboard = ({ navigation }) => {
           </View>
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 };
 

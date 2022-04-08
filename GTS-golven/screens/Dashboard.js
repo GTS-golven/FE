@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, ScrollView, Pressable, StyleSheet } from "react-native";
 
 import Colors from "../components/Colors";
 import Card from "../components/Card";
@@ -78,7 +71,7 @@ const Dashboard = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.centerScroll}>
         <ScrollView
           horizontal={true}
@@ -123,11 +116,12 @@ const Dashboard = ({ navigation }) => {
                 source={{ uri: pickedImagePath }}
               />
             </View>
+            <View style={styles.empty}></View>
           </View>
         </ScrollView>
       </View>
       {content}
-    </SafeAreaView>
+    </View>
   );
 };
 
