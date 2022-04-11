@@ -29,7 +29,6 @@ const AuthService = {
     cookies.set("access_token", accessToken, "/");
     cookies.set("refresh_token", refreshToken, "/");
 
-    console.log(status);
     return status;
   },
 

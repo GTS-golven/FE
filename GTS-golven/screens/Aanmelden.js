@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,8 +9,29 @@ import {
 } from "react-native";
 
 import Colors from "../components/Colors";
+// import UserService from "../services/UserService";
+// var userService = new UserService();
+// var email = "Test mail";
+// var pass = "Test wachtwoord";
+// var test123;
+// test123.email = email;
+// test123.password = pass;
+// var test = userService.post(test123);
 
 const Dashboard = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+
+  const passCheck = () => {
+    if (checkPassword === password) {
+      navigation.push("ConfirmMail");
+    }
+    if (checkPassword !== password) {
+      console.log("Wachwoorden zijn niet gelijk");
+    }
+  };
+
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.card}>
@@ -22,6 +43,8 @@ const Dashboard = ({ navigation }) => {
               style={styles.textinpput}
               autoComplete="email"
               keyboardAppearance="email-address"
+              onChangeText={setEmail}
+              value={email}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -32,6 +55,8 @@ const Dashboard = ({ navigation }) => {
               style={styles.textinpput}
               autoComplete="password"
               keyboardAppearance="visible-password"
+              onChangeText={setPassword}
+              value={password}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -42,13 +67,14 @@ const Dashboard = ({ navigation }) => {
               style={styles.textinpput}
               autoComplete="password"
               keyboardAppearance="visible-password"
+              onChangeText={setCheckPassword}
             />
           </View>
         </View>
         <View style={styles.buttonContainer}>
           <Pressable
             style={[styles.button, styles.button1]}
-            onPress={() => navigation.push("CofirmMail")}
+            onPress={passCheck}
           >
             <Text style={styles.textButton}>Meld aan</Text>
           </Pressable>
