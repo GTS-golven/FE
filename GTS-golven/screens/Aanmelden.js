@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,6 +10,21 @@ import {
 
 import Colors from "../components/Colors";
 
+import UserService from "../services/UserService";
+var userService = new UserService
+async function Register(email, password){
+  var dict ={
+    username: email,
+    password: password
+  }
+
+  var test = await userService.post(dict)
+  console.log(test)
+}
+
+var email
+var password
+
 const Dashboard = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.screen}>
@@ -18,6 +33,7 @@ const Dashboard = ({ navigation }) => {
           <View style={styles.inputContainer}>
             <Text style={styles.text}>Email:</Text>
             <TextInput
+              onChangeText={(text) => {email = text}}
               textContentType="emailAddress"
               style={styles.textinpput}
               autoComplete="email"
@@ -27,6 +43,8 @@ const Dashboard = ({ navigation }) => {
           <View style={styles.inputContainer}>
             <Text style={styles.text}>Wachtwoord:</Text>
             <TextInput
+            
+            onChangeText={(text) => {password = text}}
               textContentType="password"
               secureTextEntry
               style={styles.textinpput}
@@ -48,7 +66,7 @@ const Dashboard = ({ navigation }) => {
         <View style={styles.buttonContainer}>
           <Pressable
             style={[styles.button, styles.button1]}
-            onPress={() => navigation.push("CofirmMail")}
+            onPress={() => Register(email, password)}
           >
             <Text style={styles.textButton}>Meld aan</Text>
           </Pressable>

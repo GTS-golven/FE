@@ -30,7 +30,6 @@ const Dashboard = ({ navigation }) => {
             })
             .catch(error => console.log('Er is iets mis probeer later opnieuw'))
     }
-}
 
 return (
     <SafeAreaView style={styles.screen}>
