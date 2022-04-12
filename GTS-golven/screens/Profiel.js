@@ -8,7 +8,6 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
-import axios from "axios";
 
 import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
@@ -24,16 +23,25 @@ const Profiel = ({ navigation }) => {
   const [name, setName] = useState("yuri klasnikof");
   const [mail, setMail] = useState("yuriklasnikof@gmail.com");
 
+  async function Register() {
+    var dict = {
+      username: mail,
+      first_name: name,
+      profile_pic: pickedImagePath,
+    };
+
+    console.log(dict);
+
+    var test = await userService.post(dict);
+    console.log(test);
+  }
+
   const save = () => {
     if (name === "" || mail === "" || pickedImagePath === "") {
       console.log("Niet alle velden zijn ingevuld");
     } else {
-      axios.post("https://api.mywebtuts.com/api/users", {
-        name: name,
-        mail: mail,
-        profile: pickedImagePath,
-      });
-      console.log("naam:", name, "mail:", mail);
+      Register();
+      console.log("naam:", name, "mail:", mail, "pic:", pickedImagePath);
     }
   };
 

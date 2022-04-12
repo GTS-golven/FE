@@ -39,8 +39,8 @@ const Dashboard = ({ navigation }) => {
 
     console.log(dict);
 
-    // var test = await userService.post(dict);
-    // console.log(test);
+    var test = await userService.post(dict);
+    console.log(test);
   }
 
   const passCheck = () => {
