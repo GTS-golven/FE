@@ -15,6 +15,9 @@ import NavBar from "../components/NavBar";
 import * as ImagePicker from "expo-image-picker";
 import Colors from "../components/Colors";
 
+import UserService from "../services/UserService";
+var userService = new UserService();
+
 const Profiel = ({ navigation }) => {
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets/profile.jpg"
@@ -32,7 +35,7 @@ const Profiel = ({ navigation }) => {
 
     console.log(dict);
 
-    var test = await userService.post(dict);
+    var test = await userService.put(dict);
     console.log(test);
   }
 
