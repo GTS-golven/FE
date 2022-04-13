@@ -6,18 +6,13 @@ class UserService extends FetchService {
     super("auth/user/");
   }
 
-  public async register(data: any){
+  public async register(data: any) {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    const token = AuthService.GetToken();
+    var baseUrl = "http://morenoblyat.sjekmaster.nl:6737/api/auth/register/";
 
-    if (token) {
-      headers.append("Authorization", `Bearer ${token}`);
-    }
-    var baseUrl = "http://morenoblyat.sjekmaster.nl:6737/api";
-
-    return fetch(`${baseUrl}/${this.url}`, {
+    return fetch(`${baseUrl}`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(data),
@@ -28,7 +23,7 @@ class UserService extends FetchService {
       .catch((error) => {
         return console.log(error);
       });
-  } 
+  }
 }
 
 export default UserService;

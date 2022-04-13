@@ -34,12 +34,13 @@ const Dashboard = ({ navigation }) => {
   async function Register() {
     var dict = {
       username: email,
+      email: email,
       password: password,
     };
 
     console.log(dict);
 
-    var test = await userService.post(dict);
+    var test = await userService.register(dict);
     console.log(test);
   }
 
