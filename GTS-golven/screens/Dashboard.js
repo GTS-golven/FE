@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  Image,
+  StyleSheet,
+} from "react-native";
 
 import Colors from "../components/Colors";
 import Card from "../components/Card";
@@ -13,6 +20,12 @@ const Dashboard = ({ navigation }) => {
     "../assets.VideoExample.png"
   );
   const [popup, setpopup] = useState(0);
+  const [title1, settitle1] = useState("Slag 1 -i5");
+  const [title2, settitle2] = useState("Slag 2 -i6");
+  const [title3, settitle3] = useState("Slag 3 -i7");
+  const [date1, setdate1] = useState("09-08-2022");
+  const [date2, setdate2] = useState("10-08-2022");
+  const [date3, setdate3] = useState("11-08-2022");
 
   const showPopUp = () => {
     setpopup(1);
@@ -73,52 +86,66 @@ const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.centerScroll}>
-        <ScrollView
-          horizontal={true}
-          alwaysBounceHorizontal={true}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          decelerationRate={"fast"}
-          snapToInterval={200}
-          snapToAlignment={"center"}
-          style={styles.ScrollView}
-        >
-          <View style={styles.card}>
-            <View style={styles.empty}></View>
-            <View>
-              <Pressable style={styles.container} onPress={showPopUp}>
-                <View style={styles.roundConatiner}>
-                  <View style={styles.conatinerPlus}>
-                    <Text style={styles.plus}>+</Text>
+        <View>
+          <ScrollView
+            horizontal={true}
+            alwaysBounceHorizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={styles.ScrollView}
+          >
+            <View style={styles.card}>
+              <View style={styles.empty}></View>
+              <View>
+                <Pressable style={styles.container} onPress={showPopUp}>
+                  <View style={styles.roundConatiner}>
+                    <View style={styles.conatinerPlus}>
+                      <Image
+                        source={require("../assets/plus.png")}
+                        style={styles.img}
+                      />
+                    </View>
                   </View>
-                </View>
-                <Text style={styles.text}>Upload jouw video</Text>
-              </Pressable>
+                  <Text style={styles.text}>Upload jouw video</Text>
+                </Pressable>
+              </View>
+              <View style={styles.center}>
+                <Card
+                  title={title1}
+                  date={date1}
+                  source={{ uri: pickedImagePath }}
+                />
+              </View>
+              <View style={styles.center}>
+                <Card
+                  title={title2}
+                  date={date2}
+                  source={{ uri: pickedImagePath }}
+                />
+              </View>
+              <View style={styles.center}>
+                <Card
+                  title={title3}
+                  date={date3}
+                  source={{ uri: pickedImagePath }}
+                />
+              </View>
+              <View>
+                <Pressable style={styles.container} onPress={showPopUp}>
+                  <View style={styles.roundConatiner}>
+                    <View style={styles.conatinerPlus}>
+                      <Image
+                        source={require("../assets/image-gallery.png")}
+                        style={styles.img}
+                      />
+                    </View>
+                  </View>
+                  <Text style={styles.text}>Ga naar de gallerij</Text>
+                </Pressable>
+              </View>
+              <View style={styles.empty}></View>
             </View>
-            <View style={styles.center}>
-              <Card
-                title="Stroke 1 - i5"
-                date="09-08-2022"
-                source={{ uri: pickedImagePath }}
-              />
-            </View>
-            <View style={styles.center}>
-              <Card
-                title="Stroke 2 - i5"
-                date="09-08-2022"
-                source={{ uri: pickedImagePath }}
-              />
-            </View>
-            <View style={styles.center}>
-              <Card
-                title="Stroke 3 - i5"
-                date="09-08-2022"
-                source={{ uri: pickedImagePath }}
-              />
-            </View>
-            <View style={styles.empty}></View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
       {content}
     </View>
@@ -131,8 +158,7 @@ const styles = StyleSheet.create({
   },
 
   centerScroll: {
-    height: "60%",
-    alignItems: "center",
+    height: "70%",
     justifyContent: "center",
   },
 
@@ -142,8 +168,8 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    width: "100%",
-    height: "35%",
+    width: 130,
+    height: 130,
     alignItems: "center",
   },
 
@@ -161,10 +187,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 
-  plus: {
-    fontSize: 50,
-  },
-
   text: {
     marginTop: 10,
     fontSize: 20,
@@ -173,7 +195,6 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     alignItems: "center",
-    height: "100%",
   },
 
   center: {
@@ -181,7 +202,13 @@ const styles = StyleSheet.create({
   },
 
   empty: {
-    width: "10%",
+    width: "11%",
+    height: "100%",
+  },
+
+  img: {
+    minWidth: "50%",
+    minHeight: "50%",
   },
 });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,15 @@ import Colors from "../components/Colors";
 import NavBar from "../components/NavBar";
 
 const Dashboard = ({ navigation }) => {
+  const [title, setTitle] = React.useState("Slag 1 -i5");
+
+  const [rpm, setRpm] = React.useState("--");
+  const [heigt, setHeigt] = React.useState("--");
+  const [travel, setTravel] = React.useState("--");
+  const [angle, setAngle] = React.useState("--");
+  const [xas, setXas] = React.useState("--");
+  const [airtime, setAirtime] = React.useState("--");
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -20,20 +29,20 @@ const Dashboard = ({ navigation }) => {
               style={styles.imageTop}
               source={require("../assets/oudere-mannen-golf.jpg")}
             />
-            <Text style={styles.text}>Stroke 1 -i5</Text>
+            <Text style={styles.text}>{title}</Text>
           </View>
           <View style={styles.infoConainer}>
             <View style={styles.row}>
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>RPM</Text>
-                <Text style={styles.text3}>6000</Text>
+                <Text style={styles.text3}>{rpm}</Text>
                 <Text style={styles.text4}>rpm</Text>
               </View>
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>Height</Text>
-                <Text style={styles.text3}>60</Text>
+                <Text style={styles.text3}>{heigt}</Text>
                 <Text style={styles.text4}>meter</Text>
               </View>
             </View>
@@ -41,13 +50,13 @@ const Dashboard = ({ navigation }) => {
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>Travel</Text>
-                <Text style={styles.text3}>170</Text>
+                <Text style={styles.text3}>{travel}</Text>
                 <Text style={styles.text4}>meter</Text>
               </View>
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>Angle</Text>
-                <Text style={styles.text3}>13</Text>
+                <Text style={styles.text3}>{angle}</Text>
                 <Text style={styles.text4}>graden</Text>
               </View>
             </View>
@@ -55,13 +64,13 @@ const Dashboard = ({ navigation }) => {
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>x-as</Text>
-                <Text style={styles.text3}>2</Text>
+                <Text style={styles.text3}>{xas}</Text>
                 <Text style={styles.text4}>graden</Text>
               </View>
               <View style={styles.container}>
                 <Image />
                 <Text style={styles.text2}>Air time</Text>
-                <Text style={styles.text3}>9</Text>
+                <Text style={styles.text3}>{airtime}</Text>
                 <Text style={styles.text4}>seconden</Text>
               </View>
             </View>

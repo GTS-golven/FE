@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     backgroundColor: Colors.primary,
     padding: 10,
-    marginLeft: 10,
+    margin: 10,
     width: 300,
     height: 200,
     borderRadius: 20,

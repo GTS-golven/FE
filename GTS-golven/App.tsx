@@ -37,6 +37,12 @@ function App() {
         <AuthStack.Navigator>
           <AuthStack.Screen
             options={{ headerShown: false }}
+            name="Dashboard"
+            component={Dashboard}
+          />
+
+          <AuthStack.Screen
+            options={{ headerShown: false }}
             name="Start"
             component={Start}
           />
@@ -66,11 +72,11 @@ function App() {
             component={ConfirmMail}
           />
 
-          <AuthStack.Screen
+          {/* <AuthStack.Screen
             options={{ headerShown: false }}
             name="Dashboard"
             component={Dashboard}
-          />
+          /> */}
           <AuthStack.Screen
             options={{ headerShown: false }}
             name="Load"

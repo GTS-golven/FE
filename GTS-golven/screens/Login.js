@@ -59,9 +59,10 @@ const Dashboard = ({ navigation }) => {
         <View style={styles.buttonContainer}>
           <Pressable
             style={[styles.button, styles.button1]}
-            onPress={() => {
-              postLogin(email, password);
-            }}
+            // onPress={() => {
+            //   postLogin(email, password);
+            // }}
+            onPress={() => navigation.push("Dashboard")}
           >
             <Text style={styles.textButton}>Log in</Text>
           </Pressable>
