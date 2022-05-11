@@ -45,7 +45,6 @@ const NavBar = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
     position: "absolute",
     bottom: 0,
     backgroundColor: Colors.backgournd,
@@ -55,13 +54,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    height: 100,
-    width: 414,
+    minHeight: 100,
+    width: "100%",
     backgroundColor: Colors.primary,
   },
 
   buttonContainer: {
     alignItems: "center",
+    marginHorizontal: 32,
   },
 
   selected: {
