@@ -207,8 +207,8 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    minWidth: "50%",
-    minHeight: "50%",
+    width: "50%",
+    height: "50%",
   },
 });
 
