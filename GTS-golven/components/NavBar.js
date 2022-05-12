@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import Colors from "./Colors";
 import { useNavigation } from "@react-navigation/native";
 
 const NavBar = (props) => {
   const navigation = useNavigation();
+  const [left, setLeft] = useState(163);
+
+  const home = () => {
+    setLeft(163)
+    navigation.navigate("Dashboard")
+  };
+
+  const settings = () => {
+    setLeft(35)
+    navigation.navigate("Settings")
+  };
+
+  const profiel = () => {
+    setLeft(287)
+    navigation.navigate("Profiel")
+  };
+
   return (
     <View style={styles.screen}>
+      <View style={[styles.selected, { left: left }]}></View>
       <View style={styles.navContainer}>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => navigation.navigate("Settings")}
+          onPress={() => settings()}
         >
           <Image
             style={styles.image}
@@ -20,7 +38,7 @@ const NavBar = (props) => {
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => home()}
         >
           <Image
             style={styles.image}
@@ -30,7 +48,7 @@ const NavBar = (props) => {
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => navigation.navigate("Profiel")}
+          onPress={() => profiel()}
         >
           <Image
             style={[styles.image, styles.profile]}
@@ -52,7 +70,7 @@ const styles = StyleSheet.create({
 
   navContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     alignItems: "center",
     minHeight: 100,
     width: "100%",
@@ -60,22 +78,28 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+    height: "60%",
+    width: "20%",
     alignItems: "center",
-    marginHorizontal: 32,
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
 
   selected: {
-    alignItems: "center",
-    backgroundColor: "red",
-    borderRadius: 20,
-    width: 50,
-    height: 10,
-    marginTop: 8,
+    position: "absolute",
+    top: -35,
+    width: 90,
+    height: 90,
+    borderRadius: 100,
+    borderWidth: 10,
+    backgroundColor: Colors.primary,
+    borderColor: Colors.backgournd,
+    zIndex: 1,
   },
 
   image: {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
   },
 
   profile: {
@@ -83,9 +107,13 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
   },
+
+  index: {
+    zIndex: 10,
+  }
 });
 
 export default NavBar;
