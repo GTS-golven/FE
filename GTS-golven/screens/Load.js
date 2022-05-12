@@ -1,36 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
   Image,
   StyleSheet,
-  Pressable,
   SafeAreaView,
 } from "react-native";
 import Colors from "../components/Colors";
 
 const Load = ({ navigation }) => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.push("AdInfo")
+    }, 5000);
+  })
+
   return (
     <SafeAreaView style={styles.screen}>
-      <Pressable
-        onPress={() => {
-          navigation.push("AdInfo");
-        }}
-      >
-        <View style={styles.mainContainer}>
-          <View style={styles.loadBar}>
-            <Image
-              style={styles.image}
-              source={require("../assets/VideoExample.png")}
-            />
-            <Text style={styles.procent}>100%</Text>
-          </View>
+      <View style={styles.mainContainer}>
+        <View style={styles.loadBar}>
+          <Image
+            style={styles.image}
+            source={require("../assets/VideoExample.png")}
+          />
+          <Text style={styles.procent}>100%</Text>
         </View>
-        <View style={styles.hintContainer}>
-          <Text style={styles.title}>Hint:</Text>
-          <Text style={styles.text}>Jouw slagen zijn echt helemaal ruk!!</Text>
-        </View>
-      </Pressable>
+      </View>
+      <View style={styles.hintContainer}>
+        <Text style={styles.title}>Hint:</Text>
+        <Text style={styles.text}>Jouw slagen zijn echt helemaal ruk!!</Text>
+      </View>
     </SafeAreaView>
   );
 };
