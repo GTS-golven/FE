@@ -1,37 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   Image,
   StyleSheet,
   SafeAreaView,
-  ActivityIndicator,
 } from "react-native";
-import Colors from "../components/Colors";
+import Color from "../components/Colors";
+
+import { ProgressBar, Colors } from 'react-native-paper';
 
 const Load = ({ navigation }) => {
+  const [load, setLoad] = useState(0)
 
   useEffect(() => {
-    setTimeout(() => {
-      navigation.push("AdInfo")
-    }, 5000);
+    setLoad(1)
+    if (load === 1) {
+      setTimeout(() => {
+        navigation.push('AdInfo')
+      }, 1000)
+    }
   })
 
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.mainContainer}>
-        {/* <View style={styles.loadBar}>
-          <Image
-            style={styles.image}
-            source={require("../assets/VideoExample.png")}
-          />
-          <Text style={styles.procent}>100%</Text>
-        </View> */}
-        <ActivityIndicator size="large" color="#00ff00" />
+        <Image
+          style={styles.image}
+          source={require("../assets/VideoExample.png")}
+        />
+        <ProgressBar progress={load} color={Colors.green800} style={{ width: 340, height: 215, zIndex: 0 }} />
       </View>
       <View style={styles.hintContainer}>
         <Text style={styles.title}>Hint:</Text>
-        <Text style={styles.text}>Jouw slagen zijn echt helemaal ruk!!</Text>
+        <Text style={styles.text}>Wijs de bal altijd na</Text>
       </View>
     </SafeAreaView>
   );
@@ -58,14 +60,10 @@ const styles = StyleSheet.create({
   },
 
   image: {
+    position: "absolute",
     width: 320,
     height: 200,
-    opacity: 0.5,
-  },
-
-  loadBar: {
-    borderWidth: 9,
-    borderColor: Colors.button2,
+    zIndex: 1,
   },
 
   title: {
@@ -75,14 +73,6 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 15,
-  },
-
-  procent: {
-    position: "absolute",
-    top: "45%",
-    left: "36%",
-    fontSize: 20,
-    fontWeight: "bold",
   },
 });
 
