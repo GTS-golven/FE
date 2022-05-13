@@ -16,6 +16,7 @@ import * as ImagePicker from "expo-image-picker";
 import Colors from "../components/Colors";
 
 import UserService from "../services/UserService";
+import { Snackbar } from 'react-native-paper';
 var userService = new UserService();
 
 const Profiel = ({ navigation }) => {
@@ -25,6 +26,9 @@ const Profiel = ({ navigation }) => {
   const [popup, setpopup] = useState(0);
   const [name, setName] = useState("yuri klasnikof");
   const [mail, setMail] = useState("yuriklasnikof@gmail.com");
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
+  const [state3, setState3] = useState(false);
 
   async function Register() {
     var dict = {
@@ -41,7 +45,7 @@ const Profiel = ({ navigation }) => {
 
   const save = () => {
     if (name === "" || mail === "" || pickedImagePath === "") {
-      console.log("Niet alle velden zijn ingevuld");
+      setState(true)
     } else {
       Register();
       console.log("naam:", name, "mail:", mail, "pic:", pickedImagePath);
@@ -62,7 +66,7 @@ const Profiel = ({ navigation }) => {
       await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      alert("Je hebt toegang tot de cameraroll geweirgerd");
+      setState3(true)
       return;
     }
 
@@ -78,7 +82,7 @@ const Profiel = ({ navigation }) => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      alert("Je hebt toegang tot de camera geweigerd!");
+      setState2(true)
       return;
     }
 
@@ -131,6 +135,30 @@ const Profiel = ({ navigation }) => {
         </Pressable>
       </View>
       {content}
+      <Snackbar
+        wrapperStyle={{ top: 40 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+
+      >
+        Vul alle verplichte velden in
+      </Snackbar>
+      <Snackbar
+        wrapperStyle={{ top: 40 }}
+        visible={state2}
+        onDismiss={() => setState2(false)}
+
+      >
+        We hebben toegang tot de camera nodig
+      </Snackbar>
+      <Snackbar
+        wrapperStyle={{ top: 40 }}
+        visible={state3}
+        onDismiss={() => setState3(false)}
+
+      >
+        We hebben toegang tot de cameraroll nodig
+      </Snackbar>
     </SafeAreaView>
   );
 };

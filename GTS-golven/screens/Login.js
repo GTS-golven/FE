@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,10 +11,13 @@ import {
 import Colors from "../components/Colors";
 import AuthService from "../services/AuthService";
 import FetchService from "../services/FetchService";
+import { Snackbar } from 'react-native-paper';
 
 const Dashboard = ({ navigation }) => {
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+  const [email, onChangeEmail] = useState("");
+  const [password, onChangePassword] = useState("");
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
 
   var token = null;
   var refreshToken = null;
@@ -25,10 +28,10 @@ const Dashboard = ({ navigation }) => {
         if (res === 200) {
           navigation.push("Dashboard");
         } else {
-          console.warn("Wachtwoord of email is fout");
+          setState(true)
         }
       })
-      .catch((error) => console.log("Er is iets mis probeer later opnieuw"));
+      .catch((error) => setState2(true));
   }
   return (
     <SafeAreaView style={styles.screen}>
@@ -74,6 +77,22 @@ const Dashboard = ({ navigation }) => {
           </Pressable>
         </View>
       </View>
+      <Snackbar
+        wrapperStyle={{ top: 40 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+
+      >
+        Wachtwoord en email komen niet over een.
+      </Snackbar>
+      <Snackbar
+        wrapperStyle={{ top: 40 }}
+        visible={state2}
+        onDismiss={() => setState2(false)}
+
+      >
+        Er is iets fout gegaan probeer later opnieuw
+      </Snackbar>
     </SafeAreaView>
   );
 };
