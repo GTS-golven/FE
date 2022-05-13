@@ -1,61 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import Colors from "./Colors";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const NavBar = (props) => {
-  const navigation = useNavigation();
-  const [left, setLeft] = useState(163);
+  const nav = useNavigation();
+  const [selected, setSelected] = useState()
+  const route = useRoute()
 
-  const home = () => {
-    setLeft(163)
-    navigation.navigate("Dashboard")
-  };
+  useEffect(() => {
+    setSelected(route.name)
+  }, [])
 
-  const settings = () => {
-    setLeft(35)
-    navigation.navigate("Settings")
-  };
+  const navElements = [
+    {
+      name: "Settings",
+      src: "../assets/setting.png",
+    },
+    {
+      name: "Dashboard",
+      src: "../assets/huisje.png",
 
-  const profiel = () => {
-    setLeft(287)
-    navigation.navigate("Profiel")
-  };
+    },
+    {
+      name: "Profiel",
+      src: "../assets/profile.jpg"
+    }
+  ]
 
   return (
     <View style={styles.screen}>
-      <View style={[styles.selected, { left: left }]}></View>
       <View style={styles.navContainer}>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => settings()}
+          onPress={() => nav.navigate('Settings')}
         >
           <Image
-            style={styles.image}
+            style={selected === "Settings" ? styles.selected : styles.image}
             source={require("../assets/setting.png")}
           />
           <Text style={styles.text}>Settings</Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => home()}
+          onPress={() => nav.navigate('Dashboard')}
         >
           <Image
-            style={styles.image}
+            style={selected === "Dashboard" ? styles.selected : styles.image}
             source={require("../assets/huisje.png")}
           />
           <Text style={styles.text}>Home</Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => profiel()}
+          onPress={() => nav.navigate('Profiel')}
         >
           <Image
-            style={[styles.image, styles.profile]}
+            style={selected === "Profiel" ? styles.selected : styles.image}
             source={require("../assets/profile.jpg")}
           />
           <Text style={styles.text}>Profiel</Text>
         </Pressable>
+        {/* {navElements.map((element) => {
+          return (
+            <Pressable
+              key={element.name}
+              style={styles.buttonContainer}
+              onPress={() => nav.navigate(element.name)}
+            >
+              <Image
+                style={selected === element.name ? styles.selected : styles.image}
+                source={require(element.src)}
+              />
+              <Text style={styles.text}>{element.name}</Text>
+            </Pressable>
+          )
+        })} */}
       </View>
     </View>
   );
@@ -86,20 +106,18 @@ const styles = StyleSheet.create({
   },
 
   selected: {
-    position: "absolute",
-    top: -35,
-    width: 90,
-    height: 90,
+    top: -50,
+    width: 80,
+    height: 80,
     borderRadius: 100,
     borderWidth: 10,
-    backgroundColor: Colors.primary,
-    borderColor: Colors.backgournd,
-    zIndex: 1,
+    borderColor: Colors.backgournd
   },
 
   image: {
     width: 30,
     height: 30,
+    borderRadius: 100,
   },
 
   profile: {
@@ -110,10 +128,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-
-  index: {
-    zIndex: 10,
-  }
 });
 
 export default NavBar;
