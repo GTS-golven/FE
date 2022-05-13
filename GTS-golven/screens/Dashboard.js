@@ -8,11 +8,13 @@ import {
   StyleSheet,
 } from "react-native";
 
+
 import Colors from "../components/Colors";
 import Card from "../components/Card";
 import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
 
+import { Snackbar } from 'react-native-paper';
 import * as ImagePicker from "expo-image-picker";
 
 const Dashboard = ({ navigation }) => {
@@ -20,12 +22,9 @@ const Dashboard = ({ navigation }) => {
     "../assets.VideoExample.png"
   );
   const [popup, setpopup] = useState(0);
-  const [title1, settitle1] = useState("Slag 1 -i5");
-  const [title2, settitle2] = useState("Slag 2 -i6");
-  const [title3, settitle3] = useState("Slag 3 -i7");
-  const [date1, setdate1] = useState("09-08-2022");
-  const [date2, setdate2] = useState("10-08-2022");
-  const [date3, setdate3] = useState("11-08-2022");
+  const [title, settitle] = useState("Slag 1 -i5");
+  const [date, setdate] = useState("09-08-2022");
+  const [state, setState] = useState(false);
 
   const showPopUp = () => {
     setpopup(1);
@@ -94,60 +93,54 @@ const Dashboard = ({ navigation }) => {
             style={styles.ScrollView}
           >
             <View style={styles.card}>
-              <View style={styles.empty}></View>
               <View>
-                <Pressable style={styles.container} onPress={showPopUp}>
-                  <View style={styles.roundConatiner}>
-                    <View style={styles.conatinerPlus}>
-                      <Image
-                        source={require("../assets/plus.png")}
-                        style={styles.img}
-                      />
+                <Pressable style={styles.container} onPress={() => showPopUp()}>
+                  <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                      <Image style={styles.img} source={require('../assets/plus.png')} />
                     </View>
                   </View>
-                  <Text style={styles.text}>Upload jouw video</Text>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.text}>Video uploaden</Text>
+                  </View>
                 </Pressable>
               </View>
-              <View style={styles.center}>
+              <View>
                 <Card
-                  title={title1}
-                  date={date1}
-                  source={{ uri: pickedImagePath }}
-                />
-              </View>
-              <View style={styles.center}>
-                <Card
-                  title={title2}
-                  date={date2}
-                  source={{ uri: pickedImagePath }}
-                />
-              </View>
-              <View style={styles.center}>
-                <Card
-                  title={title3}
-                  date={date3}
+                  title={title}
+                  date={date}
                   source={{ uri: pickedImagePath }}
                 />
               </View>
               <View>
-                <Pressable style={styles.container} onPress={showPopUp}>
-                  <View style={styles.roundConatiner}>
-                    <View style={styles.conatinerPlus}>
-                      <Image
-                        source={require("../assets/image-gallery.png")}
-                        style={styles.img}
-                      />
+                <Pressable style={styles.container}>
+                  <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                      <Image style={styles.img} source={require('../assets/image-gallery.png')} />
                     </View>
                   </View>
-                  <Text style={styles.text}>Ga naar de gallerij</Text>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.text}>Gallerij</Text>
+                  </View>
                 </Pressable>
               </View>
-              <View style={styles.empty}></View>
             </View>
           </ScrollView>
         </View>
       </View>
       {content}
+      <Snackbar
+        visible={state}
+        onDismiss={() => setState(false)}
+        action={{
+          label: 'Undo',
+          onPress: () => {
+            // Do something
+          },
+        }}
+      >
+        Hey there! I'm a Snackbar.
+      </Snackbar>
     </View>
   );
 };
@@ -158,52 +151,43 @@ const styles = StyleSheet.create({
   },
 
   centerScroll: {
-    height: "70%",
     justifyContent: "center",
   },
 
   ScrollView: {
     width: "100%",
-    height: "100%",
-  },
-
-  container: {
-    width: 130,
-    height: 130,
-    alignItems: "center",
-  },
-
-  roundConatiner: {
-    backgroundColor: Colors.primary,
-    width: "100%",
-    height: "100%",
-    borderRadius: 100,
-  },
-
-  conatinerPlus: {
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-    width: "100%",
-  },
-
-  text: {
-    marginTop: 10,
-    fontSize: 20,
+    height: "70%",
   },
 
   card: {
     flexDirection: "row",
     alignItems: "center",
+    paddingLeft: "30%",
+    paddingRight: "30%",
   },
 
-  center: {
-    justifyContent: "center",
+  container: {
+    height: "30%",
+    width: "100%",
   },
 
-  empty: {
-    width: "11%",
+  buttonContainer: {
+    width: "100%",
     height: "100%",
+    borderRadius: 100,
+    backgroundColor: Colors.primary,
+  },
+
+  button: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+
+  text: {
+    marginTop: 10,
+    fontSize: 20,
   },
 
   img: {
