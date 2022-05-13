@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import Colors from "../components/Colors";
+import { Snackbar } from 'react-native-paper';
 
 const AdInfo = ({ navigation }) => {
   const [title, settitle] = useState("");
@@ -17,6 +18,7 @@ const AdInfo = ({ navigation }) => {
   const [golfcourse, setgolfcourse] = useState("");
   const [datum, setdatum] = useState("");
   const [extra, setextra] = useState("");
+  const [state, setState] = useState(false);
 
   const submit = () => {
     if (
@@ -26,7 +28,7 @@ const AdInfo = ({ navigation }) => {
       datum === "" ||
       extra === ""
     ) {
-      console.log("Vul alle velden in");
+      setState(true)
       return;
     } else {
       console.log(
@@ -112,6 +114,14 @@ const AdInfo = ({ navigation }) => {
           <Text style={styles.buttonText}>Bewaar</Text>
         </Pressable>
       </View>
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10, }}
+        visible={state}
+        onDismiss={() => setState(false)}
+
+      >
+        Vul alle verplichte velden in
+      </Snackbar>
     </SafeAreaView>
   );
 };
