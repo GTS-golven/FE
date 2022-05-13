@@ -56,13 +56,13 @@ const AdInfo = ({ navigation }) => {
       <View style={styles.topPic}>
         <Image
           style={styles.imageTop}
-          source={require("../assets/oudere-mannen-golf.jpg")}
+          source={require('../assets/VideoExample.png')}
         />
       </View>
       <View style={styles.topInfo}>
         <View style={styles.row}>
           <View>
-            <Text style={styles.text}>Title:</Text>
+            <Text style={styles.text}>Title:<Text style={styles.red}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Slag 1"
@@ -70,7 +70,7 @@ const AdInfo = ({ navigation }) => {
             />
           </View>
           <View>
-            <Text style={styles.text}>Golf club:</Text>
+            <Text style={styles.text}>Golf club:<Text style={styles.red}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="5i"
@@ -80,7 +80,7 @@ const AdInfo = ({ navigation }) => {
         </View>
         <View style={styles.row}>
           <View>
-            <Text style={styles.text}>Golf course:</Text>
+            <Text style={styles.text}>Golf course:<Text style={styles.red}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="Heidelberglaan 15, utrecht"
@@ -88,7 +88,7 @@ const AdInfo = ({ navigation }) => {
             />
           </View>
           <View>
-            <Text style={styles.text}>Datum:</Text>
+            <Text style={styles.text}>Datum:<Text style={styles.red}>*</Text></Text>
             <TextInput
               style={styles.input}
               placeholder="15 maart 2021"
@@ -186,6 +186,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "100%",
   },
+
+  red: {
+    color: "red",
+  }
 });
 
 export default AdInfo;

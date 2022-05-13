@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import Colors from "../components/Colors";
 
@@ -19,13 +20,14 @@ const Load = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.mainContainer}>
-        <View style={styles.loadBar}>
+        {/* <View style={styles.loadBar}>
           <Image
             style={styles.image}
             source={require("../assets/VideoExample.png")}
           />
           <Text style={styles.procent}>100%</Text>
-        </View>
+        </View> */}
+        <ActivityIndicator size="large" color="#00ff00" />
       </View>
       <View style={styles.hintContainer}>
         <Text style={styles.title}>Hint:</Text>
