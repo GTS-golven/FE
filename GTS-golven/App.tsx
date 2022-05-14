@@ -1,9 +1,9 @@
-import 'react-native-gesture-handler'
+import "react-native-gesture-handler";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Colors from "./components/Colors";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Start from "./screens/Start";
 
@@ -27,7 +27,6 @@ import AccuraatData from "./screens/AccuraatData";
 import NewPassword from "./screens/NewPassword";
 import Load from "./screens/Load";
 import AdInfo from "./screens/AdInfo";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const AuthStack = createNativeStackNavigator();
 

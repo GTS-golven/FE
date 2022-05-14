@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import Colors from "./Colors";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const nav = useNavigation();
   const [selected, setSelected] = useState()
   const route = useRoute()
@@ -35,30 +35,36 @@ const NavBar = (props) => {
           style={styles.buttonContainer}
           onPress={() => nav.navigate('Settings')}
         >
-          <Image
-            style={selected === "Settings" ? styles.selected : styles.image}
-            source={require("../assets/setting.png")}
-          />
+          <View style={selected === "Settings" ? styles.selected : styles.nothing}>
+            <Image
+              style={styles.image}
+              source={require("../assets/setting.png")}
+            />
+          </View>
           <Text style={styles.text}>Settings</Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
           onPress={() => nav.navigate('Dashboard')}
         >
-          <Image
-            style={selected === "Dashboard" ? styles.selected : styles.image}
-            source={require("../assets/huisje.png")}
-          />
+          <View style={selected === "Dashboard" ? styles.selected : styles.nothing}>
+            <Image
+              style={styles.image}
+              source={require("../assets/huisje.png")}
+            />
+          </View>
           <Text style={styles.text}>Home</Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
           onPress={() => nav.navigate('Profiel')}
         >
-          <Image
-            style={selected === "Profiel" ? styles.selected : styles.image}
-            source={require("../assets/profile.jpg")}
-          />
+          <View style={selected === "Profiel" ? styles.selected : styles.nothing}>
+            <Image
+              style={selected === "Profiel" ? styles.selected : styles.image}
+              source={require("../assets/profile.jpg")}
+            />
+          </View>
           <Text style={styles.text}>Profiel</Text>
         </Pressable>
         {/* {navElements.map((element) => {
@@ -76,8 +82,8 @@ const NavBar = (props) => {
             </Pressable>
           )
         })} */}
-      </View>
-    </View>
+      </View >
+    </View >
   );
 };
 
@@ -111,7 +117,10 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 100,
     borderWidth: 10,
-    borderColor: Colors.backgournd
+    borderColor: Colors.backgournd,
+    backgroundColor: Colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   image: {
