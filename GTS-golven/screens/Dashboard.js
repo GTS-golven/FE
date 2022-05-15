@@ -21,7 +21,7 @@ const Dashboard = ({ navigation }) => {
     "../assets.VideoExample.png"
   );
 
-  const childFunc = React.useRef(null)
+  const childFunc = React.useRef(null);
 
   return (
     <View style={styles.screen}>
@@ -35,10 +35,16 @@ const Dashboard = ({ navigation }) => {
           >
             <View style={styles.card}>
               <View>
-                <Pressable style={styles.container} onPress={() => childFunc.current()}>
+                <Pressable
+                  style={styles.container}
+                  onPress={() => childFunc.current()}
+                >
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                      <Image style={styles.img} source={require('../assets/plus.png')} />
+                      <Image
+                        style={styles.img}
+                        source={require("../assets/plus.png")}
+                      />
                     </View>
                   </View>
                   <View style={styles.textContainer}>
@@ -57,7 +63,10 @@ const Dashboard = ({ navigation }) => {
                 <Pressable style={styles.container}>
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                      <Image style={styles.img} source={require('../assets/image-gallery.png')} />
+                      <Image
+                        style={styles.img}
+                        source={require("../assets/image-gallery.png")}
+                      />
                     </View>
                   </View>
                   <View style={styles.textContainer}>
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   text: {

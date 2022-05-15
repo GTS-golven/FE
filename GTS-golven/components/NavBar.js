@@ -5,12 +5,12 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 const NavBar = () => {
   const nav = useNavigation();
-  const [selected, setSelected] = useState()
-  const route = useRoute()
+  const [selected, setSelected] = useState();
+  const route = useRoute();
 
   useEffect(() => {
-    setSelected(route.name)
-  }, [])
+    setSelected(route.name);
+  }, []);
 
   const navElements = [
     {
@@ -20,22 +20,23 @@ const NavBar = () => {
     {
       name: "Dashboard",
       src: "../assets/huisje.png",
-
     },
     {
       name: "Profiel",
-      src: "../assets/profile.jpg"
-    }
-  ]
+      src: "../assets/profile.jpg",
+    },
+  ];
 
   return (
     <View style={styles.screen}>
       <View style={styles.navContainer}>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => nav.navigate('Settings')}
+          onPress={() => nav.navigate("Settings")}
         >
-          <View style={selected === "Settings" ? styles.selected : styles.nothing}>
+          <View
+            style={selected === "Settings" ? styles.selected : styles.nothing}
+          >
             <Image
               style={styles.image}
               source={require("../assets/setting.png")}
@@ -45,9 +46,11 @@ const NavBar = () => {
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => nav.navigate('Dashboard')}
+          onPress={() => nav.navigate("Dashboard")}
         >
-          <View style={selected === "Dashboard" ? styles.selected : styles.nothing}>
+          <View
+            style={selected === "Dashboard" ? styles.selected : styles.nothing}
+          >
             <Image
               style={styles.image}
               source={require("../assets/huisje.png")}
@@ -57,9 +60,11 @@ const NavBar = () => {
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
-          onPress={() => nav.navigate('Profiel')}
+          onPress={() => nav.navigate("Profiel")}
         >
-          <View style={selected === "Profiel" ? styles.selected : styles.nothing}>
+          <View
+            style={selected === "Profiel" ? styles.selected : styles.nothing}
+          >
             <Image
               style={selected === "Profiel" ? styles.selected : styles.image}
               source={require("../assets/profile.jpg")}
@@ -82,8 +87,8 @@ const NavBar = () => {
             </Pressable>
           )
         })} */}
-      </View >
-    </View >
+      </View>
+    </View>
   );
 };
 

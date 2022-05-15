@@ -11,7 +11,7 @@ import {
 import Colors from "../components/Colors";
 import AuthService from "../services/AuthService";
 import FetchService from "../services/FetchService";
-import { Snackbar } from 'react-native-paper';
+import { Snackbar } from "react-native-paper";
 
 const Dashboard = ({ navigation }) => {
   const [email, onChangeEmail] = useState("");
@@ -28,7 +28,7 @@ const Dashboard = ({ navigation }) => {
         if (res === 200) {
           navigation.push("Dashboard");
         } else {
-          setState(true)
+          setState(true);
         }
       })
       .catch((error) => setState2(true));
@@ -81,7 +81,6 @@ const Dashboard = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state}
         onDismiss={() => setState(false)}
-
       >
         Wachtwoord en email komen niet over een.
       </Snackbar>
@@ -89,7 +88,6 @@ const Dashboard = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state2}
         onDismiss={() => setState2(false)}
-
       >
         Er is iets fout gegaan probeer later opnieuw
       </Snackbar>

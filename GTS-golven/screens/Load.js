@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
 import Color from "../components/Colors";
 
-import { ProgressBar, Colors } from 'react-native-paper';
+import { ProgressBar, Colors } from "react-native-paper";
 
 const Load = ({ navigation }) => {
-  const [load, setLoad] = useState(0)
+  const [load, setLoad] = useState(0);
 
   useEffect(() => {
-    setLoad(1)
+    setLoad(1);
     if (load === 1) {
       setTimeout(() => {
-        navigation.push('AdInfo')
-      }, 1000)
+        navigation.push("AdInfo");
+      }, 1000);
     }
-  })
+  });
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -29,7 +23,11 @@ const Load = ({ navigation }) => {
           style={styles.image}
           source={require("../assets/VideoExample.png")}
         />
-        <ProgressBar progress={load} color={Colors.green800} style={{ width: 340, height: 215, zIndex: 0 }} />
+        <ProgressBar
+          progress={load}
+          color={Colors.green800}
+          style={{ width: 340, height: 215, zIndex: 0 }}
+        />
       </View>
       <View style={styles.hintContainer}>
         <Text style={styles.title}>Hint:</Text>

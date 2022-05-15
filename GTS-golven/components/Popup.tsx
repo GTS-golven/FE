@@ -12,8 +12,8 @@ const App = ({ childFunc }) => {
   );
 
   React.useEffect(() => {
-    childFunc.current = handleExpandPress
-  }, [])
+    childFunc.current = handleExpandPress;
+  }, []);
 
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -34,7 +34,7 @@ const App = ({ childFunc }) => {
     const result = await ImagePicker.launchCameraAsync();
 
     if (!result.cancelled) {
-      nav.navigate('Load');
+      nav.navigate("Load");
       setPickedImagePath(result.uri);
     }
   };
@@ -51,7 +51,7 @@ const App = ({ childFunc }) => {
     const result = await ImagePicker.launchImageLibraryAsync();
 
     if (!result.cancelled) {
-      nav.navigate('Load');
+      nav.navigate("Load");
       setPickedImagePath(result.uri);
     }
   };

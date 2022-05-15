@@ -16,7 +16,7 @@ import * as ImagePicker from "expo-image-picker";
 import Colors from "../components/Colors";
 
 import UserService from "../services/UserService";
-import { Snackbar } from 'react-native-paper';
+import { Snackbar } from "react-native-paper";
 var userService = new UserService();
 
 const Profiel = ({ navigation }) => {
@@ -45,7 +45,7 @@ const Profiel = ({ navigation }) => {
 
   const save = () => {
     if (name === "" || mail === "" || pickedImagePath === "") {
-      setState(true)
+      setState(true);
     } else {
       Register();
       console.log("naam:", name, "mail:", mail, "pic:", pickedImagePath);
@@ -66,7 +66,7 @@ const Profiel = ({ navigation }) => {
       await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      setState3(true)
+      setState3(true);
       return;
     }
 
@@ -82,7 +82,7 @@ const Profiel = ({ navigation }) => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      setState2(true)
+      setState2(true);
       return;
     }
 
@@ -139,7 +139,6 @@ const Profiel = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state}
         onDismiss={() => setState(false)}
-
       >
         Vul alle verplichte velden in
       </Snackbar>
@@ -147,7 +146,6 @@ const Profiel = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state2}
         onDismiss={() => setState2(false)}
-
       >
         We hebben toegang tot de camera nodig
       </Snackbar>
@@ -155,7 +153,6 @@ const Profiel = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state3}
         onDismiss={() => setState3(false)}
-
       >
         We hebben toegang tot de cameraroll nodig
       </Snackbar>

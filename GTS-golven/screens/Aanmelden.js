@@ -10,7 +10,7 @@ import {
 
 import Colors from "../components/Colors";
 
-import { Snackbar } from 'react-native-paper';
+import { Snackbar } from "react-native-paper";
 import UserService from "../services/UserService";
 var userService = new UserService();
 
@@ -53,10 +53,10 @@ const Dashboard = ({ navigation }) => {
       navigation.push("Dashboard");
     }
     if (checkPassword !== password) {
-      setState(true)
+      setState(true);
     }
     if (checkEmail !== true) {
-      setState2(true)
+      setState2(true);
     }
   };
 
@@ -111,7 +111,6 @@ const Dashboard = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state}
         onDismiss={() => setState(false)}
-
       >
         Wachtwoorden komen niet over een
       </Snackbar>
@@ -119,7 +118,6 @@ const Dashboard = ({ navigation }) => {
         wrapperStyle={{ top: 40 }}
         visible={state2}
         onDismiss={() => setState2(false)}
-
       >
         Voer een gelidg email adress in
       </Snackbar>

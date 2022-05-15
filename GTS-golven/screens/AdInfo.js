@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import Colors from "../components/Colors";
-import { Snackbar } from 'react-native-paper';
+import { Snackbar } from "react-native-paper";
 
 const AdInfo = ({ navigation }) => {
   const [title, settitle] = useState("");
@@ -28,7 +28,7 @@ const AdInfo = ({ navigation }) => {
       datum === "" ||
       extra === ""
     ) {
-      setState(true)
+      setState(true);
       return;
     } else {
       console.log(
@@ -58,13 +58,15 @@ const AdInfo = ({ navigation }) => {
       <View style={styles.topPic}>
         <Image
           style={styles.imageTop}
-          source={require('../assets/VideoExample.png')}
+          source={require("../assets/VideoExample.png")}
         />
       </View>
       <View style={styles.topInfo}>
         <View style={styles.row}>
           <View>
-            <Text style={styles.text}>Title:<Text style={styles.red}>*</Text></Text>
+            <Text style={styles.text}>
+              Title:<Text style={styles.red}>*</Text>
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="Slag 1"
@@ -72,7 +74,9 @@ const AdInfo = ({ navigation }) => {
             />
           </View>
           <View>
-            <Text style={styles.text}>Golf club:<Text style={styles.red}>*</Text></Text>
+            <Text style={styles.text}>
+              Golf club:<Text style={styles.red}>*</Text>
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="5i"
@@ -82,7 +86,9 @@ const AdInfo = ({ navigation }) => {
         </View>
         <View style={styles.row}>
           <View>
-            <Text style={styles.text}>Golf course:<Text style={styles.red}>*</Text></Text>
+            <Text style={styles.text}>
+              Golf course:<Text style={styles.red}>*</Text>
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="Heidelberglaan 15, utrecht"
@@ -90,7 +96,9 @@ const AdInfo = ({ navigation }) => {
             />
           </View>
           <View>
-            <Text style={styles.text}>Datum:<Text style={styles.red}>*</Text></Text>
+            <Text style={styles.text}>
+              Datum:<Text style={styles.red}>*</Text>
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="15 maart 2021"
@@ -115,10 +123,9 @@ const AdInfo = ({ navigation }) => {
         </Pressable>
       </View>
       <Snackbar
-        wrapperStyle={{ top: 40, zIndex: 10, }}
+        wrapperStyle={{ top: 40, zIndex: 10 }}
         visible={state}
         onDismiss={() => setState(false)}
-
       >
         Vul alle verplichte velden in
       </Snackbar>
@@ -199,7 +206,7 @@ const styles = StyleSheet.create({
 
   red: {
     color: "red",
-  }
+  },
 });
 
 export default AdInfo;

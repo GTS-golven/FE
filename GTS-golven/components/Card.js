@@ -8,7 +8,10 @@ const Dashboard = (props) => {
   return (
     <Pressable onPress={() => navigation.navigate("Gallery")}>
       <View style={styles.screen}>
-        <Image style={styles.image} source={require('../assets/VideoExample.png')} />
+        <Image
+          style={styles.image}
+          source={require("../assets/VideoExample.png")}
+        />
         {/* <Image style={styles.image} source={props.source} /> */}
         <View style={styles.card}>
           <View style={styles.text}>
