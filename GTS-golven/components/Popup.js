@@ -15,7 +15,7 @@ const App = ({ childFunc }) => {
     childFunc.current = handleExpandPress;
   }, []);
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  const bottomSheetRef = useRef(null);
 
   const snapPoints = useMemo(() => ["25%", "100%"], []);
 
