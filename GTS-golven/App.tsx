@@ -28,6 +28,8 @@ import NewPassword from "./screens/NewPassword";
 import Load from "./screens/Load";
 import AdInfo from "./screens/AdInfo";
 
+import testDrawer from "./screens/testDrawer";
+
 const AuthStack = createNativeStackNavigator();
 
 function App() {
@@ -35,6 +37,11 @@ function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <AuthStack.Navigator>
+          <AuthStack.Screen
+            options={{ headerShown: false, animation: "none" }}
+            name="Dashboard"
+            component={Dashboard}
+          />
           <AuthStack.Screen
             options={{ headerShown: false, animation: "fade" }}
             name="Start"
@@ -66,11 +73,11 @@ function App() {
             component={ConfirmMail}
           />
 
-          <AuthStack.Screen
+          {/* <AuthStack.Screen
             options={{ headerShown: false, animation: "none" }}
             name="Dashboard"
             component={Dashboard}
-          />
+          /> */}
           <AuthStack.Screen
             options={{ headerShown: false, animation: "fade" }}
             name="Load"

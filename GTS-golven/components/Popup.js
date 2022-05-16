@@ -1,128 +1,111 @@
-import "react-native-gesture-handler";
-import React, { useState, useMemo, useRef, useEffect } from "react";
-import { View, Text, Pressable, Image, StyleSheet } from "react-native";
-import BottomSheet from "@gorhom/bottom-sheet";
-import * as ImagePicker from "expo-image-picker";
-import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const App = ({ childFunc }) => {
-  const nav = useNavigation();
-  const [pickedImagePath, setPickedImagePath] = useState(
-    "../assets.VideoExample.png"
+import Animated from "react-native-reanimated";
+import BottomSheet from "reanimated-bottom-sheet";
+import Colors from "./Colors";
+
+const popup = ({ bs }) => {
+  const fall = new Animated.Value(1);
+
+  const renderInner = () => (
+    <View style={styles.panel}>
+      <View style={{ alignItems: "center" }}>
+        <Text style={styles.panelTitle}>Video uploaden</Text>
+        <Text style={styles.panelSubtitle}>
+          Kies een foto van je bibliotheek
+        </Text>
+      </View>
+      <TouchableOpacity style={styles.panelButton} onPress={() => maakVideo}>
+        <Text style={styles.panelButtonTitle}>Maak een video</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.panelButton} onPress={() => kiesVideo}>
+        <Text style={styles.panelButtonTitle}>
+          Kies een video van je bibliotheek
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.panelButton}
+        onPress={() => bs.current.snapTo(1)}
+      >
+        <Text style={styles.panelButtonTitle}>terug</Text>
+      </TouchableOpacity>
+    </View>
   );
 
-  React.useEffect(() => {
-    childFunc.current = handleExpandPress;
-  }, []);
-
-  const bottomSheetRef = useRef(null);
-
-  const snapPoints = useMemo(() => ["25%", "100%"], []);
-
-  const handleClosePress = () => bottomSheetRef.current?.close();
-
-  const handleExpandPress = () => bottomSheetRef.current?.expand();
-
-  const openCamera = async () => {
-    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      alert("Je hebt toegang tot de camera geweigerd!");
-      return;
-    }
-
-    const result = await ImagePicker.launchCameraAsync();
-
-    if (!result.cancelled) {
-      nav.navigate("Load");
-      setPickedImagePath(result.uri);
-    }
-  };
-
-  const showImagePicker = async () => {
-    const permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      alert("Je hebt toegang tot de cameraroll geweirgerd");
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync();
-
-    if (!result.cancelled) {
-      nav.navigate("Load");
-      setPickedImagePath(result.uri);
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={-1}
-        snapPoints={snapPoints}
-        detached={true}
-        enablePanDownToClose={true}
-      >
-        <View>
-          <Pressable onPress={openCamera} style={styles.btnContainer}>
-            <View style={styles.row}>
-              <Image
-                style={styles.img}
-                source={require("../assets/camera.png")}
-              />
-              <Text style={styles.text}>Camera</Text>
-            </View>
-          </Pressable>
-          <Pressable onPress={showImagePicker} style={styles.btnContainer}>
-            <View style={styles.row}>
-              <Image
-                style={styles.img}
-                source={require("../assets/video-gallery.png")}
-              />
-              <Text style={styles.text}>Gallerij</Text>
-            </View>
-          </Pressable>
-          <Pressable style={styles.btnContainer} onPress={handleClosePress}>
-            <View style={styles.row}>
-              <Text style={styles.text}>Sluit</Text>
-            </View>
-          </Pressable>
-        </View>
-      </BottomSheet>
+  const renderHeader = () => (
+    <View style={styles.header}>
+      <View style={styles.panelHeader}>
+        <View style={styles.panelHandle} />
+      </View>
     </View>
+  );
+  return (
+    <BottomSheet
+      ref={bs}
+      snapPoints={[330, 0]}
+      renderContent={renderInner}
+      renderHeader={renderHeader}
+      initialSnap={0}
+      callbackNode={fall}
+      enabledGestureInteraction={true}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
+  header: {
+    backgroundColor: Colors.primary,
+    shadowColor: "#333333",
+    shadowOffset: { width: -1, height: -3 },
+    shadowRadius: 2,
+    shadowOpacity: 0.4,
+    paddingTop: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 
-  btnContainer: {
-    width: "100%",
-    height: "33%",
-    justifyContent: "center",
-    borderBottomWidth: 1,
+  panel: {
+    backgroundColor: Colors.primary,
   },
 
-  row: {
-    flexDirection: "row",
-    justifyContent: "center",
+  panelHeader: {
     alignItems: "center",
   },
 
-  text: {
-    fontSize: 20,
+  panelHandle: {
+    width: 40,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: Colors.button1,
+    marginBottom: 10,
   },
 
-  img: {
-    width: "8%",
-    resizeMode: "contain",
-    marginRight: 10,
+  panelTitle: {
+    fontSize: 27,
+    height: 35,
+  },
+
+  panelSubtitle: {
+    fontSize: 14,
+    color: "gray",
+    height: 30,
+    marginBottom: 10,
+  },
+
+  panelButton: {
+    padding: 13,
+    borderRadius: 10,
+    backgroundColor: Colors.button1,
+    alignItems: "center",
+    marginVertical: 7,
+  },
+
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "white",
   },
 });
 
-export default App;
+export default popup;

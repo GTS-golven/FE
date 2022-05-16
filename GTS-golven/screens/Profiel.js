@@ -9,10 +9,8 @@ import {
   Pressable,
 } from "react-native";
 
-import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
 
-import * as ImagePicker from "expo-image-picker";
 import Colors from "../components/Colors";
 
 import UserService from "../services/UserService";
@@ -23,12 +21,13 @@ const Profiel = ({ navigation }) => {
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets/profile.jpg"
   );
-  const [popup, setpopup] = useState(0);
   const [name, setName] = useState("yuri klasnikof");
   const [mail, setMail] = useState("yuriklasnikof@gmail.com");
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [state3, setState3] = useState(false);
+
+  const childFunc = React.useRef(null);
 
   async function Register() {
     var dict = {
@@ -52,65 +51,12 @@ const Profiel = ({ navigation }) => {
     }
   };
 
-  const showPopUp = () => {
-    setpopup(1);
-  };
-
-  const closePopUp = () => {
-    setpopup(0);
-  };
-
-  const showImagePicker = async () => {
-    setpopup(0);
-    const permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      setState3(true);
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync();
-
-    if (!result.cancelled) {
-      setPickedImagePath(result.uri);
-    }
-  };
-
-  const openCamera = async () => {
-    setpopup(0);
-    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      setState2(true);
-      return;
-    }
-
-    const result = await ImagePicker.launchCameraAsync();
-
-    if (!result.cancelled) {
-      setPickedImagePath(result.uri);
-    }
-  };
-
-  let content = <NavBar />;
-  if (popup === 1) {
-    content = (
-      <Popup
-        close={closePopUp}
-        pressedCameraRoll={showImagePicker}
-        pressedCamera={openCamera}
-      />
-    );
-  } else {
-    content = <NavBar />;
-  }
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: pickedImagePath }} />
-          <Pressable onPress={showPopUp}>
+          <Pressable onPress={() => childFunc.current()}>
             <Image style={styles.edit} source={require("../assets/edit.png")} />
           </Pressable>
         </View>
@@ -134,7 +80,7 @@ const Profiel = ({ navigation }) => {
           <Text style={styles.buttonText}>Bewaar</Text>
         </Pressable>
       </View>
-      {content}
+      <NavBar />
       <Snackbar
         wrapperStyle={{ top: 40 }}
         visible={state}

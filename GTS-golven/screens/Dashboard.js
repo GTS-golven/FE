@@ -10,18 +10,17 @@ import {
 
 import Colors from "../components/Colors";
 import Card from "../components/Card";
-import Popup from "../components/Popup";
 import NavBar from "../components/NavBar";
+import Popup from "../components/Popup";
 
 const Dashboard = ({ navigation }) => {
+  const bs = useRef();
   const [title, settitle] = useState("Slag 1 -i5");
   const [date, setdate] = useState("09-08-2022");
   const [state, setState] = useState(false);
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets.VideoExample.png"
   );
-
-  const childFunc = React.useRef(null);
 
   return (
     <View style={styles.screen}>
@@ -37,7 +36,7 @@ const Dashboard = ({ navigation }) => {
               <View>
                 <Pressable
                   style={styles.container}
-                  onPress={() => childFunc.current()}
+                  onPress={() => bs.current.snapTo(0)}
                 >
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -78,8 +77,8 @@ const Dashboard = ({ navigation }) => {
           </ScrollView>
         </View>
       </View>
+      <Popup bs={bs} />
       <NavBar />
-      <Popup childFunc={childFunc} />
     </View>
   );
 };
