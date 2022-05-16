@@ -9,34 +9,30 @@ const popup = ({ bs }) => {
   const fall = new Animated.Value(1);
 
   const renderInner = () => (
-    <View style={styles.panel}>
+    <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
-        <Text style={styles.panelTitle}>Video uploaden</Text>
-        <Text style={styles.panelSubtitle}>
-          Kies een foto van je bibliotheek
-        </Text>
+        <Text style={styles.title}>Video uploaden</Text>
+        <Text style={styles.subtitle}>Kies een foto van je bibliotheek</Text>
       </View>
-      <TouchableOpacity style={styles.panelButton} onPress={() => maakVideo}>
-        <Text style={styles.panelButtonTitle}>Maak een video</Text>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => maakVideo}>
+        <Text style={styles.btnTitle}>Maak een video</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton} onPress={() => kiesVideo}>
-        <Text style={styles.panelButtonTitle}>
-          Kies een video van je bibliotheek
-        </Text>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => kiesVideo}>
+        <Text style={styles.btnTitle}>Kies een video van je bibliotheek</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.panelButton}
+        style={styles.btnContainer}
         onPress={() => bs.current.snapTo(1)}
       >
-        <Text style={styles.panelButtonTitle}>terug</Text>
+        <Text style={styles.btnTitle}>terug</Text>
       </TouchableOpacity>
     </View>
   );
 
   const renderHeader = () => (
-    <View style={styles.header}>
-      <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} />
+    <View style={styles.headerContainer}>
+      <View style={styles.sleepContainer}>
+        <View style={styles.sleepKnop} />
       </View>
     </View>
   );
@@ -54,9 +50,9 @@ const popup = ({ bs }) => {
 };
 
 const styles = StyleSheet.create({
-  header: {
+  headerContainer: {
     backgroundColor: Colors.primary,
-    shadowColor: "#333333",
+    shadowColor: Colors.black,
     shadowOffset: { width: -1, height: -3 },
     shadowRadius: 2,
     shadowOpacity: 0.4,
@@ -65,15 +61,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
   },
 
-  panel: {
-    backgroundColor: Colors.primary,
-  },
-
-  panelHeader: {
+  sleepContainer: {
     alignItems: "center",
   },
 
-  panelHandle: {
+  sleepKnop: {
     width: 40,
     height: 8,
     borderRadius: 4,
@@ -81,19 +73,24 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  panelTitle: {
-    fontSize: 27,
-    height: 35,
+  container: {
+    backgroundColor: Colors.primary,
   },
 
-  panelSubtitle: {
+  title: {
+    fontSize: 27,
+    height: 35,
+    color: Colors.text,
+  },
+
+  subtitle: {
     fontSize: 14,
-    color: "gray",
+    color: Colors.subText,
     height: 30,
     marginBottom: 10,
   },
 
-  panelButton: {
+  btnContainer: {
     padding: 13,
     borderRadius: 10,
     backgroundColor: Colors.button1,
@@ -101,10 +98,10 @@ const styles = StyleSheet.create({
     marginVertical: 7,
   },
 
-  panelButtonTitle: {
+  btnTitle: {
     fontSize: 17,
     fontWeight: "bold",
-    color: "white",
+    color: Colors.text,
   },
 });
 
