@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Animated from "react-native-reanimated";
 import BottomSheet from "reanimated-bottom-sheet";
 import Colors from "./Colors";
 
+import { Snackbar } from 'react-native-paper';
+import * as ImagePicker from "expo-image-picker";
+import { useNavigation } from "@react-navigation/native";
+
 const popup = ({ bs }) => {
+  const nav = useNavigation();
+  const [pickedImagePath, setPickedImagePath] = useState(
+    "../assets.VideoExample.png"
+  );
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
+
+  const kiesVideo = async () => {
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (permissionResult.granted === false) {
+      setState(true)
+      return;
+    }
+    const result = await ImagePicker.launchImageLibraryAsync();
+    if (!result.cancelled) {
+      nav.navigate("Load");
+      setPickedImagePath(result.uri);
+    }
+  };
+
+  const maakVideo = async () => {
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissionResult.granted === false) {
+      setState2(true)
+      return;
+    }
+    const result = await ImagePicker.launchCameraAsync();
+    if (!result.cancelled) {
+      nav.navigate("Load");
+      setPickedImagePath(result.uri);
+    }
+  };
+
   const fall = new Animated.Value(1);
 
   const renderInner = () => (
@@ -14,10 +52,10 @@ const popup = ({ bs }) => {
         <Text style={styles.title}>Video uploaden</Text>
         <Text style={styles.subtitle}>Kies een foto van je bibliotheek</Text>
       </View>
-      <TouchableOpacity style={styles.btnContainer} onPress={() => maakVideo}>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => maakVideo()}>
         <Text style={styles.btnTitle}>Maak een video</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnContainer} onPress={() => kiesVideo}>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => kiesVideo()}>
         <Text style={styles.btnTitle}>Kies een video van je bibliotheek</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -37,19 +75,41 @@ const popup = ({ bs }) => {
     </View>
   );
   return (
-    <BottomSheet
-      ref={bs}
-      snapPoints={[330, 0]}
-      renderContent={renderInner}
-      renderHeader={renderHeader}
-      initialSnap={0}
-      callbackNode={fall}
-      enabledGestureInteraction={true}
-    />
+    <View style={styles.screen}>
+      <BottomSheet
+        ref={bs}
+        snapPoints={[330, 0]}
+        renderContent={renderInner}
+        renderHeader={renderHeader}
+        initialSnap={0}
+        callbackNode={fall}
+        enabledGestureInteraction={true}
+      />
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+      >
+        Wij hebben toegang nodig tot uw video gallerij
+      </Snackbar>
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state}
+        onDismiss={() => setState2(false)}
+      >
+        Wij hebben toegang tot uw camera nodig
+      </Snackbar>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    zIndex: 10000,
+    elevation: 10000,
+  },
+
   headerContainer: {
     backgroundColor: Colors.primary,
     shadowColor: Colors.black,
@@ -75,6 +135,8 @@ const styles = StyleSheet.create({
 
   container: {
     backgroundColor: Colors.primary,
+    height: 3000,
+    alignItems: "center",
   },
 
   title: {
@@ -91,8 +153,9 @@ const styles = StyleSheet.create({
   },
 
   btnContainer: {
+    width: "90%",
     padding: 13,
-    borderRadius: 10,
+    borderRadius: 15,
     backgroundColor: Colors.button1,
     alignItems: "center",
     marginVertical: 7,
@@ -101,7 +164,7 @@ const styles = StyleSheet.create({
   btnTitle: {
     fontSize: 17,
     fontWeight: "bold",
-    color: Colors.text,
+    color: Colors.white,
   },
 });
 
