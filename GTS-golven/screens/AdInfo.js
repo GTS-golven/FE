@@ -54,7 +54,7 @@ const AdInfo = ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.topPic}>
         <Image
           style={styles.imageTop}
@@ -129,7 +129,7 @@ const AdInfo = ({ navigation }) => {
       >
         Vul alle verplichte velden in
       </Snackbar>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
   imageTop: {
     width: "100%",
-    height: 250,
+    height: 300,
   },
 
   topInfo: {

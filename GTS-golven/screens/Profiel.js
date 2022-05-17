@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  SafeAreaView,
   Pressable,
 } from "react-native";
 
@@ -52,7 +51,7 @@ const Profiel = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: pickedImagePath }} />
@@ -102,7 +101,7 @@ const Profiel = ({ navigation }) => {
       >
         We hebben toegang tot de cameraroll nodig
       </Snackbar>
-    </SafeAreaView>
+    </View>
   );
 };
 

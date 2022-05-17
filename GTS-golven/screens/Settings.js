@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
 
 const Settings = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.topContainer}>
           <Pressable
@@ -66,7 +59,7 @@ const Settings = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

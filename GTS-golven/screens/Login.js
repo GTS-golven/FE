@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
 import Colors from "../components/Colors";
 import AuthService from "../services/AuthService";
@@ -34,7 +27,7 @@ const Dashboard = ({ navigation }) => {
       .catch((error) => setState2(true));
   }
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.card}>
         <View style={styles.infoContainer}>
           <View style={styles.inputContainer}>
@@ -91,7 +84,7 @@ const Dashboard = ({ navigation }) => {
       >
         Er is iets fout gegaan probeer later opnieuw
       </Snackbar>
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
 
 const MaakVideo = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.begin}>
           <Text style={styles.title}>Hoe begin ik</Text>
@@ -28,7 +28,7 @@ const MaakVideo = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

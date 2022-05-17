@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import Color from "../components/Colors";
 
 import { ProgressBar, Colors } from "react-native-paper";
@@ -17,7 +17,7 @@ const Load = ({ navigation }) => {
   });
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.mainContainer}>
         <Image
           style={styles.image}
@@ -33,7 +33,7 @@ const Load = ({ navigation }) => {
         <Text style={styles.title}>Hint:</Text>
         <Text style={styles.text}>Wijs de bal altijd na</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

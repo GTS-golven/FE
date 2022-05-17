@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import NavBar from "../components/NavBar";
 
 const WatIsData = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.topInfo}>
           <Text style={styles.title}>Wat betekent de data:</Text>
@@ -29,7 +29,7 @@ const WatIsData = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

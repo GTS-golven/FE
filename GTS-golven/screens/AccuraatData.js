@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
 
 const AccuraatData = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.info}>
           <Text style={styles.title}>Hoe accuraat is de data:</Text>
@@ -21,7 +21,7 @@ const AccuraatData = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import Colors from "../components/Colors";
 import NavBar from "../components/NavBar";
 
@@ -21,7 +14,7 @@ const Dashboard = ({ navigation }) => {
   const [airtime, setAirtime] = React.useState("--");
 
   return (
-    <SafeAreaView>
+    <View>
       <ScrollView>
         <View style={styles.screen}>
           <View style={styles.topPic}>
@@ -84,7 +77,7 @@ const Dashboard = ({ navigation }) => {
         </View>
       </ScrollView>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Pressable,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import Colors from "../components/Colors";
 import NavBar from "../components/NavBar";
 
 const Contact = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Neem contact op met ons</Text>
@@ -28,7 +21,7 @@ const Contact = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 

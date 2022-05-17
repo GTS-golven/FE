@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
 import Colors from "../components/Colors";
 
@@ -61,7 +54,7 @@ const Dashboard = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.card}>
         <View style={styles.infoContainer}>
           <View style={styles.inputContainer}>
@@ -121,7 +114,7 @@ const Dashboard = ({ navigation }) => {
       >
         Voer een gelidg email adress in
       </Snackbar>
-    </SafeAreaView>
+    </View>
   );
 };
 

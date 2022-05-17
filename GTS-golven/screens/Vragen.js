@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
 
 const Vragen = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <Pressable
           style={styles.row}
@@ -45,7 +38,7 @@ const Vragen = ({ navigation }) => {
         </Pressable>
       </View>
       <NavBar />
-    </SafeAreaView>
+    </View>
   );
 };
 
