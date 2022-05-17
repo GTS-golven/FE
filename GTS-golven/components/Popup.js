@@ -5,11 +5,11 @@ import Animated from "react-native-reanimated";
 import BottomSheet from "reanimated-bottom-sheet";
 import Colors from "./Colors";
 
-import { Snackbar } from 'react-native-paper';
+import { Snackbar } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
 
-const popup = ({ bs }) => {
+const popup = ({ bs, setValue }) => {
   const nav = useNavigation();
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets.VideoExample.png"
@@ -21,7 +21,7 @@ const popup = ({ bs }) => {
     const permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (permissionResult.granted === false) {
-      setState(true)
+      setState(true);
       return;
     }
     const result = await ImagePicker.launchImageLibraryAsync();
@@ -34,7 +34,7 @@ const popup = ({ bs }) => {
   const maakVideo = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
-      setState2(true)
+      setState2(true);
       return;
     }
     const result = await ImagePicker.launchCameraAsync();
@@ -60,7 +60,10 @@ const popup = ({ bs }) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.btnContainer}
-        onPress={() => bs.current.snapTo(1)}
+        onPress={() => {
+          bs.current.snapTo(1);
+          setValue(false);
+        }}
       >
         <Text style={styles.btnTitle}>terug</Text>
       </TouchableOpacity>
@@ -81,9 +84,10 @@ const popup = ({ bs }) => {
         snapPoints={[330, 0]}
         renderContent={renderInner}
         renderHeader={renderHeader}
-        initialSnap={0}
+        initialSnap={1}
         callbackNode={fall}
         enabledGestureInteraction={true}
+        onCloseStart={() => setValue(false)}
       />
       <Snackbar
         wrapperStyle={{ top: 40, zIndex: 10 }}

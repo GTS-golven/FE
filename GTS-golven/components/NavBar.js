@@ -66,7 +66,7 @@ const NavBar = () => {
             style={selected === "Profiel" ? styles.selected : styles.nothing}
           >
             <Image
-              style={selected === "Profiel" ? styles.selected : styles.image}
+              style={styles.image}
               source={require("../assets/profile.jpg")}
             />
           </View>

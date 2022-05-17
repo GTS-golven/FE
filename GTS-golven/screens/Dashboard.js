@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -15,12 +15,19 @@ import Popup from "../components/Popup";
 
 const Dashboard = ({ navigation }) => {
   const bs = useRef();
-  const [title, settitle] = useState("Slag 1 -i5");
+  const [title, setTitle] = useState("Slag 1 -i5");
   const [date, setdate] = useState("09-08-2022");
   const [state, setState] = useState(false);
   const [pickedImagePath, setPickedImagePath] = useState(
     "../assets.VideoExample.png"
   );
+  const [value, setValue] = useState(false);
+
+  useEffect(() => {
+    if (value) {
+      bs.current.snapTo(0);
+    }
+  }, [value]);
 
   return (
     <View style={styles.screen}>
@@ -36,7 +43,7 @@ const Dashboard = ({ navigation }) => {
               <View>
                 <Pressable
                   style={styles.container}
-                  onPress={() => bs.current.snapTo(0)}
+                  onPress={() => setValue(true)}
                 >
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -77,7 +84,7 @@ const Dashboard = ({ navigation }) => {
           </ScrollView>
         </View>
       </View>
-      <Popup bs={bs} />
+      {value && <Popup bs={bs} setValue={setValue} />}
       <NavBar />
     </View>
   );
