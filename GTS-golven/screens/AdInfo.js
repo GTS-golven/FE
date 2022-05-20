@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,11 +6,11 @@ import {
   StyleSheet,
   TextInput,
   Pressable,
-  SafeAreaView,
 } from "react-native";
 import axios from "axios";
 import Colors from "../components/Colors";
 import { Snackbar } from "react-native-paper";
+import { DatePicker } from 'react-native-woodpicker'
 
 const AdInfo = ({ navigation }) => {
   const [title, settitle] = useState("");
@@ -19,14 +19,18 @@ const AdInfo = ({ navigation }) => {
   const [datum, setdatum] = useState("");
   const [extra, setextra] = useState("");
   const [state, setState] = useState(false);
+  const [pickedDate, setPickedDate] = useState();
+
+  const handleText = () => pickedDate
+    ? pickedDate.toDateString()
+    : "Kies een datum";
 
   const submit = () => {
     if (
       title === "" ||
       golfclub === "" ||
       golfcourse === "" ||
-      datum === "" ||
-      extra === ""
+      datum === null
     ) {
       setState(true);
       return;
@@ -39,7 +43,7 @@ const AdInfo = ({ navigation }) => {
         "golfcourse",
         golfcourse,
         "Datum",
-        datum,
+        pickedDate,
         "Extra:",
         extra
       );
@@ -47,7 +51,7 @@ const AdInfo = ({ navigation }) => {
         title: title,
         golfclub: golfclub,
         golfcourse: golfcourse,
-        datum: datum,
+        datum: pickedDate,
         extra: extra,
       });
       navigation.push("Dashboard");
@@ -61,66 +65,78 @@ const AdInfo = ({ navigation }) => {
           source={require("../assets/VideoExample.png")}
         />
       </View>
-      <View style={styles.topInfo}>
-        <View style={styles.row}>
-          <View>
-            <Text style={styles.text}>
-              Title:<Text style={styles.red}>*</Text>
-            </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Slag 1"
-              onChangeText={settitle}
-            />
+      <View style={styles.contentContainer}>
+        <View style={styles.topInfo}>
+          <View style={styles.row}>
+            <View>
+              <Text style={styles.text}>
+                Title:<Text style={styles.red}>*</Text>
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Slag 1"
+                onChangeText={settitle}
+              />
+            </View>
+            <View>
+              <Text style={styles.text}>
+                Golf club:<Text style={styles.red}>*</Text>
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="5i"
+                onChangeText={setgolfclub}
+              />
+            </View>
           </View>
+          <View style={styles.row}>
+            <View>
+              <Text style={styles.text}>
+                Golf course:<Text style={styles.red}>*</Text>
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Heidelberglaan 15, utrecht"
+                onChangeText={setgolfcourse}
+              />
+            </View>
+            <View>
+              <DatePicker
+                value={pickedDate}
+                onDateChange={setPickedDate}
+                title="Kies een tijd en datum"
+                text={handleText()}
+                doneButtonLabel="Kies"
+                isNullable={false}
+                iosDisplay="spinner"
+                backdropAnimation={{ opacity: 0 }}
+                minimumDate={new Date(Date.now())}
+                maximumDate={new Date(Date.now() + 2000000000)}
+                iosMode="datetime"
+                androidMode="datetime"
+                androidDisplay="spinner"
+                locale="nl"
+
+                touchableStyle={{ borderWidth: 1, padding: 8, borderRadius: 10, width: "35%", height: "100%" }}
+              />
+            </View>
+          </View>
+        </View>
+        <View style={styles.bottomInfo}>
           <View>
-            <Text style={styles.text}>
-              Golf club:<Text style={styles.red}>*</Text>
-            </Text>
+            <Text style={styles.text}>Extra toevoeging:</Text>
             <TextInput
-              style={styles.input}
-              placeholder="5i"
-              onChangeText={setgolfclub}
+              style={styles.extraInput}
+              placeholder="Bericht"
+              onChangeText={setextra}
             />
           </View>
         </View>
-        <View style={styles.row}>
-          <View>
-            <Text style={styles.text}>
-              Golf course:<Text style={styles.red}>*</Text>
-            </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Heidelberglaan 15, utrecht"
-              onChangeText={setgolfcourse}
-            />
-          </View>
-          <View>
-            <Text style={styles.text}>
-              Datum:<Text style={styles.red}>*</Text>
-            </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="15 maart 2021"
-              onChangeText={setdatum}
-            />
-          </View>
+        <View style={styles.center}>
+          <Pressable style={styles.button} onPress={submit}>
+            <Text style={styles.buttonText}>Bewaar</Text>
+          </Pressable>
         </View>
-      </View>
-      <View style={styles.bottomInfo}>
-        <View>
-          <Text style={styles.text}>Extra toevoeging:</Text>
-          <TextInput
-            style={styles.extraInput}
-            placeholder="Bericht"
-            onChangeText={setextra}
-          />
-        </View>
-      </View>
-      <View style={styles.center}>
-        <Pressable style={styles.button} onPress={submit}>
-          <Text style={styles.buttonText}>Bewaar</Text>
-        </Pressable>
       </View>
       <Snackbar
         wrapperStyle={{ top: 40, zIndex: 10 }}
@@ -138,24 +154,30 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  contentContainer: {
+    height: "100%",
+  },
+
   topPic: {
     alignItems: "center",
+    width: "100%",
+    height: "30%",
   },
 
   imageTop: {
     width: "100%",
-    height: 300,
+    height: "100%",
   },
 
   topInfo: {
     marginTop: 30,
     width: "100%",
-    height: "15%",
+    height: "20%",
     justifyContent: "space-between",
   },
 
   bottomInfo: {
-    marginTop: 70,
+    marginTop: 10,
     width: "100%",
     height: "27%",
     alignItems: "center",
