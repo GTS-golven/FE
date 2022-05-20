@@ -11,36 +11,47 @@ import { useNavigation } from "@react-navigation/native";
 
 const popup = ({ bs, setValue }) => {
   const nav = useNavigation();
-  const [pickedImagePath, setPickedImagePath] = useState(
-    "../assets.VideoExample.png"
-  );
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
+  const [video, setVideo] = useState(null);
 
-  const kiesVideo = async () => {
-    const permissionResult =
-      await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (permissionResult.granted === false) {
+  const pickVideo = async () => {
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (permissionResult.granted !== false) {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setVideo(result.uri);
+        nav.navigate('Load')
+      }
+    } else {
       setState(true);
       return;
     }
-    const result = await ImagePicker.launchImageLibraryAsync();
-    if (!result.cancelled) {
-      nav.navigate("Load");
-      setPickedImagePath(result.uri);
-    }
   };
 
-  const maakVideo = async () => {
+  const takeVideo = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-    if (permissionResult.granted === false) {
+    if (permissionResult.granted !== false) {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setVideo(result.uri);
+        nav.navigate('Load')
+      }
+    } else {
       setState2(true);
       return;
-    }
-    const result = await ImagePicker.launchCameraAsync();
-    if (!result.cancelled) {
-      nav.navigate("Load");
-      setPickedImagePath(result.uri);
     }
   };
 
@@ -52,10 +63,10 @@ const popup = ({ bs, setValue }) => {
         <Text style={styles.title}>Video uploaden</Text>
         <Text style={styles.subtitle}>Kies een foto van je bibliotheek</Text>
       </View>
-      <TouchableOpacity style={styles.btnContainer} onPress={() => maakVideo()}>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => takeVideo()}>
         <Text style={styles.btnTitle}>Maak een video</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnContainer} onPress={() => kiesVideo()}>
+      <TouchableOpacity style={styles.btnContainer} onPress={() => pickVideo()}>
         <Text style={styles.btnTitle}>Kies een video van je bibliotheek</Text>
       </TouchableOpacity>
       <TouchableOpacity
