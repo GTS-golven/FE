@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    height: "70%",
+    height: "65%",
     justifyContent: "space-between",
     alignItems: "center",
   },

@@ -6,24 +6,22 @@ const MaakVideo = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-        <View style={styles.begin}>
-          <Text style={styles.title}>Hoe begin ik</Text>
+        <View style={styles.topContainer}>
+          <Text style={styles.title}>Hoe maak ik de video?</Text>
           <Text style={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipiscing, elit congue
-            aliquet vestibulum habitant mauris nullam, ridiculus felis
-            scelerisque senectus quam. In volutpat hac pellentesque rutrum
-            libero luctus lacus aliquet ac aenean sociosqu, tellus bibendum
-            vestibulum curae netus orci pulvinar dictum lectus praesent.
-            Vulputate montes odio purus velit leo habitant nulla suspendisse,
-            lectus ante lacus cum nisi fringilla ut, sociis tempus malesuada
-            fames imperdiet duis semper.
+            Dit is de text waar we uitleggen hoe de video er uit zou moeten zien
+            bij de user. De user zou er uit moeten kunnen halen waar hij zijn
+            camera moet neer zetten en waar hij de bal ten opzichte van de
+            camera moet neerleggen.
           </Text>
         </View>
-        <View style={styles.voorbeeld}>
-          <Text style={styles.title}>Dit is een voorbeeld video</Text>
+        <View style={styles.bottomContainer}>
+          <Text style={styles.title}>
+            De video komt er ongeveer zo uit te zien
+          </Text>
           <Image
-            style={styles.image}
             source={require("../assets/VideoExample.png")}
+            style={styles.img}
           />
         </View>
       </View>
@@ -35,44 +33,40 @@ const MaakVideo = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    marginTop: 20,
   },
 
   container: {
-    justifyContent: "space-evenly",
     alignItems: "center",
-    height: "80%",
+    height: "100%",
     width: "100%",
   },
 
-  begin: {
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    height: "40%",
+  topContainer: {
+    height: "30%",
     width: "80%",
+    gap: "10%",
   },
 
-  voorbeeld: {
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    height: "40%",
+  bottomContainer: {
+    height: "30%",
     width: "80%",
   },
 
   title: {
-    fontSize: 30,
-    fontWeight: "bold",
     textAlign: "center",
+    fontSize: 25,
+    fontWeight: "bold",
   },
 
   text: {
     fontSize: 15,
-    textAlign: "center",
   },
 
-  image: {
-    height: 200,
-    width: 300,
-    margin: 20,
+  img: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
   },
 });
 

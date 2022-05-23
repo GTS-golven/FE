@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Animated from "react-native-reanimated";
@@ -15,8 +15,15 @@ const popup = ({ bs, setValue }) => {
   const [state2, setState2] = useState(false);
   const [video, setVideo] = useState(null);
 
+  useEffect(() => {
+    if (video) {
+      console.log(video);
+    }
+  });
+
   const pickVideo = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (permissionResult.granted !== false) {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
@@ -27,7 +34,7 @@ const popup = ({ bs, setValue }) => {
 
       if (!result.cancelled) {
         setVideo(result.uri);
-        nav.navigate('Load')
+        nav.navigate("Load");
       }
     } else {
       setState(true);
@@ -47,7 +54,7 @@ const popup = ({ bs, setValue }) => {
 
       if (!result.cancelled) {
         setVideo(result.uri);
-        nav.navigate('Load')
+        nav.navigate("Load");
       }
     } else {
       setState2(true);
