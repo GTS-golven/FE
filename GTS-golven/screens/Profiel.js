@@ -14,25 +14,22 @@ import Colors from "../components/Colors";
 
 import UserService from "../services/UserService";
 import { Snackbar } from "react-native-paper";
+import * as ImagePicker from "expo-image-picker";
 var userService = new UserService();
 
 const Profiel = ({ navigation }) => {
-  const [pickedImagePath, setPickedImagePath] = useState(
-    "../assets/profile.jpg"
-  );
+  const [photo, setPhoto] = useState();
   const [name, setName] = useState("yuri klasnikof");
   const [mail, setMail] = useState("yuriklasnikof@gmail.com");
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [state3, setState3] = useState(false);
 
-  const childFunc = React.useRef(null);
-
   async function Register() {
     var dict = {
       username: mail,
       first_name: name,
-      profile_pic: pickedImagePath,
+      profile_pic: photo,
     };
 
     console.log(dict);
@@ -42,11 +39,31 @@ const Profiel = ({ navigation }) => {
   }
 
   const save = () => {
-    if (name === "" || mail === "" || pickedImagePath === "") {
+    if (name === "" || mail === "" || photo === "") {
       setState(true);
     } else {
       Register();
-      console.log("naam:", name, "mail:", mail, "pic:", pickedImagePath);
+      console.log("naam:", name, "mail:", mail, "pic:", photo);
+    }
+  };
+
+  const pickVideo = async () => {
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (permissionResult.granted !== false) {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.photo,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.cancelled) {
+        setPhoto(result.uri);
+      }
+    } else {
+      setState(true);
+      return;
     }
   };
 
@@ -54,8 +71,8 @@ const Profiel = ({ navigation }) => {
     <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: pickedImagePath }} />
-          <Pressable onPress={() => childFunc.current()}>
+          <Image style={styles.image} source={{ uri: photo }} />
+          <Pressable onPress={() => pickVideo()}>
             <Image style={styles.edit} source={require("../assets/edit.png")} />
           </Pressable>
         </View>
