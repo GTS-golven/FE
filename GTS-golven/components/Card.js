@@ -1,26 +1,20 @@
 import React from "react";
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import Colors from "./Colors";
 import { useNavigation } from "@react-navigation/native";
 
 const Dashboard = (props) => {
   const navigation = useNavigation();
   return (
-    <Pressable onPress={() => navigation.navigate("Gallery")}>
-      <View style={styles.screen}>
-        <Image
-          style={styles.image}
-          source={require("../assets/VideoExample.png")}
-        />
-        {/* <Image style={styles.image} source={props.source} /> */}
-        <View style={styles.card}>
-          <View style={styles.text}>
-            <Text style={styles.title}>{props.title}</Text>
-            <Text style={styles.date}>{props.date}</Text>
-          </View>
+    <View style={styles.screen}>
+      <Image style={styles.image} source={{ uri: props.source }} />
+      <View style={styles.card}>
+        <View style={styles.text}>
+          <Text style={styles.title}>{props.title}</Text>
+          <Text style={styles.date}>{props.date}</Text>
         </View>
       </View>
-    </Pressable>
+    </View>
   );
 };
 

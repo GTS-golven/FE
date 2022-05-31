@@ -12,16 +12,74 @@ import Colors from "../components/Colors";
 import Card from "../components/Card";
 import NavBar from "../components/NavBar";
 import Popup from "../components/Popup";
+import Gallery from "../components/Gallery";
+import VideoExample from "../assets/VideoExample.png";
+import balBaan from "../assets/balbaan.jpg";
 
 const Dashboard = ({ navigation }) => {
   const bs = useRef();
-  const [title, setTitle] = useState("Slag 1 -i5");
-  const [date, setdate] = useState("09-08-2022");
   const [state, setState] = useState(false);
-  const [pickedImagePath, setPickedImagePath] = useState(
-    "../assets.VideoExample.png"
-  );
   const [value, setValue] = useState(false);
+
+  const cardElements = [
+    {
+      id: 1,
+      title: "Slag 1 -i5",
+      date: "09-08-2022",
+      video: VideoExample,
+    },
+    {
+      id: 2,
+      title: "Slag 2 -i5",
+      date: "10-08-2022",
+      video: VideoExample,
+    },
+    {
+      id: 3,
+      title: "Slag 3 -i5",
+      date: "11-08-2022",
+      video: VideoExample,
+    },
+  ];
+
+  const galleryElement = [
+    {
+      id: 1,
+      video: VideoExample,
+      title: "Slag 1 -i5",
+      rpm: "--",
+      heigt: "--",
+      travel: "--",
+      angle: "--",
+      xas: "--",
+      airtime: "--",
+      model: balBaan,
+    },
+    {
+      id: 2,
+      video: VideoExample,
+      title: "Slag 2 -i5",
+      rpm: "--",
+      heigt: "--",
+      travel: "--",
+      angle: "--",
+      xas: "--",
+      airtime: "--",
+      model: balBaan,
+    },
+    {
+      id: 3,
+      video: VideoExample,
+      title: "Slag 3 -i5",
+      rpm: "--",
+      heigt: "--",
+      travel: "--",
+      angle: "--",
+      xas: "--",
+      airtime: "--",
+      model: balBaan,
+    },
+  ];
 
   useEffect(() => {
     if (value) {
@@ -58,14 +116,35 @@ const Dashboard = ({ navigation }) => {
                   </View>
                 </Pressable>
               </View>
-              <View>
-                <Card
-                  title={title}
-                  date={date}
-                  source={{ uri: pickedImagePath }}
-                />
+              <View style={styles.row}>
+                {cardElements.map((element) => {
+                  return (
+                    <Pressable key={element.id}>
+                      <Card
+                        title={element.title}
+                        date={element.date}
+                        source={element.video}
+                      />
+                    </Pressable>
+                  );
+                })}
+                {/* {galleryElement.map((element) => {
+                  return (
+                    <Gallery
+                      key={element[0].id}
+                      video={element[0].video}
+                      rpm={element[0].rpm}
+                      heigt={element[0].heigt}
+                      travel={element[0].travel}
+                      angle={element[0].angle}
+                      xas={element[0].xas}
+                      airtime={element[0].airtime}
+                      model={element[0].model}
+                    />
+                  );
+                })} */}
               </View>
-              <View>
+              {/* <View>
                 <Pressable style={styles.container}>
                   <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -79,7 +158,7 @@ const Dashboard = ({ navigation }) => {
                     <Text style={styles.text}>Gallerij</Text>
                   </View>
                 </Pressable>
-              </View>
+              </View> */}
             </View>
           </ScrollView>
         </View>
@@ -101,19 +180,20 @@ const styles = StyleSheet.create({
 
   ScrollView: {
     width: "100%",
-    height: "70%",
+    height: "30%", // phone 30% demo 550
   },
 
   card: {
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: "30%",
-    paddingRight: "30%",
+    paddingRight: "6%",
   },
 
   container: {
-    height: "30%",
+    height: "30%", // phone 30 demo 134
     width: "100%",
+    marginBottom: 100,
   },
 
   buttonContainer: {
@@ -128,6 +208,10 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  row: {
+    flexDirection: "row",
   },
 
   text: {

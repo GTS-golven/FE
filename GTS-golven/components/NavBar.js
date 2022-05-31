@@ -12,21 +12,6 @@ const NavBar = () => {
     setSelected(route.name);
   }, []);
 
-  const navElements = [
-    {
-      name: "Settings",
-      src: "../assets/setting.png",
-    },
-    {
-      name: "Dashboard",
-      src: "../assets/huisje.png",
-    },
-    {
-      name: "Profiel",
-      src: "../assets/profile.jpg",
-    },
-  ];
-
   return (
     <View style={styles.screen}>
       <View style={styles.navContainer}>
@@ -42,7 +27,9 @@ const NavBar = () => {
               source={require("../assets/setting.png")}
             />
           </View>
-          <Text style={styles.text}>Settings</Text>
+          <Text style={selected === "Settings" ? styles.none : styles.text}>
+            Settings
+          </Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
@@ -56,7 +43,9 @@ const NavBar = () => {
               source={require("../assets/huisje.png")}
             />
           </View>
-          <Text style={styles.text}>Home</Text>
+          <Text style={selected === "Dashboard" ? styles.none : styles.text}>
+            Home
+          </Text>
         </Pressable>
         <Pressable
           style={styles.buttonContainer}
@@ -70,23 +59,10 @@ const NavBar = () => {
               source={require("../assets/profile.jpg")}
             />
           </View>
-          <Text style={styles.text}>Profiel</Text>
+          <Text style={selected === "Profiel" ? styles.none : styles.text}>
+            Profiel
+          </Text>
         </Pressable>
-        {/* {navElements.map((element) => {
-          return (
-            <Pressable
-              key={element.name}
-              style={styles.buttonContainer}
-              onPress={() => nav.navigate(element.name)}
-            >
-              <Image
-                style={selected === element.name ? styles.selected : styles.image}
-                source={require(element.src)}
-              />
-              <Text style={styles.text}>{element.name}</Text>
-            </Pressable>
-          )
-        })} */}
       </View>
     </View>
   );
@@ -104,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     minHeight: 100,
-    width: "100%",
+    width: "100%", //phone 100% for demo 390
     backgroundColor: Colors.primary,
   },
 
@@ -141,6 +117,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+
+  none: {
+    display: "none",
   },
 });
 

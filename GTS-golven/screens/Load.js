@@ -26,7 +26,7 @@ const Load = ({ navigation }) => {
         <ProgressBar
           progress={load}
           color={Colors.green800}
-          style={{ width: 340, height: 215, zIndex: 0 }}
+          style={{ width: 340, height: 215 }}
         />
       </View>
       <View style={styles.hintContainer}>

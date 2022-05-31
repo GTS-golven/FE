@@ -6,11 +6,13 @@ import {
   StyleSheet,
   TextInput,
   Pressable,
+  Button,
 } from "react-native";
 import axios from "axios";
 import Colors from "../components/Colors";
 import { Snackbar } from "react-native-paper";
-import { DatePicker } from 'react-native-woodpicker'
+import { DatePicker } from "react-native-woodpicker";
+import { Video, AVPlaybackStatus } from "expo-av";
 
 const AdInfo = ({ navigation }) => {
   const [title, settitle] = useState("");
@@ -20,10 +22,16 @@ const AdInfo = ({ navigation }) => {
   const [extra, setextra] = useState("");
   const [state, setState] = useState(false);
   const [pickedDate, setPickedDate] = useState();
+  const [video, setVideo] = useState();
+  const [id, setId] = useState();
+  const videoRef = React.useRef(null);
+  const [status, setStatus] = React.useState({});
 
-  const handleText = () => pickedDate
-    ? pickedDate.toDateString()
-    : "Kies een datum";
+  useEffect(async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/videos/");
+    setId(response.data.id);
+    setVideo(response.data.video);
+  }, []);
 
   const submit = () => {
     if (
@@ -57,12 +65,20 @@ const AdInfo = ({ navigation }) => {
       navigation.push("Dashboard");
     }
   };
+
+  const handleText = () =>
+    pickedDate ? pickedDate.toDateString() : "30-mei-2022";
+
   return (
     <View style={styles.screen}>
       <View style={styles.topPic}>
-        <Image
-          style={styles.imageTop}
-          source={require("../assets/VideoExample.png")}
+        <Video
+          ref={videoRef}
+          style={styles.video}
+          source="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          useNativeControls
+          resizeMode="contain"
+          isLooping
         />
       </View>
       <View style={styles.contentContainer}>
@@ -104,7 +120,7 @@ const AdInfo = ({ navigation }) => {
               <DatePicker
                 value={pickedDate}
                 onDateChange={setPickedDate}
-                title="Kies een tijd en datum"
+                title="30-5-2022"
                 text={handleText()}
                 doneButtonLabel="Kies"
                 isNullable={false}
@@ -116,8 +132,13 @@ const AdInfo = ({ navigation }) => {
                 androidMode="datetime"
                 androidDisplay="spinner"
                 locale="nl"
-
-                touchableStyle={{ borderWidth: 1, padding: 8, borderRadius: 10, width: "35%", height: "100%" }}
+                touchableStyle={{
+                  borderWidth: 1,
+                  padding: 8,
+                  borderRadius: 10,
+                  width: "35%",
+                  height: "100%",
+                }}
               />
             </View>
           </View>
@@ -172,7 +193,7 @@ const styles = StyleSheet.create({
   topInfo: {
     marginTop: 30,
     width: "100%",
-    height: "20%",
+    height: "15%", // phone 20 demo
     justifyContent: "space-between",
   },
 
@@ -208,7 +229,7 @@ const styles = StyleSheet.create({
 
   button: {
     width: "40%",
-    height: "5,5%",
+    height: "5,5%", // phone 5,5 demo
     backgroundColor: Colors.button1,
     justifyContent: "center",
     alignItems: "center",
@@ -228,6 +249,12 @@ const styles = StyleSheet.create({
 
   red: {
     color: "red",
+  },
+
+  video: {
+    alignSelf: "center",
+    width: "100%",
+    height: 300,
   },
 });
 

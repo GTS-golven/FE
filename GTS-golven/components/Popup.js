@@ -7,6 +7,7 @@ import Colors from "./Colors";
 
 import { Snackbar } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
+import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
 const popup = ({ bs, setValue }) => {
@@ -17,6 +18,16 @@ const popup = ({ bs, setValue }) => {
 
   useEffect(() => {
     if (video) {
+      axios
+        .post("http://127.0.0.1:8000/api/videos/", {
+          video: video,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       console.log(video);
     }
   });

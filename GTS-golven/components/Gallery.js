@@ -1,77 +1,58 @@
-import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import Colors from "../components/Colors";
+import React from "react";
+import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
+import Colors from "../components/Colors";
+import VideoExample from "../assets/VideoExample.png";
+import balBaan from "../assets/balbaan.jpg";
 
-const Dashboard = ({ navigation }) => {
-  const [title, setTitle] = React.useState("Slag 1 -i5");
-
-  const [rpm, setRpm] = React.useState("--");
-  const [heigt, setHeigt] = React.useState("--");
-  const [travel, setTravel] = React.useState("--");
-  const [angle, setAngle] = React.useState("--");
-  const [xas, setXas] = React.useState("--");
-  const [airtime, setAirtime] = React.useState("--");
-
+const Gallery = (props) => {
   return (
-    <View>
+    <View style={styles.screen}>
       <ScrollView>
-        <View style={styles.screen}>
+        <View style={styles.mainContainer}>
           <View style={styles.topPic}>
-            <Image
-              style={styles.imageTop}
-              source={require("../assets/oudere-mannen-golf.jpg")}
-            />
-            <Text style={styles.text}>{title}</Text>
+            <Image style={styles.imageTop} source={{ uri: props.video }} />
+            <Text style={styles.text}>{props.title}</Text>
           </View>
           <View style={styles.infoConainer}>
             <View style={styles.row}>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>RPM</Text>
-                <Text style={styles.text3}>{rpm}</Text>
+                <Text style={styles.text3}>{props.rpm}</Text>
                 <Text style={styles.text4}>rpm</Text>
               </View>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>Height</Text>
-                <Text style={styles.text3}>{heigt}</Text>
+                <Text style={styles.text3}>{props.heigt}</Text>
                 <Text style={styles.text4}>meter</Text>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>Travel</Text>
-                <Text style={styles.text3}>{travel}</Text>
+                <Text style={styles.text3}>{props.travel}</Text>
                 <Text style={styles.text4}>meter</Text>
               </View>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>Angle</Text>
-                <Text style={styles.text3}>{angle}</Text>
+                <Text style={styles.text3}>{props.angle}</Text>
                 <Text style={styles.text4}>graden</Text>
               </View>
             </View>
             <View style={styles.row}>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>x-as</Text>
-                <Text style={styles.text3}>{xas}</Text>
+                <Text style={styles.text3}>{props.xas}</Text>
                 <Text style={styles.text4}>graden</Text>
               </View>
               <View style={styles.container}>
-                <Image />
                 <Text style={styles.text2}>Air time</Text>
-                <Text style={styles.text3}>{airtime}</Text>
+                <Text style={styles.text3}>{props.airtime}</Text>
                 <Text style={styles.text4}>seconden</Text>
               </View>
             </View>
             <View style={styles.bottomPic}>
-              <Image
-                style={styles.imageBottom}
-                source={require("../assets/balbaan.jpg")}
-              />
+              <Image style={styles.imageBottom} source={{ uri: props.model }} />
             </View>
           </View>
         </View>
@@ -83,6 +64,11 @@ const Dashboard = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
+    backgroundColor: Colors.backgournd,
+  },
+
+  mainContainer: {
     flex: 1,
     marginBottom: 70,
   },
@@ -151,4 +137,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dashboard;
+export default Gallery;

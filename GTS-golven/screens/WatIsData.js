@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   topContainer: {
     height: "30%",
     width: "80%",
-    gap: "10%",
+    // gap: "10%",
   },
 
   title: {

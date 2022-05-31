@@ -15,7 +15,6 @@ import Aanmelden from "./screens/Aanmelden";
 import ConfirmMail from "./screens/ConfirmMail";
 
 import Dashboard from "./screens/Dashboard";
-import Gallery from "./screens/Gallery";
 import Profiel from "./screens/Profiel";
 import Settings from "./screens/Settings";
 import Vragen from "./screens/Vragen";
@@ -27,8 +26,6 @@ import AccuraatData from "./screens/AccuraatData";
 import NewPassword from "./screens/NewPassword";
 import Load from "./screens/Load";
 import AdInfo from "./screens/AdInfo";
-
-import testDrawer from "./screens/testDrawer";
 
 const AuthStack = createNativeStackNavigator();
 
@@ -88,18 +85,12 @@ function App() {
             name="AdInfo"
             component={AdInfo}
           />
-          <AuthStack.Screen
-            options={{ headerShown: false, animation: "fade" }}
-            name="Gallery"
-            component={Gallery}
-          />
 
           <AuthStack.Screen
             options={{ headerShown: false, animation: "none" }}
             name="Profiel"
             component={Profiel}
           />
-
           <AuthStack.Screen
             options={{ headerShown: false, animation: "none" }}
             name="Settings"
