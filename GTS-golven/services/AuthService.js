@@ -1,4 +1,3 @@
-import FetchService from "./FetchService";
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 

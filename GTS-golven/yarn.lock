@@ -5941,6 +5941,11 @@ expo-status-bar@~1.2.0:
   resolved "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.2.0.tgz"
   integrity sha512-pVZZ/kDCXFK79E4dCtRecs3XLC8aiwlciutSd/fFmUPJSQZ1Txia6hlKajPt0GAYft8/YnT0V3URXzWZOBniYQ==
 
+expo-video-thumbnails@~6.1.0:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/expo-video-thumbnails/-/expo-video-thumbnails-6.1.1.tgz#49570b79f578f3ccd475cad50eed01516a53e697"
+  integrity sha512-zfVSpqgE4HsbWJJgDxkFSKyhdZGKs+B3olGNxp5CRCHB9Fmq/fyvdMXmlOwkbH46zWs2GBnSu+Oy6/R4xQql0Q==
+
 expo-web-browser@~10.1.0:
   version "10.1.1"
   resolved "https://registry.npmjs.org/expo-web-browser/-/expo-web-browser-10.1.1.tgz"

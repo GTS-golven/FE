@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import NavBar from "../components/NavBar";
 import Colors from "../components/Colors";
-import VideoExample from "../assets/VideoExample.png";
-import balBaan from "../assets/balbaan.jpg";
+import { Video, AVPlaybackStatus } from "expo-av";
+import axios from "axios";
 
 const Gallery = (props) => {
+  const videoRef = React.useRef(null);
+  const [video, setVideo] = useState();
+  const [id, setId] = useState();
+
+  useEffect(async () => {
+    const response = await axios.get("http://127.0.0.1:8000/api/videos/");
+    setId(response.data.id);
+    setVideo(response.data.video);
+  }, []);
+
   return (
     <View style={styles.screen}>
       <ScrollView>
         <View style={styles.mainContainer}>
           <View style={styles.topPic}>
-            <Image style={styles.imageTop} source={{ uri: props.video }} />
+            <Video
+              ref={videoRef}
+              style={styles.video}
+              source="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+              useNativeControls
+              resizeMode="contain"
+              isLooping
+            />
             <Text style={styles.text}>{props.title}</Text>
           </View>
           <View style={styles.infoConainer}>
@@ -52,7 +69,7 @@ const Gallery = (props) => {
               </View>
             </View>
             <View style={styles.bottomPic}>
-              <Image style={styles.imageBottom} source={{ uri: props.model }} />
+              <Image style={styles.imageBottom} source={props.model} />
             </View>
           </View>
         </View>
@@ -97,9 +114,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  imageTop: {
+  video: {
+    alignSelf: "center",
     width: "100%",
-    height: 250,
+    height: 300,
   },
 
   bottomPic: {

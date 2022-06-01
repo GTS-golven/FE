@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
-import Colors from "../components/Colors";
+import Colors from "../../components/Colors";
 
 const Dashboard = ({ navigation }) => {
   return (

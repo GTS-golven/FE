@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
-import Colors from "../components/Colors";
+import Colors from "../../components/Colors";
 
 import { Snackbar } from "react-native-paper";
-import UserService from "../services/UserService";
+import UserService from "../../services/UserService";
 var userService = new UserService();
 
 const Dashboard = ({ navigation }) => {

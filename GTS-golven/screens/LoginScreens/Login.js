@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 
-import Colors from "../components/Colors";
-import AuthService from "../services/AuthService";
-import FetchService from "../services/FetchService";
+import Colors from "../../components/Colors";
+import AuthService from "../../services/AuthService";
+import FetchService from "../../services/FetchService";
 import { Snackbar } from "react-native-paper";
 
 const Dashboard = ({ navigation }) => {

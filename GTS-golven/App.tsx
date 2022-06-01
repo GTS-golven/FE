@@ -5,27 +5,27 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import Start from "./screens/Start";
+import Start from "./screens/LoginScreens/Start.js";
 
-import Login from "./screens/Login";
-import WachtwoordVergeten from "./screens/WachtwoordVergeten";
-import VerranderWachtwoord from "./screens/VerranderWachtwoord";
+import Login from "./screens/LoginScreens/Login";
+import WachtwoordVergeten from "./screens/LoginScreens/WachtwoordVergeten";
+import VerranderWachtwoord from "./screens/LoginScreens/VerranderWachtwoord";
 
-import Aanmelden from "./screens/Aanmelden";
-import ConfirmMail from "./screens/ConfirmMail";
+import Aanmelden from "./screens/LoginScreens/Aanmelden";
+import ConfirmMail from "./screens/LoginScreens/ConfirmMail";
 
-import Dashboard from "./screens/Dashboard";
-import Profiel from "./screens/Profiel";
-import Settings from "./screens/Settings";
-import Vragen from "./screens/Vragen";
-import Contact from "./screens/Contact";
+import Dashboard from "./screens/AppScreens/Dashboard";
+import Profiel from "./screens/AppScreens/Profiel";
+import Settings from "./screens/AppScreens/Settings";
+import Vragen from "./screens/AppScreens/Vragen";
+import Contact from "./screens/AppScreens/Contact";
 
-import WatIsData from "./screens/WatIsData";
-import MaakVideo from "./screens/MaakVideo";
-import AccuraatData from "./screens/AccuraatData";
-import NewPassword from "./screens/NewPassword";
-import Load from "./screens/Load";
-import AdInfo from "./screens/AdInfo";
+import WatIsData from "./screens/AppScreens/MostAskedQuistions/MeaningData";
+import MaakVideo from "./screens/AppScreens/MostAskedQuistions/HowToMakeVideo";
+import AccuraatData from "./screens/AppScreens/MostAskedQuistions/AcuratData";
+import NewPassword from "./screens/AppScreens/NewPassword";
+import Load from "./screens/AppScreens/Load";
+import AdInfo from "./screens/AppScreens/AdInfo";
 
 const AuthStack = createNativeStackNavigator();
 
