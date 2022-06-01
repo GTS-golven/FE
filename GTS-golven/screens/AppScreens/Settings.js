@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 
 const Settings = ({ navigation }) => {
   return (
@@ -13,7 +13,7 @@ const Settings = ({ navigation }) => {
           >
             <Image
               style={styles.image}
-              source={require("../assets/question.png")}
+              source={require("../../assets/question.png")}
             />
             <Text style={styles.text}>Veel gestelde vragen</Text>
           </Pressable>
@@ -21,7 +21,10 @@ const Settings = ({ navigation }) => {
             style={styles.row}
             onPress={() => navigation.push("NewPassword")}
           >
-            <Image style={styles.image} source={require("../assets/key.png")} />
+            <Image
+              style={styles.image}
+              source={require("../../assets/key.png")}
+            />
             <Text style={styles.text}>Verrander wachtwoord</Text>
           </Pressable>
           <Pressable
@@ -30,7 +33,7 @@ const Settings = ({ navigation }) => {
           >
             <Image
               style={styles.image}
-              source={require("../assets/contact.png")}
+              source={require("../../assets/contact.png")}
             />
             <Text style={styles.text}>Contact ons</Text>
           </Pressable>
@@ -42,7 +45,7 @@ const Settings = ({ navigation }) => {
           >
             <Image
               style={styles.image}
-              source={require("../assets/loguit.png")}
+              source={require("../../assets/loguit.png")}
             />
             <Text style={styles.text}>Log uit</Text>
           </Pressable>
@@ -52,7 +55,7 @@ const Settings = ({ navigation }) => {
           >
             <Image
               style={styles.image}
-              source={require("../assets/delete.png")}
+              source={require("../../assets/delete.png")}
             />
             <Text style={styles.text}>Verwijder account</Text>
           </Pressable>

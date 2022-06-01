@@ -9,13 +9,13 @@ import {
   StyleSheet,
 } from "react-native";
 
-import Colors from "../components/Colors";
-import Card from "../components/Card";
-import NavBar from "../components/NavBar";
-import Popup from "../components/Popup";
-import Gallery from "../components/Gallery";
+import Colors from "../../components/Colors";
+import Card from "../../components/Card";
+import NavBar from "../../components/NavBar";
+import Popup from "../../components/Popup";
+import Gallery from "../../components/Gallery";
 import axios from "axios";
-import simulatie from "../assets/simulation.png";
+import simulatie from "../../assets/simulation.png";
 
 const Dashboard = ({ navigation }) => {
   const bs = useRef();
@@ -58,7 +58,7 @@ const Dashboard = ({ navigation }) => {
                     <View style={styles.button}>
                       <Image
                         style={styles.img}
-                        source={require("../assets/plus.png")}
+                        source={require("../../assets/plus.png")}
                       />
                     </View>
                   </View>

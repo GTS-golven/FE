@@ -8,11 +8,11 @@ import {
   Pressable,
 } from "react-native";
 
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 
-import Colors from "../components/Colors";
+import Colors from "../../components/Colors";
 
-import UserService from "../services/UserService";
+import UserService from "../../services/UserService";
 import { Snackbar } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
 var userService = new UserService();
@@ -73,7 +73,10 @@ const Profiel = ({ navigation }) => {
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: photo }} />
           <Pressable onPress={() => pickVideo()}>
-            <Image style={styles.edit} source={require("../assets/edit.png")} />
+            <Image
+              style={styles.edit}
+              source={require("../../assets/edit.png")}
+            />
           </Pressable>
         </View>
         <View style={styles.infoContainer}>

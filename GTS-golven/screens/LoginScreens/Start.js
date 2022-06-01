@@ -13,7 +13,7 @@ const Dashboard = ({ navigation }) => {
     <View style={styles.screen}>
       <ImageBackground
         style={styles.image}
-        source={require("../assets/startgolfer.jpg")}
+        source={require("../../assets/startgolfer.jpg")}
       >
         <View style={styles.container}>
           <View style={styles.buttonContainer}>

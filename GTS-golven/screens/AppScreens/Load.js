@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import Color from "../components/Colors";
 
 import { ProgressBar, Colors } from "react-native-paper";
 
@@ -21,7 +20,7 @@ const Load = ({ navigation }) => {
       <View style={styles.mainContainer}>
         <Image
           style={styles.image}
-          source={require("../assets/VideoExample.png")}
+          source={require("../../assets/VideoExample.png")}
         />
         <ProgressBar
           progress={load}

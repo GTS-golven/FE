@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
-import Colors from "../components/Colors";
-import NavBar from "../components/NavBar";
+import Colors from "../../components/Colors";
+import NavBar from "../../components/NavBar";
 
 const Contact = ({ navigation }) => {
   return (

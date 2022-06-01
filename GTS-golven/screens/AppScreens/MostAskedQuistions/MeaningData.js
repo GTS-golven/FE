@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import NavBar from "../../../components/NavBar";
 
 const MaakVideo = ({ navigation }) => {

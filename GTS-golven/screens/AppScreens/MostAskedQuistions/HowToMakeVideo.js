@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import NavBar from "../components/NavBar";
+import NavBar from "../../../components/NavBar";
 
 const MaakVideo = ({ navigation }) => {
   return (
@@ -20,7 +20,7 @@ const MaakVideo = ({ navigation }) => {
             De video komt er ongeveer zo uit te zien
           </Text>
           <Image
-            source={require("../assets/VideoExample.png")}
+            source={require("../../../assets/VideoExample.png")}
             style={styles.img}
           />
         </View>
