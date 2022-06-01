@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
@@ -13,7 +13,7 @@ import NavBar from "../../components/NavBar";
 import Colors from "../../components/Colors";
 
 import UserService from "../../services/UserService";
-import { Snackbar } from "react-native-paper";
+import { Button, Snackbar } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
 var userService = new UserService();
 
@@ -37,15 +37,6 @@ const Profiel = ({ navigation }) => {
     var test = await userService.put(dict);
     console.log(test);
   }
-
-  const save = () => {
-    if (name === "" || mail === "" || photo === "") {
-      setState(true);
-    } else {
-      Register();
-      console.log("naam:", name, "mail:", mail, "pic:", photo);
-    }
-  };
 
   const pickVideo = async () => {
     const permissionResult =
@@ -71,7 +62,14 @@ const Profiel = ({ navigation }) => {
     <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: photo }} />
+          {photo === null ? (
+            <Image
+              style={styles.image}
+              source={require("../../assets/profile.jpg")}
+            />
+          ) : (
+            <Image style={styles.image} source={{ uri: photo }} />
+          )}
           <Pressable onPress={() => pickVideo()}>
             <Image
               style={styles.edit}
@@ -95,7 +93,7 @@ const Profiel = ({ navigation }) => {
             />
           </View>
         </View>
-        <Pressable style={styles.button} onPress={save}>
+        <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Bewaar</Text>
         </Pressable>
       </View>
@@ -163,12 +161,12 @@ const styles = StyleSheet.create({
     bottom: 15,
     right: 15,
     resizeMode: "contain",
-    transform: [{ scaleX: -1 }],
+    // transform: [{ scaleX: -1 }],
   },
 
   button: {
     width: "40%",
-    height: "5,5%",
+    height: "6%",
     backgroundColor: Colors.button1,
     justifyContent: "center",
     alignItems: "center",
