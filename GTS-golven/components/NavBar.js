@@ -56,7 +56,7 @@ const NavBar = () => {
           >
             <Image
               style={styles.image}
-              source={require("../assets/profile.jpg")}
+              source={require("../assets/profileIcon.png")}
             />
           </View>
           <Text style={selected === "Profiel" ? styles.none : styles.text}>

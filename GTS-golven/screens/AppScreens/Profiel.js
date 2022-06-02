@@ -19,8 +19,8 @@ var userService = new UserService();
 
 const Profiel = ({ navigation }) => {
   const [photo, setPhoto] = useState();
-  const [name, setName] = useState("yuri klasnikof");
-  const [mail, setMail] = useState("yuriklasnikof@gmail.com");
+  const [name, setName] = useState("Voer hier jouw naam in");
+  const [mail, setMail] = useState("Voer hier jouw email in");
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [state3, setState3] = useState(false);
@@ -63,19 +63,26 @@ const Profiel = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           {photo === undefined ? (
-            <Image
-              style={styles.image}
-              source={require("../../assets/profile.jpg")}
-            />
+            <Pressable
+              style={styles.undefinedContainer}
+              onPress={() => pickVideo()}
+            >
+              <Image
+                style={styles.undefined}
+                source={require("../../assets/profile.png")}
+              />
+            </Pressable>
           ) : (
-            <Image style={styles.image} source={{ uri: photo }} />
+            <View>
+              <Image style={styles.image} source={{ uri: photo }} />
+              <Pressable onPress={() => pickVideo()}>
+                <Image
+                  style={styles.edit}
+                  source={require("../../assets/edit.png")}
+                />
+              </Pressable>
+            </View>
           )}
-          <Pressable onPress={() => pickVideo()}>
-            <Image
-              style={styles.edit}
-              source={require("../../assets/edit.png")}
-            />
-          </Pressable>
         </View>
         <View style={styles.infoContainer}>
           <View>
@@ -126,12 +133,12 @@ const Profiel = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    justifyContent: "center",
   },
 
   container: {
-    justifyContent: "space-evenly",
     alignItems: "center",
-    height: "70%",
+    height: "80%",
   },
 
   image: {
@@ -178,6 +185,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+
+  undefinedContainer: {
+    borderRadius: 300,
+    width: 300,
+    height: 300,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "black",
+    borderWidth: 2,
+  },
+
+  undefined: {},
 });
 
 export default Profiel;
