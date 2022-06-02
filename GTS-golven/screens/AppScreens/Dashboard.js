@@ -41,98 +41,88 @@ const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.centerScroll}>
-        <View>
-          <ScrollView
-            horizontal={true}
-            alwaysBounceHorizontal={true}
-            showsHorizontalScrollIndicator={false}
-            style={styles.ScrollView}
-          >
-            <View style={styles.card}>
-              <View>
-                <Pressable
-                  style={styles.container}
-                  onPress={() => setValue(true)}
-                >
-                  <View style={styles.buttonContainer}>
-                    <View style={styles.button}>
-                      <Image
-                        style={styles.img}
-                        source={require("../../assets/plus.png")}
-                      />
-                    </View>
-                  </View>
-                  <View style={styles.textContainer}>
-                    <Text style={styles.text}>Video uploaden</Text>
-                  </View>
-                </Pressable>
+        <ScrollView
+          horizontal={true}
+          alwaysBounceHorizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={styles.ScrollView}
+          contentContainerStyle={{
+            paddingLeft: "30%",
+            paddingRight: "10%",
+            paddingVertical: "20%",
+          }}
+        >
+          <View>
+            <Pressable style={styles.container} onPress={() => setValue(true)}>
+              <View style={styles.buttonContainer}>
+                <View style={styles.button}>
+                  <Image
+                    style={styles.img}
+                    source={require("../../assets/plus.png")}
+                  />
+                </View>
               </View>
+              <View style={styles.textContainer}>
+                <Text style={styles.text}>Video uploaden</Text>
+              </View>
+            </Pressable>
+          </View>
 
-              <View style={styles.row}>
-                {data?.map((element) => {
-                  return (
-                    <View key={element.id}>
-                      <Pressable
-                        onPress={() => {
-                          console.log("press worked");
-                        }}
-                      >
-                        {/* setModalVisible(true) */}
-                        <Card
-                          title={
-                            element.title === undefined
-                              ? "Geen title gekozen"
-                              : element.title
-                          }
-                          date={
-                            element.date === undefined
-                              ? "Geen datum gekozen"
-                              : element.title
-                          }
-                          source={element.video}
-                        />
-                      </Pressable>
-                      <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => {
-                          Alert.alert("Modal has been closed.");
-                          setModalVisible(!modalVisible);
-                        }}
-                      >
-                        <Gallery
-                          video={element.video}
-                          rpm={element.rpm === undefined ? "--" : element.rpm}
-                          heigt={
-                            element.heigt === undefined ? "--" : element.heigt
-                          }
-                          travel={
-                            element.travel === undefined ? "--" : element.travel
-                          }
-                          angle={
-                            element.angle === undefined ? "--" : element.angle
-                          }
-                          xas={element.xas === undefined ? "--" : element.xas}
-                          airtime={
-                            element.airtime === undefined
-                              ? "--"
-                              : element.airtime
-                          }
-                          model={
-                            element.model === undefined
-                              ? simulatie
-                              : element.rpm
-                          }
-                        />
-                      </Modal>
-                    </View>
-                  );
-                })}
-              </View>
-            </View>
-          </ScrollView>
-        </View>
+          <View style={styles.row}>
+            {data?.map((element) => {
+              return (
+                <View key={element.id}>
+                  <Pressable
+                    style={{ height: "70%", width: "100%" }}
+                    onPress={() => {
+                      setModalVisible(true);
+                    }}
+                  >
+                    <Card
+                      title={
+                        element.title === undefined
+                          ? "Geen title gekozen"
+                          : element.title
+                      }
+                      date={
+                        element.date === undefined
+                          ? "Geen datum gekozen"
+                          : element.title
+                      }
+                      source={element.video}
+                    />
+                  </Pressable>
+                  <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                      Alert.alert("Modal has been closed.");
+                      setModalVisible(!modalVisible);
+                    }}
+                  >
+                    <Gallery
+                      video={element.video}
+                      rpm={element.rpm === undefined ? "--" : element.rpm}
+                      heigt={element.heigt === undefined ? "--" : element.heigt}
+                      travel={
+                        element.travel === undefined ? "--" : element.travel
+                      }
+                      angle={element.angle === undefined ? "--" : element.angle}
+                      xas={element.xas === undefined ? "--" : element.xas}
+                      airtime={
+                        element.airtime === undefined ? "--" : element.airtime
+                      }
+                      model={
+                        element.model === undefined ? simulatie : element.rpm
+                      }
+                    />
+                  </Modal>
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
       </View>
       {value && <Popup bs={bs} setValue={setValue} />}
       <NavBar />
@@ -146,24 +136,17 @@ const styles = StyleSheet.create({
   },
 
   centerScroll: {
-    justifyContent: "center",
+    flex: 1,
   },
 
   ScrollView: {
-    width: "100%",
-    height: "75%",
-    paddingHorizontal: "30%",
-  },
-
-  card: {
+    flex: 1,
     flexDirection: "row",
-    alignItems: "center",
   },
 
   container: {
-    height: "30%", // phone 30 demo 134
+    height: "22%",
     width: "100%",
-    marginBottom: 100,
   },
 
   buttonContainer: {

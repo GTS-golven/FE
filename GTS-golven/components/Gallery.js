@@ -24,7 +24,9 @@ const Gallery = (props) => {
             <Video
               ref={videoRef}
               style={styles.video}
-              source="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+              source={{
+                uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+              }}
               useNativeControls
               resizeMode="contain"
               isLooping
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
   },
 
   video: {
-    alignSelf: "center",
+    marginTop: -50,
     width: "100%",
     height: 300,
   },
