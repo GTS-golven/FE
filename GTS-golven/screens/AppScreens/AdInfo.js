@@ -15,51 +15,15 @@ const AdInfo = ({ navigation }) => {
   const [state, setState] = useState(false);
   const [pickedDate, setPickedDate] = useState();
   const [video, setVideo] = useState();
-  const [id, setId] = useState();
   const videoRef = React.useRef(null);
-  const [status, setStatus] = React.useState({});
 
   useEffect(async () => {
     const response = await axios.get("http://127.0.0.1:8000/api/videos/");
-    setId(response.data.id);
     setVideo(response.data.video);
   }, []);
 
-  const submit = () => {
-    if (
-      title === "" ||
-      golfclub === "" ||
-      golfcourse === "" ||
-      datum === null
-    ) {
-      setState(true);
-      return;
-    } else {
-      console.log(
-        "Title:",
-        title,
-        "Golfclub:",
-        golfclub,
-        "golfcourse",
-        golfcourse,
-        "Datum",
-        pickedDate,
-        "Extra:",
-        extra
-      );
-      axios.post("https://api.mywebtuts.com/api/users", {
-        title: title,
-        golfclub: golfclub,
-        golfcourse: golfcourse,
-        datum: pickedDate,
-        extra: extra,
-      });
-      navigation.push("Dashboard");
-    }
-  };
-
   const handleText = () =>
-    pickedDate ? pickedDate.toDateString() : "30-mei-2022";
+    pickedDate ? pickedDate.toDateString() : "Kies een datum";
 
   return (
     <View style={styles.screen}>
@@ -67,7 +31,9 @@ const AdInfo = ({ navigation }) => {
         <Video
           ref={videoRef}
           style={styles.video}
-          source="https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
+          source={{
+            uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+          }}
           useNativeControls
           resizeMode="contain"
           isLooping
@@ -142,11 +108,12 @@ const AdInfo = ({ navigation }) => {
               style={styles.extraInput}
               placeholder="Bericht"
               onChangeText={setextra}
+              multiline={true}
             />
           </View>
         </View>
         <View style={styles.center}>
-          <Pressable style={styles.button} onPress={submit}>
+          <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Bewaar</Text>
           </Pressable>
         </View>
@@ -168,13 +135,7 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    height: "100%",
-  },
-
-  topPic: {
-    alignItems: "center",
-    width: "100%",
-    height: "30%",
+    flex: 1,
   },
 
   imageTop: {
@@ -183,16 +144,14 @@ const styles = StyleSheet.create({
   },
 
   topInfo: {
-    marginTop: 30,
     width: "100%",
-    height: "15%", // phone 20 demo
+    height: "40%",
     justifyContent: "space-between",
   },
 
   bottomInfo: {
-    marginTop: 10,
     width: "100%",
-    height: "27%",
+    height: "40%",
     alignItems: "center",
   },
 
@@ -221,7 +180,7 @@ const styles = StyleSheet.create({
 
   button: {
     width: "40%",
-    height: "5,5%", // phone 5,5 demo
+    height: "8%",
     backgroundColor: Colors.button1,
     justifyContent: "center",
     alignItems: "center",

@@ -62,7 +62,7 @@ const Profiel = ({ navigation }) => {
     <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          {photo === null ? (
+          {photo === undefined ? (
             <Image
               style={styles.image}
               source={require("../../assets/profile.jpg")}

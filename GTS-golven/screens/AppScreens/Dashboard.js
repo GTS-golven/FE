@@ -20,7 +20,7 @@ import simulatie from "../../assets/simulation.png";
 const Dashboard = ({ navigation }) => {
   const bs = useRef();
   const [value, setValue] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null); //[]
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(async () => {
@@ -63,65 +63,75 @@ const Dashboard = ({ navigation }) => {
                 </View>
               </View>
               <View style={styles.textContainer}>
-                <Text style={styles.text}>Video uploaden</Text>
+                {data === null ? (
+                  <Text style={styles.text}>
+                    Zet jouw eerste video er in om jouw golf process bij te
+                    houden
+                  </Text>
+                ) : (
+                  <Text style={styles.text}>Video uploaden</Text>
+                )}
               </View>
             </Pressable>
           </View>
-
-          <View style={styles.row}>
-            {data?.map((element) => {
-              return (
-                <View key={element.id}>
-                  <Pressable
-                    style={{ height: "70%", width: "100%" }}
-                    onPress={() => {
-                      setModalVisible(true);
-                    }}
-                  >
-                    <Card
-                      title={
-                        element.title === undefined
-                          ? "Geen title gekozen"
-                          : element.title
-                      }
-                      date={
-                        element.date === undefined
-                          ? "Geen datum gekozen"
-                          : element.title
-                      }
-                      source={element.video}
-                    />
-                  </Pressable>
-                  <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                      Alert.alert("Modal has been closed.");
-                      setModalVisible(!modalVisible);
-                    }}
-                  >
-                    <Gallery
-                      video={element.video}
-                      rpm={element.rpm === undefined ? "--" : element.rpm}
-                      heigt={element.heigt === undefined ? "--" : element.heigt}
-                      travel={
-                        element.travel === undefined ? "--" : element.travel
-                      }
-                      angle={element.angle === undefined ? "--" : element.angle}
-                      xas={element.xas === undefined ? "--" : element.xas}
-                      airtime={
-                        element.airtime === undefined ? "--" : element.airtime
-                      }
-                      model={
-                        element.model === undefined ? simulatie : element.rpm
-                      }
-                    />
-                  </Modal>
-                </View>
-              );
-            })}
-          </View>
+          {data === null
+            ? null
+            : data?.map((element) => {
+                return (
+                  <View key={element.id}>
+                    <Pressable
+                      style={{ height: "35%", width: "100%" }}
+                      onPress={() => {
+                        setModalVisible(true);
+                      }}
+                    >
+                      <Card
+                        title={
+                          element.title === undefined
+                            ? "Geen title gekozen"
+                            : element.title
+                        }
+                        date={
+                          element.date === undefined
+                            ? "Geen datum gekozen"
+                            : element.title
+                        }
+                        source={element.video}
+                      />
+                    </Pressable>
+                    <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={modalVisible}
+                      onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                      }}
+                    >
+                      <Gallery
+                        video={element.video}
+                        rpm={element.rpm === undefined ? "--" : element.rpm}
+                        heigt={
+                          element.heigt === undefined ? "--" : element.heigt
+                        }
+                        travel={
+                          element.travel === undefined ? "--" : element.travel
+                        }
+                        angle={
+                          element.angle === undefined ? "--" : element.angle
+                        }
+                        xas={element.xas === undefined ? "--" : element.xas}
+                        airtime={
+                          element.airtime === undefined ? "--" : element.airtime
+                        }
+                        model={
+                          element.model === undefined ? simulatie : element.rpm
+                        }
+                      />
+                    </Modal>
+                  </View>
+                );
+              })}
         </ScrollView>
       </View>
       {value && <Popup bs={bs} setValue={setValue} />}
@@ -145,8 +155,8 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    height: "22%",
-    width: "100%",
+    height: 160,
+    width: 160,
   },
 
   buttonContainer: {
@@ -163,13 +173,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  row: {
-    flexDirection: "row",
+  textContainer: {
+    alignItems: "center",
   },
 
   text: {
+    width: 200,
     marginTop: 10,
     fontSize: 20,
+    textAlign: "center",
   },
 
   img: {
