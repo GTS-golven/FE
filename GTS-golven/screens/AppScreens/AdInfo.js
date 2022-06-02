@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  Pressable,
+} from "react-native";
 import axios from "axios";
 import Colors from "../../components/Colors";
 import { Snackbar } from "react-native-paper";
@@ -14,7 +21,7 @@ const AdInfo = ({ navigation }) => {
   const [extra, setextra] = useState("");
   const [state, setState] = useState(false);
   const [pickedDate, setPickedDate] = useState();
-  const [video, setVideo] = useState();
+  const [video, setVideo] = useState(null);
   const videoRef = React.useRef(null);
 
   useEffect(async () => {
@@ -28,16 +35,28 @@ const AdInfo = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.topPic}>
-        <Video
-          ref={videoRef}
-          style={styles.video}
-          source={{
-            uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          }}
-          useNativeControls
-          resizeMode="contain"
-          isLooping
-        />
+        {video === null ? (
+          <View style={styles.errorContainer}>
+            <Image
+              source={require("../../assets/error.png")}
+              style={styles.errorImg}
+            />
+            <Text style={styles.errorText}>
+              We konden jouw video niet weergeven
+            </Text>
+          </View>
+        ) : (
+          <Video
+            ref={videoRef}
+            style={styles.video}
+            source={{
+              uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+            }}
+            useNativeControls
+            resizeMode="contain"
+            isLooping
+          />
+        )}
       </View>
       <View style={styles.contentContainer}>
         <View style={styles.topInfo}>
@@ -136,6 +155,7 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     flex: 1,
+    marginTop: 30,
   },
 
   imageTop: {
@@ -206,6 +226,23 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "100%",
     height: 300,
+  },
+
+  errorContainer: {
+    width: "100%",
+    height: 300,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  errorImg: {
+    width: 64,
+    height: 64,
+    resizeMode: "contain",
+  },
+
+  errorText: {
+    fontSize: 15,
   },
 });
 
