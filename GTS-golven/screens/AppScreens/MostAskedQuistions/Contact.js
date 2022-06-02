@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
-import Colors from "../../components/Colors";
-import NavBar from "../../components/NavBar";
+import Colors from "../../../components/Colors";
+import NavBar from "../../../components/NavBar";
 
 const Contact = ({ navigation }) => {
   return (
@@ -63,20 +63,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  verstuur: {
-    width: "50%",
-    height: "10%",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    backgroundColor: Colors.button1,
-  },
-
   title: {
     fontSize: 30,
     fontWeight: "bold",
     width: "70%",
     textAlign: "center",
+  },
+
+  verstuur: {
+    justifyContent: "center",
+    width: "50%",
+    height: "15%",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    backgroundColor: Colors.button1,
   },
 
   text: {

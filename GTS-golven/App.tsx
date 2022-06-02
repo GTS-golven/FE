@@ -18,12 +18,12 @@ import Dashboard from "./screens/AppScreens/Dashboard";
 import Profiel from "./screens/AppScreens/Profiel";
 import Settings from "./screens/AppScreens/Settings";
 import Vragen from "./screens/AppScreens/Vragen";
-import Contact from "./screens/AppScreens/Contact";
+import Contact from "./screens/AppScreens/MostAskedQuistions/Contact";
 
 import WatIsData from "./screens/AppScreens/MostAskedQuistions/MeaningData";
 import MaakVideo from "./screens/AppScreens/MostAskedQuistions/HowToMakeVideo";
 import AccuraatData from "./screens/AppScreens/MostAskedQuistions/AcuratData";
-import NewPassword from "./screens/AppScreens/NewPassword";
+import NewPassword from "./screens/AppScreens/MostAskedQuistions/NewPassword";
 import Load from "./screens/AppScreens/Load";
 import AdInfo from "./screens/AppScreens/AdInfo";
 

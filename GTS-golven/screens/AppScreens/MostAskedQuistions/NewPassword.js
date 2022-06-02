@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
-import Colors from "../../components/Colors";
-import NavBar from "../../components/NavBar";
+import Colors from "../../../components/Colors";
+import NavBar from "../../../components/NavBar";
 
 const NewPassword = ({ navigation }) => {
   return (
@@ -66,10 +66,11 @@ const styles = StyleSheet.create({
 
   button: {
     width: "50%",
-    height: "4%",
+    height: "6%",
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.button1,
   },
 
