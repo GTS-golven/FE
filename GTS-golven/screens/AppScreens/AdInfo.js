@@ -17,10 +17,9 @@ const AdInfo = ({ navigation }) => {
   const [title, settitle] = useState("");
   const [golfclub, setgolfclub] = useState("");
   const [golfcourse, setgolfcourse] = useState("");
-  const [datum, setdatum] = useState("");
   const [extra, setextra] = useState("");
   const [state, setState] = useState(false);
-  const [pickedDate, setPickedDate] = useState();
+  const [pickedDate, setPickedDate] = useState("");
   const [video, setVideo] = useState(null);
   const videoRef = React.useRef(null);
 
@@ -28,6 +27,19 @@ const AdInfo = ({ navigation }) => {
     const response = await axios.get("http://127.0.0.1:8000/api/videos/");
     setVideo(response.data.video);
   }, []);
+
+  const submit = () => {
+    if (
+      title === "" ||
+      golfclub === "" ||
+      golfcourse === "" ||
+      pickedDate === ""
+    ) {
+      setState(true);
+    } else {
+      navigation.push("Dashboard");
+    }
+  };
 
   const handleText = () =>
     pickedDate ? pickedDate.toDateString() : "Kies een datum";
@@ -132,7 +144,7 @@ const AdInfo = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.center}>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={submit}>
             <Text style={styles.buttonText}>Bewaar</Text>
           </Pressable>
         </View>

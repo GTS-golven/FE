@@ -13,7 +13,7 @@ import NavBar from "../../components/NavBar";
 import Colors from "../../components/Colors";
 
 import UserService from "../../services/UserService";
-import { Button, Snackbar } from "react-native-paper";
+import { Snackbar } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
 var userService = new UserService();
 
@@ -53,7 +53,7 @@ const Profiel = ({ navigation }) => {
         setPhoto(result.uri);
       }
     } else {
-      setState(true);
+      setState3(true);
       return;
     }
   };
@@ -100,7 +100,7 @@ const Profiel = ({ navigation }) => {
             />
           </View>
         </View>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => setState2(true)}>
           <Text style={styles.buttonText}>Bewaar</Text>
         </Pressable>
       </View>
@@ -117,7 +117,7 @@ const Profiel = ({ navigation }) => {
         visible={state2}
         onDismiss={() => setState2(false)}
       >
-        We hebben toegang tot de camera nodig
+        Deze functie werkt helaas nog niet.
       </Snackbar>
       <Snackbar
         wrapperStyle={{ top: 40 }}

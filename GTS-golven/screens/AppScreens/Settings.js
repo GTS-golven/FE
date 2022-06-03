@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import NavBar from "../../components/NavBar";
+import { Snackbar } from "react-native-paper";
 
 const Settings = ({ navigation }) => {
+  const [state, setState] = useState(false);
+
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -39,20 +42,14 @@ const Settings = ({ navigation }) => {
           </Pressable>
         </View>
         <View style={styles.bottomConainer}>
-          <Pressable
-            style={styles.row}
-            onPress={() => navigation.push("Login")}
-          >
+          <Pressable style={styles.row} onPress={() => setState(true)}>
             <Image
               style={styles.image}
               source={require("../../assets/loguit.png")}
             />
             <Text style={styles.text}>Log uit</Text>
           </Pressable>
-          <Pressable
-            style={styles.row}
-            onPress={() => navigation.push("Start")}
-          >
+          <Pressable style={styles.row} onPress={() => setState(true)}>
             <Image
               style={styles.image}
               source={require("../../assets/delete.png")}
@@ -62,6 +59,13 @@ const Settings = ({ navigation }) => {
         </View>
       </View>
       <NavBar />
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+      >
+        Deze fucntie werkt helaas nog niet in onze app.
+      </Snackbar>
     </View>
   );
 };

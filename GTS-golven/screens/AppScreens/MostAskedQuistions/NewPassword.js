@@ -1,31 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import Colors from "../../../components/Colors";
 import NavBar from "../../../components/NavBar";
+import { Snackbar } from "react-native-paper";
 
 const NewPassword = ({ navigation }) => {
+  const [state, setState] = useState(false);
+
   return (
     <View style={styles.screen}>
-      <View style={styles.mainContainer}></View>
-      <View style={styles.container}>
-        <Text style={styles.title}>Oud Wachtwoord:</Text>
-        <TextInput style={styles.input} placeholder="Oud wachtwoord" />
+      <View style={styles.mainContainer}>
+        <Text style={styles.headerTitle}>Verrander jouw wachtwoord</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>Oud Wachtwoord:</Text>
+          <TextInput style={styles.input} placeholder="Oud wachtwoord" />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Nieuw Wachtwoord:</Text>
+          <TextInput style={styles.input} placeholder="Nieuw wachtwoord" />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Herhaal nieuw Wachtwoord:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Herhaal nieuw wachtwoord"
+          />
+        </View>
+        <Pressable style={styles.button} onPress={() => setState(true)}>
+          <Text style={styles.buttonText}>Verrander</Text>
+        </Pressable>
       </View>
-      <View style={styles.container}>
-        <Text style={styles.title}>Nieuw Wachtwoord:</Text>
-        <TextInput style={styles.input} placeholder="Nieuw wachtwoord" />
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.title}>Herhaal nieuw Wachtwoord:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Herhaal nieuw wachtwoord"
-        />
-      </View>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Verrander</Text>
-      </Pressable>
       <NavBar />
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+      >
+        Deze fucntie werkt helaas nog niet in onze app.
+      </Snackbar>
     </View>
   );
 };
@@ -33,18 +45,19 @@ const NewPassword = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
 
   mainContainer: {
-    height: "30%",
+    height: "70%",
     width: "100%",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center",
   },
 
   container: {
-    height: "10%",
+    height: "20%",
     width: "80%",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -66,8 +79,7 @@ const styles = StyleSheet.create({
 
   button: {
     width: "50%",
-    height: "6%",
-    padding: 10,
+    height: "8%",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -77,6 +89,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: "bold",
     fontSize: 15,
+  },
+
+  headerTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
   },
 });
 

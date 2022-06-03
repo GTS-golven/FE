@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import Colors from "../../../components/Colors";
 import NavBar from "../../../components/NavBar";
+import { Snackbar } from "react-native-paper";
 
 const Contact = ({ navigation }) => {
+  const [state, setState] = useState(false);
+
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -15,12 +18,19 @@ const Contact = ({ navigation }) => {
           <TextInput style={styles.input} placeholder="Mail" />
           <TextInput style={styles.input} placeholder="Onderwerp" />
           <TextInput style={styles.bericht} placeholder="Bericht" />
-          <Pressable style={styles.verstuur}>
+          <Pressable style={styles.verstuur} onPress={() => setState(true)}>
             <Text style={styles.text}>Verstuur</Text>
           </Pressable>
         </View>
       </View>
       <NavBar />
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state}
+        onDismiss={() => setState(false)}
+      >
+        Deze fucntie werkt helaas nog niet in onze app.
+      </Snackbar>
     </View>
   );
 };
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
 
   input: {
     width: "80%",
-    height: "10%",
+    height: "13%",
     padding: 10,
     borderWidth: 1,
     borderRadius: 10,
