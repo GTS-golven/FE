@@ -16,12 +16,11 @@ import Popup from "../../components/Popup";
 import Gallery from "../../components/Gallery";
 import axios from "axios";
 import simulatie from "../../assets/simulation.png";
-import { getNativeSourceAndFullInitialStatusForLoadAsync } from "expo-av/build/AV";
 
 const Dashboard = ({ navigation }) => {
   const bs = useRef();
   const [value, setValue] = useState(false);
-  const [data, setData] = useState([]); //[]
+  const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [status, setStatus] = useState("online");
 
@@ -95,7 +94,7 @@ const Dashboard = ({ navigation }) => {
               ? null
               : data?.map((element) => {
                   return (
-                    <View key={element.id}>
+                    <View style={{ flex: 1 }} key={element.id}>
                       <Pressable
                         style={{ height: "35%", width: "100%" }}
                         onPress={() => {
@@ -117,11 +116,15 @@ const Dashboard = ({ navigation }) => {
                         />
                       </Pressable>
                       <Modal
+                        style={{
+                          margin: 0,
+                          backgroundColor: Colors.backgournd,
+                        }}
                         animationType="slide"
-                        transparent={true}
+                        presentationStyle="fullScreen"
                         visible={modalVisible}
+                        statusBarTranslucent={true}
                         onRequestClose={() => {
-                          Alert.alert("Modal has been closed.");
                           setModalVisible(!modalVisible);
                         }}
                       >
@@ -148,6 +151,7 @@ const Dashboard = ({ navigation }) => {
                               ? simulatie
                               : element.rpm
                           }
+                          hideModal={() => setModalVisible(false)}
                         />
                       </Modal>
                     </View>

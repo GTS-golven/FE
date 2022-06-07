@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
-import NavBar from "../components/NavBar";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Pressable,
+} from "react-native";
 import Colors from "../components/Colors";
 import { Video, AVPlaybackStatus } from "expo-av";
 import axios from "axios";
@@ -76,7 +82,15 @@ const Gallery = (props) => {
           </View>
         </View>
       </ScrollView>
-      <NavBar />
+      <Pressable style={styles.btnConainer} onPress={props.hideModal}>
+        <View style={styles.btnContent}>
+          <Text style={styles.btnText}>Terug</Text>
+          <Image
+            style={styles.btnImg}
+            source={require("../assets/arrow-right.png")}
+          />
+        </View>
+      </Pressable>
     </View>
   );
 };
@@ -89,7 +103,6 @@ const styles = StyleSheet.create({
 
   mainContainer: {
     flex: 1,
-    marginBottom: 70,
   },
 
   topPic: {
@@ -154,6 +167,36 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 10,
     right: 20,
+  },
+
+  btnConainer: {
+    width: "100%",
+    height: "9%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+
+  btnContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    width: "90%",
+    height: "100%",
+    backgroundColor: Colors.button1,
+    borderRadius: 20,
+  },
+
+  btnText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+
+  btnImg: {
+    width: 20,
+    height: 20,
+    transform: [{ rotate: "90deg" }],
   },
 });
 
