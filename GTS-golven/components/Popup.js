@@ -28,7 +28,6 @@ const popup = ({ bs, setValue }) => {
         .catch(function (error) {
           console.log(error);
         });
-      console.log(video);
     }
   });
 
@@ -81,7 +80,11 @@ const popup = ({ bs, setValue }) => {
         <Text style={styles.title}>Video uploaden</Text>
         <Text style={styles.subtitle}>Kies een foto van je bibliotheek</Text>
       </View>
-      <TouchableOpacity style={styles.btnContainer} onPress={() => takeVideo()}>
+      <TouchableOpacity
+        style={styles.btnContainer}
+        onPress={() => nav.navigate("Load")}
+      >
+        {/* takeVideo() */}
         <Text style={styles.btnTitle}>Maak een video</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btnContainer} onPress={() => pickVideo()}>
@@ -127,7 +130,7 @@ const popup = ({ bs, setValue }) => {
       </Snackbar>
       <Snackbar
         wrapperStyle={{ top: 40, zIndex: 10 }}
-        visible={state}
+        visible={state2}
         onDismiss={() => setState2(false)}
       >
         Wij hebben toegang tot uw camera nodig

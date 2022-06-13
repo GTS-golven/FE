@@ -19,8 +19,10 @@ const AdInfo = ({ navigation }) => {
   const [golfcourse, setgolfcourse] = useState("");
   const [extra, setextra] = useState("");
   const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
   const [pickedDate, setPickedDate] = useState("");
   const [video, setVideo] = useState(null);
+  const [submit, setSubmit] = useState(false);
   const videoRef = React.useRef(null);
 
   useEffect(async () => {
@@ -28,18 +30,27 @@ const AdInfo = ({ navigation }) => {
     setVideo(response.data.video);
   }, []);
 
-  const submit = () => {
-    if (
-      title === "" ||
-      golfclub === "" ||
-      golfcourse === "" ||
-      pickedDate === ""
-    ) {
-      setState(true);
+  useEffect(() => {
+    if (submit) {
+      axios
+        .post("http://127.0.0.1:8000/api/videos/", {
+          // video: video,
+          title: title,
+          description: extra,
+          golfclub: golfclub,
+          golfbaan: golfcourse,
+          datum: pickedDate,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     } else {
-      navigation.push("Dashboard");
+      setState2(true);
     }
-  };
+  }, []);
 
   const handleText = () =>
     pickedDate ? pickedDate.toDateString() : "Kies een datum";
@@ -144,7 +155,7 @@ const AdInfo = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.center}>
-          <Pressable style={styles.button} onPress={submit}>
+          <Pressable style={styles.button} onPress={() => setSubmit(true)}>
             <Text style={styles.buttonText}>Bewaar</Text>
           </Pressable>
         </View>
@@ -155,6 +166,13 @@ const AdInfo = ({ navigation }) => {
         onDismiss={() => setState(false)}
       >
         Vul alle verplichte velden in
+      </Snackbar>
+      <Snackbar
+        wrapperStyle={{ top: 40, zIndex: 10 }}
+        visible={state2}
+        onDismiss={() => setState2(false)}
+      >
+        Er is iets fout gegaan probeer opnieuw
       </Snackbar>
     </View>
   );

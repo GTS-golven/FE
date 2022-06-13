@@ -19,8 +19,8 @@ var userService = new UserService();
 
 const Profiel = ({ navigation }) => {
   const [photo, setPhoto] = useState();
-  const [name, setName] = useState("Voer hier jouw naam in");
-  const [mail, setMail] = useState("Voer hier jouw email in");
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
   const [state3, setState3] = useState(false);
@@ -90,6 +90,7 @@ const Profiel = ({ navigation }) => {
               style={styles.Input}
               onChangeText={setName}
               value={name}
+              placeholder={"Vul jouw naam in"}
             />
           </View>
           <View>
@@ -97,6 +98,7 @@ const Profiel = ({ navigation }) => {
               style={styles.Input}
               onChangeText={setMail}
               value={mail}
+              placeholder={"Vul jouw email in"}
             />
           </View>
         </View>
