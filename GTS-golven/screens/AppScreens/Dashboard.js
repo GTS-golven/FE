@@ -49,7 +49,7 @@ const Dashboard = ({ navigation }) => {
             source={require("../../assets/error.png")}
           />
           <Text style={styles.offlineText}>
-            Je bent niet verbonden met het internet
+            Er is iets fout gegaan probeer later onpnieuw
           </Text>
         </View>
       ) : (
